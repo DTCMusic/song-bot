@@ -5,7 +5,7 @@ from pytube import YouTube
 from pyrogram.types import InlineKeyboardMarkup
 from pyrogram.types import InlineKeyboardButton
 from youtubesearchpython import VideosSearch
-from song.mrdarkprince import ignore_blacklisted_users, get_arg
+from song.utils import ignore_blacklisted_users, get_arg
 from song import app, LOGGER
 from song.sql.chat_sql import add_chat_to_db
 
@@ -19,8 +19,7 @@ def yt_search(song):
         video_id = result["result"][0]["id"]
         url = f"https://youtu.be/{video_id}"
         return url
-
-
+    
 @app.on_message(filters.create(ignore_blacklisted_users) & filters.command("song"))
 async def song(client, message):
     chat_id = message.chat.id
@@ -28,19 +27,19 @@ async def song(client, message):
     add_chat_to_db(str(chat_id))
     args = get_arg(message) + " " + "song"
     if args.startswith(" "):
-        await message.reply("Mahnı adı daxil edin.\nMəs: /song Heyatim")
+        await message.reply("Şarkı ismi yazmanız gerek\n\nMis: /song Anuel AA - Dime Tu")
         return ""
-    status = await message.reply("🔎 Mahnı axtarılır")
+    status = await message.reply("🎵 Şarkıyı indiriyorum!")
     video_link = yt_search(args)
     if not video_link:
-        await status.edit("😔 Tapa Bilmədim.")
+        await status.edit("Şarkıyı bulamadım")
         return ""
     yt = YouTube(video_link)
     audio = yt.streams.filter(only_audio=True).first()
     try:
-        download = audio.download(filename=f"{str(yt.title)}")
+        download = audio.download(filename=f"{str(user_id)}")
     except Exception as ex:
-        await status.edit("Mahnı yüklənmir")
+        await status.edit("Şarkı yüklerken hata aldım")
         LOGGER.error(ex)
         return ""
     rename = os.rename(download, f"{str(yt.title)}.mp3")
@@ -54,4 +53,4 @@ async def song(client, message):
         reply_to_message_id=message.message_id,
     )
     await status.delete()
-    os.remove(f"{str(user_id)}.mp3")
+    os.remove(f"{str(yt.title)}.mp3")
