@@ -57,7 +57,7 @@ async def start(client,message):
                 reply_markup=InlineKeyboardMarkup(
                     [
                         [
-                            InlineKeyboardButton("Kanala Abunə ol!", url=f"https://t.me/{update_channel}")
+                            InlineKeyboardButton("Kanala Abunə ol!", url=f"https://t.me/songazz")
                         ]
                     ]
                 ),
@@ -67,7 +67,7 @@ async def start(client,message):
     ## Force Sub ##
     try:
         await message.reply_text(
-            text=("Saıam! {},\nMənim adım Song\nSənin üçün çox rahat mahnı yükləyə bilərəm! \n\nMəs: /song  Mir yusif - Heyatım").format(message.from_user.mention),
+            text=("Salam! {},\nMənim adım Song\nSənin üçün çox rahat mahnı yükləyə bilərəm! \n\nMəs: /song  Mir yusif - Heyatım").format(message.from_user.mention),
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                 [
@@ -109,6 +109,34 @@ async def start(client,message):
 
 
 @app.on_message(filters.create(ignore_blacklisted_users) & filters.command("help"))
+async def start(client,message):
+    ## Force Sub ##
+    update_channel = UPDATES_CHANNEL
+    if update_channel:
+        try:
+            user = await client.get_chat_member(update_channel, message.chat.id)
+            if user.status == "kicked":
+               await message.reply_text(
+                   text="Bağışlayın, məni istifadə etməyiniz qadağandır.",
+                   parse_mode="markdown",
+                   disable_web_page_preview=True
+               )
+               return
+        except UserNotParticipant:
+            await message.reply_text(
+                text="**Xaiş edirəm botu istifadə etmək üçün Musiqi kanalımıza qatılın\nDaha sonra geri donüb /start verin **",
+                reply_markup=InlineKeyboardMarkup(
+                    [
+                        [
+                            InlineKeyboardButton("Kanala Abunə ol!", url=f"https://t.me/songazz")
+                        ]
+                    ]
+                ),
+                parse_mode="markdown"
+            )
+            return
+    ## Force Sub ##
+    try:
 async def help(client, message):
     if message.from_user["id"] in OWNER_ID:
         await message.reply(owner_help)
