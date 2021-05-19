@@ -18,10 +18,20 @@ from pyrogram.types import Message
 from youtube_search import YoutubeSearch
 from youtubesearchpython import SearchVideos
 
+from pyrogram import Client, filters
+import asyncio
+import os
+from pytube import YouTube
+from pyrogram.types import InlineKeyboardMarkup
+from pyrogram.types import InlineKeyboardButton
+from youtubesearchpython import VideosSearch
+from Bot.utils import ignore_blacklisted_users, get_arg
+from Bot import app, LOGGER
+from Bot.sql.chat_sql import add_chat_to_db
 # from DaisyXMusic.modules.play import arq
 
 
-@Client.on_message(filters.command("song") & ~filters.channel)
+@app.on_message(filters.command("song") & ~filters.channel)
 def song(client, message):
 
     user_id = message.from_user.id
