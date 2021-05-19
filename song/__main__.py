@@ -22,7 +22,7 @@ Saıam! {},
 Mənim adım Song
 Sənin üçün çox rahat mahnı yükləyə bilərəm! 
 
-Məs: /song Heyatım
+Məs: /song  Mir yusif - Heyatım
 """
 
 owner_help = """
