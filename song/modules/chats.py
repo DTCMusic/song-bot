@@ -26,7 +26,7 @@ async def broadcast(client, message):
 
 
 @app.on_message(filters.user(OWNER_ID) & filters.command("list"))
-async def chatlist(client, message):
+async def list(client, message):
     chats = []
     all_chats = load_chats_list()
     for i in all_chats:
