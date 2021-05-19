@@ -21,7 +21,7 @@ from youtubesearchpython import SearchVideos
 # from DaisyXMusic.modules.play import arq
 
 
-@Client.on_message(filters.command("mp3") & ~filters.channel)
+@Client.on_message(filters.command("song") & ~filters.channel)
 def song(client, message):
 
     user_id = message.from_user.id
@@ -49,7 +49,7 @@ def song(client, message):
         results[0]["views"]
 
     except Exception as e:
-        m.edit("❌ Mahnı tapılmadı.\n\nBaşqa bir mahnı yazın və ya mahnı adını düzgün yazın.")
+        m.edit("Başqa bir mahnı yazın və ya mahnı adını düzgün yazın.")
         print(str(e))
         return
     m.edit("Mahnı yüklənir ")
