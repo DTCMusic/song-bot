@@ -110,6 +110,7 @@ async def start(client,message):
 
 @app.on_message(filters.create(ignore_blacklisted_users) & filters.command("help"))
 async def start(client,message):
+    if message.from_user["id"] in OWNER_ID:
     ## Force Sub ##
     update_channel = UPDATES_CHANNEL
     if update_channel:
@@ -137,8 +138,6 @@ async def start(client,message):
             return
     ## Force Sub ##
     try:
-async def help(client, message):
-    if message.from_user["id"] in OWNER_ID:
         await message.reply(owner_help)
         return ""
     text = "@Songazbot Sizlər üçün yaradılmış birinci Azərbaycan müsiqi yükləyici botdur!\n\nMahnı yüləmək üçün /song mahnı adı yazın"
