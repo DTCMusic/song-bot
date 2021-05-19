@@ -37,7 +37,7 @@ owner_help = """
 
 UPDATES_CHANNEL = -1001241641792
 
-@Client.on_message(filters.command(["start"]) & filters.private)
+@app.on_message(filters.command(["start"]) & filters.private)
 async def start(client: Client, message: Message):
     ## Force Sub ##
     update_channel = UPDATES_CHANNEL
