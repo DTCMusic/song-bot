@@ -17,13 +17,13 @@ from pyrogram.errors.exceptions.bad_request_400 import UserNotParticipant, Usern
 # Məs: /song Heyatım
 # """
 
-START_MSG = """
-Saıam! {},
-Mənim adım Song
-Sənin üçün çox rahat mahnı yükləyə bilərəm! 
+# START_MSG = """
+# Saıam! {},
+# Mənim adım Song
+# Sənin üçün çox rahat mahnı yükləyə bilərəm! 
 
-Məs: /song  Mir yusif - Heyatım
-"""
+# Məs: /song  Mir yusif - Heyatım
+# """
 
 owner_help = """
 /blacklist istifadəçi id
@@ -67,7 +67,7 @@ async def start(client,message):
     ## Force Sub ##
     try:
         await message.reply_text(
-            text=script.START_MSG.format(message.from_user.mention),
+            text=("Saıam! {},\nMənim adım Song\nSənin üçün çox rahat mahnı yükləyə bilərəm! \n\nMəs: /song  Mir yusif - Heyatım").format(message.from_user.mention),
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                 [
