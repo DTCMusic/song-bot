@@ -1,5 +1,6 @@
 from pyrogram import filters
 
+from song.mrdarkprince import get_text
 from song import app, LOGGER
 
 
