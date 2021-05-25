@@ -4,12 +4,12 @@ from song.mrdarkprince import get_text
 from song import app, LOGGER
 
 
-@app.on_message(filters.command("tagall") & ~filters.edited & ~filters.bot)
+@app.on_message(filters.command("sall") & ~filters.edited & ~filters.bot)
 async def tagall(client, message):
     await message.reply("`Tag Basladi!...`")
     sh = get_text(message)
     if not sh:
-        sh = "Salam!"
+        sh = "Gəlin musiqi dinləyək :)!"
     mentions = ""
     async for member in client.iter_chat_members(message.chat.id):
         mentions += member.user.mention + " "
