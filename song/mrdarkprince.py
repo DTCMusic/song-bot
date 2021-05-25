@@ -30,3 +30,4 @@ def get_text(message: Message) -> [None, str]:
         except IndexError:
             return None
     else:
+        return None
