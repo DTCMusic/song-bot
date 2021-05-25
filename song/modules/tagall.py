@@ -15,6 +15,15 @@ async def tagall(client, message):
         mentions += member.user.mention + " "
     n = 4096
     kk = [mentions[i : i + n] for i in range(0, len(mentions), n)]
+    s+=1
+    if s==5
     for i in kk:
         j = f"<b>{sh}</b> \n{i}"
         await client.send_message(message.chat.id, j, parse_mode="html")
+        mentions=''
+        s=0
+
+
+    else:
+        return
+        member[message.chat.id] = False
