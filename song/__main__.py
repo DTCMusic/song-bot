@@ -100,7 +100,7 @@ async def start(client, message):
                     InlineKeyboardButton(
                         text="➕ Botu grupa qat ➕", url="https://t.me/songazbot?startgroup=a"
                     )
-                ]
+                ],
                 [
                     InlineKeyboardButton(
                          text="Song 🎵", url="https://t.me/songazz" ),
