@@ -12,7 +12,8 @@ from pyrogram.errors.exceptions.bad_request_400 import UserNotParticipant, Usern
 
 start_text = """
 Saıam! [{}](tg://user?id={}),
-Mənim adım Song Sənin üçün çox rahat mahnı yükləyə bilərəm! 
+Mənim adım Song Sənin üçün çox rahat mahnı yükləyə bilərəm!
+Sadəcə mənə nümünədəki kimi mahnı adını yaz.
 
 Məs: /song Heyatım
 """
@@ -99,6 +100,13 @@ async def start(client, message):
                     InlineKeyboardButton(
                         text="➕ Botu grupa qat ➕", url="https://t.me/songazbot?startgroup=a"
                     )
+                ]
+                [
+                    InlineKeyboardButton(
+                         text="Song 🎵", url="https://t.me/songazz" )
+                    InlineKeyboardButton(
+                         text="Shazam 🔍", url="https://t.me/songaxtaris" )
+           
                 ]
             ]
         )
