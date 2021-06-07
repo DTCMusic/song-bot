@@ -65,7 +65,7 @@ async def song(client, message):
             ),
     )
     else:
-        btn = None
+        song = None
     await
     message.reply(song_messager,reply_markup=song)
     status.delete()
