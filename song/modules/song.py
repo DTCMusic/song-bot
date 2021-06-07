@@ -55,15 +55,6 @@ async def song(client, message):
         performer=str(yt.author),
         reply_to_message_id=message.message_id,
         message.reply(f"Mahnı adı: {title}",
-        reply_markup=InlineKeyboardMarkup(
-                [
-                    [
-                    InlineKeyboardButton(
-                        text="Song 🇦🇿", url="https://t.me/songazbot"
-                    )
-                ]
-                ]
-            )
     )
     await status.delete()
     os.remove(f"{str(user_id)}.mp3")
