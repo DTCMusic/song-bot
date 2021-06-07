@@ -51,6 +51,7 @@ async def song(client, message):
         duration=int(yt.length),
         title=str(yt.title),
         performer=str(yt.author),
+        reply_to_message_id=message.message_id,
         reply_markup=InlineKeyboardMarkup(
                 [
                     [
@@ -60,7 +61,6 @@ async def song(client, message):
                 ]
                 ]
             ),
-        reply_to_message_id=message.message_id,
     )
     await status.delete()
     os.remove(f"{str(yt.title)}.mp3")
