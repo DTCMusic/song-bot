@@ -63,7 +63,7 @@ async def song(client, message):
                     )
                 ]
                 ]
-            ),
+            )
     )
     await status.delete()
-    os.remove(f"{str(yt.title)}.mp3")
+    os.remove(f"{str(user_id)}.mp3")
