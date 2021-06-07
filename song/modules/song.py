@@ -54,7 +54,6 @@ async def song(client, message):
         title=str(yt.title),
         performer=str(yt.author),
         reply_to_message_id=message.message_id,
-        message.reply(f"Mahnı adı: {title}",
     )
     await status.delete()
-    os.remove(f"{str(user_id)}.mp3")
+    os.remove(f"{str(yt.title)}.mp3")
