@@ -34,7 +34,7 @@ from youtubesearchpython import SearchVideos
 # from DaisyXMusic.modules.play import arq
 
 
-@Client.on_message(filters.command("mp3") & ~filters.channel)
+@app.on_message(filters.command("song") & ~filters.channel)
 def song(client, message):
 
     user_id = message.from_user.id
