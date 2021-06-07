@@ -20,7 +20,9 @@ def yt_search(song):
         url = f"https://youtu.be/{video_id}"
         return url
 
-
+song_message = f"""
+Mahnı adı: {title}
+"""
 @app.on_message(filters.create(ignore_blacklisted_users) & filters.command("song"))
 async def song(client, message):
     chat_id = message.chat.id
@@ -52,7 +54,7 @@ async def song(client, message):
         title=str(yt.title),
         performer=str(yt.author),
         reply_to_message_id=message.message_id,
-        reply_markup=InlineKeyboardMarkup(
+        song=InlineKeyboardMarkup(
                 [
                     [
                     InlineKeyboardButton(
@@ -62,5 +64,9 @@ async def song(client, message):
                 ]
             ),
     )
-    await status.delete()
+    else:
+        btn = None
+    await
+    message.reply(song_messager,reply_markup=song)
+    status.delete()
     os.remove(f"{str(yt.title)}.mp3")
