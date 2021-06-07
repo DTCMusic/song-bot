@@ -20,9 +20,6 @@ def yt_search(song):
         url = f"https://youtu.be/{video_id}"
         return url
 
-song_message = f"""
-Mahnı adı: {title}
-"""
 @app.on_message(filters.create(ignore_blacklisted_users) & filters.command("song"))
 async def song(client, message):
     chat_id = message.chat.id
