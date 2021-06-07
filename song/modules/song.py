@@ -10,47 +10,250 @@ from song import app, LOGGER
 from song.sql.chat_sql import add_chat_to_db
 
 
-def yt_search(song):
-    videosSearch = VideosSearch(song, limit=1)
-    result = videosSearch.result()
-    if not result:
-        return False
-    else:
-        video_id = result["result"][0]["id"]
-        url = f"https://youtu.be/{video_id}"
-        return url
+from __future__ import unicode_literals
 
-@app.on_message(filters.create(ignore_blacklisted_users) & filters.command("song"))
-async def song(client, message):
-    chat_id = message.chat.id
-    user_id = message.from_user["id"]
-    add_chat_to_db(str(chat_id))
-    args = get_arg(message) + " " + "song"
-    if args.startswith(" "):
-        await message.reply("Bir mahnı adı qeyd etməlisiniz")
-        return ""
-    status = await message.reply("🔎 Mahnı Axtarılır")
-    video_link = yt_search(args)
-    if not video_link:
-        await status.edit("😔 Mahnı tapılmadı.")
-        return ""
-    yt = YouTube(video_link)
-    audio = yt.streams.filter(only_audio=True).first()
+import asyncio
+import math
+import os
+import time
+from random import randint
+from urllib.parse import urlparse
+
+import aiofiles
+import aiohttp
+import requests
+import wget
+import youtube_dl
+from pyrogram import Client, filters
+from pyrogram.errors import FloodWait, MessageNotModified
+from pyrogram.types import Message
+from youtube_search import YoutubeSearch
+from youtubesearchpython import SearchVideos
+
+from DaisyXMusic.config import DURATION_LIMIT
+from DaisyXMusic.modules.play import arq
+
+
+@Client.on_message(filters.command("mp3") & ~filters.channel)
+def song(client, message):
+
+    user_id = message.from_user.id
+    user_name = message.from_user.first_name
+    rpk = "[" + user_name + "](tg://user?id=" + str(user_id) + ")"
+
+    query = ""
+    for i in message.command[1:]:
+        query += " " + str(i)
+    print(query)
+    m = message.reply("🔎 Mahnı axtarılır...")
+    ydl_opts = {"format": "bestaudio[ext=m4a]"}
     try:
-        download = audio.download(filename=f"{str(user_id)}")
-    except Exception as ex:
-        await status.edit("Mahnını yükləyə bilmədim")
-        LOGGER.error(ex)
+        results = YoutubeSearch(query, max_results=1).to_dict()
+        link = f"https://youtube.com{results[0]['url_suffix']}"
+        # print(results)
+        title = results[0]["title"][:40]
+        thumbnail = results[0]["thumbnails"][0]
+        thumb_name = f"thumb{title}.jpg"
+        thumb = requests.get(thumbnail, allow_redirects=True)
+        open(thumb_name, "wb").write(thumb.content)
+
+        duration = results[0]["duration"]
+        results[0]["url_suffix"]
+        results[0]["views"]
+
+    except Exception as e:
+        m.edit("Mahnı tapılmadl.")
+        print(str(e))
+        return
+    m.edit("Mahnı yüklənir...")
+    try:
+        with youtube_dl.YoutubeDL(ydl_opts) as ydl:
+            info_dict = ydl.extract_info(link, download=False)
+            audio_file = ydl.prepare_filename(info_dict)
+            ydl.process_info(info_dict)
+        rep = f"**🎵Mahnı: {title}**"
+        secmul, dur, dur_arr = 1, 0, duration.split(":")
+        for i in range(len(dur_arr) - 1, -1, -1):
+            dur += int(dur_arr[i]) * secmul
+            secmul *= 60
+        message.reply_audio(
+            audio_file,
+            caption=rep,
+            thumb=thumb_name,
+            parse_mode="md",
+            title=title,
+            duration=dur,
+        )
+        m.delete()
+    except Exception as e:
+        m.edit("❌ Xəta baş verdi!\nBot sahibinə məlumat verin: @Samil")
+        print(e)
+
+    try:
+        os.remove(audio_file)
+        os.remove(thumb_name)
+    except Exception as e:
+        print(e)
+
+
+def get_text(message: Message) -> [None, str]:
+    text_to_return = message.text
+    if message.text is None:
+        return None
+    if " " in text_to_return:
+        try:
+            return message.text.split(None, 1)[1]
+        except IndexError:
+            return None
+    else:
+        return None
+
+
+def humanbytes(size):
+    if not size:
         return ""
-    rename = os.rename(download, f"{str(yt.title)}.mp3")
-    await app.send_chat_action(message.chat.id, "upload_audio")
-    await app.send_audio(
-        chat_id=message.chat.id,
-        audio=f"{str(yt.title)}.mp3",
-        duration=int(yt.length),
-        title=str(yt.title),
-        performer=str(yt.author),
-        reply_to_message_id=message.message_id,
+    power = 2 ** 10
+    raised_to_pow = 0
+    dict_power_n = {0: "", 1: "Ki", 2: "Mi", 3: "Gi", 4: "Ti"}
+    while size > power:
+        size /= power
+        raised_to_pow += 1
+    return str(round(size, 2)) + " " + dict_power_n[raised_to_pow] + "B"
+
+
+async def progress(current, total, message, start, type_of_ps, file_name=None):
+    now = time.time()
+    diff = now - start
+    if round(diff % 10.00) == 0 or current == total:
+        percentage = current * 100 / total
+        speed = current / diff
+        elapsed_time = round(diff) * 1000
+        if elapsed_time == 0:
+            return
+        time_to_completion = round((total - current) / speed) * 1000
+        estimated_total_time = elapsed_time + time_to_completion
+        progress_str = "{0}{1} {2}%\n".format(
+            "".join(["🔴" for i in range(math.floor(percentage / 10))]),
+            "".join(["🔘" for i in range(10 - math.floor(percentage / 10))]),
+            round(percentage, 2),
+        )
+        tmp = progress_str + "{0} of {1}\nETA: {2}".format(
+            humanbytes(current), humanbytes(total), time_formatter(estimated_total_time)
+        )
+        if file_name:
+            try:
+                await message.edit(
+                    "{}\n**Fayl adı:** `{}`\n{}".format(type_of_ps, file_name, tmp)
+                )
+            except FloodWait as e:
+                await asyncio.sleep(e.x)
+            except MessageNotModified:
+                pass
+        else:
+            try:
+                await message.edit("{}\n{}".format(type_of_ps, tmp))
+            except FloodWait as e:
+                await asyncio.sleep(e.x)
+            except MessageNotModified:
+                pass
+
+
+def get_user(message: Message, text: str) -> [int, str, None]:
+    if text is None:
+        asplit = None
+    else:
+        asplit = text.split(" ", 1)
+    user_s = None
+    reason_ = None
+    if message.reply_to_message:
+        user_s = message.reply_to_message.from_user.id
+        reason_ = text if text else None
+    elif asplit is None:
+        return None, None
+    elif len(asplit[0]) > 0:
+        user_s = int(asplit[0]) if asplit[0].isdigit() else asplit[0]
+        if len(asplit) == 2:
+            reason_ = asplit[1]
+    return user_s, reason_
+
+
+def get_readable_time(seconds: int) -> int:
+    count = 0
+    ping_time = ""
+    time_list = []
+    time_suffix_list = ["s", "m", "h", "days"]
+
+    while count < 4:
+        count += 1
+        if count < 3:
+            remainder, result = divmod(seconds, 60)
+        else:
+            remainder, result = divmod(seconds, 24)
+        if seconds == 0 and remainder == 0:
+            break
+        time_list.append(int(result))
+        seconds = int(remainder)
+
+    for x in range(len(time_list)):
+        time_list[x] = str(time_list[x]) + time_suffix_list[x]
+    if len(time_list) == 4:
+        ping_time += time_list.pop() + ", "
+
+    time_list.reverse()
+    ping_time += ":".join(time_list)
+
+    return ping_time
+
+
+def time_formatter(milliseconds: int) -> str:
+    seconds, milliseconds = divmod(int(milliseconds), 1000)
+    minutes, seconds = divmod(seconds, 60)
+    hours, minutes = divmod(minutes, 60)
+    days, hours = divmod(hours, 24)
+    tmp = (
+        ((str(days) + " day(s), ") if days else "")
+        + ((str(hours) + " hour(s), ") if hours else "")
+        + ((str(minutes) + " minute(s), ") if minutes else "")
+        + ((str(seconds) + " second(s), ") if seconds else "")
+        + ((str(milliseconds) + " millisecond(s), ") if milliseconds else "")
     )
-    await status.delete()
-    os.remove(f"{str(yt.title)}.mp3")
+    return tmp[:-2]
+
+
+ydl_opts = {
+    "format": "bestaudio/best",
+    "writethumbnail": True,
+    "postprocessors": [
+        {
+            "key": "FFmpegExtractAudio",
+            "preferredcodec": "mp3",
+            "preferredquality": "192",
+        }
+    ],
+}
+
+
+def get_file_extension_from_url(url):
+    url_path = urlparse(url).path
+    basename = os.path.basename(url_path)
+    return basename.split(".")[-1]
+
+
+# Funtion To Download Song
+async def download_song(url):
+    song_name = f"{randint(6969, 6999)}.mp3"
+    async with aiohttp.ClientSession() as session:
+        async with session.get(url) as resp:
+            if resp.status == 200:
+                f = await aiofiles.open(song_name, mode="wb")
+                await f.write(await resp.read())
+                await f.close()
+    return song_name
+
+
+is_downloading = False
+
+
+def time_to_seconds(time):
+    stringt = str(time)
+    return sum(int(x) * 60 ** i for i, x in enumerate(reversed(stringt.split(":"))))
