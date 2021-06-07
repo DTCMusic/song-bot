@@ -10,7 +10,7 @@ from song import app, LOGGER
 from song.sql.chat_sql import add_chat_to_db
 
 
-from __future__ import unicode_literals
+# from __future__ import unicode_literals
 
 import asyncio
 import math
@@ -30,8 +30,8 @@ from pyrogram.types import Message
 from youtube_search import YoutubeSearch
 from youtubesearchpython import SearchVideos
 
-from DaisyXMusic.config import DURATION_LIMIT
-from DaisyXMusic.modules.play import arq
+# from DaisyXMusic.config import DURATION_LIMIT
+# from DaisyXMusic.modules.play import arq
 
 
 @Client.on_message(filters.command("mp3") & ~filters.channel)
