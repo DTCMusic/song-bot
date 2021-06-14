@@ -80,6 +80,13 @@ def song(client, message):
             parse_mode="md",
             title=title,
             duration=dur,
+            reply_markup=InlineKeyboardMarkup(
+                     [
+                         [
+                             InlineKeyboardButton("Play list", url=f"https://t.me/songazz")
+                         ]
+                     ]
+                 ),
         )
         m.delete()
     except Exception as e:
