@@ -352,7 +352,7 @@ async def ytmusic(client, message: Message):
     urlissed = get_text(message)
 
     pablo = await client.send_message(
-        message.chat.id, f"`Youtube Serverlərindən {urlissed} əldə edilir. Zəhmət olmasa, gözləyin.`"
+        message.chat.id, f"**{urlissed}** Axtarılır..."
     )
     if not urlissed:
         await pablo.edit("Yanlış Komanda Sintaksis, Daha çox məlumat üçün Kömək Menyusunu yoxlayın!")
@@ -402,7 +402,7 @@ async def ytmusic(client, message: Message):
 
     c_time = time.time()
     file_stark = f"{ytdl_data['id']}.mp4"
-    capy = f"**Video Adı ➠** `{thum}` \n**Üçün İstədi :** `{urlissed}` \n**Kanal :** `{thums}` \n**Bağlantı :** `{mo}`"
+    capy = f"**Video Adı ➠** `{thum}`"
     await client.send_video(
         message.chat.id,
         video=open(file_stark, "rb"),
@@ -418,6 +418,13 @@ async def ytmusic(client, message: Message):
             f"`YouTube Music-dən {urlissed} Mahnısı yüklənir!`",
             file_stark,
         ),
+        reply_markup=InlineKeyboardMarkup(
+                     [
+                         [
+                             InlineKeyboardButton("Play list", url=f"https://t.me/vsongaz")
+                         ]
+                     ]
+                 ),
     )
     await pablo.delete()
     is_downloading = False
