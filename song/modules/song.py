@@ -9,6 +9,7 @@ from song.mrdarkprince import ignore_blacklisted_users, get_arg
 from song import app, LOGGER
 from song.sql.chat_sql import add_chat_to_db
 
+from __future__ import unicode_literals
 
 import asyncio
 import math
@@ -28,10 +29,11 @@ from pyrogram.types import Message
 from youtube_search import YoutubeSearch
 from youtubesearchpython import SearchVideos
 
+# from DaisyXMusic.config import DURATION_LIMIT
+# from DaisyXMusic.modules.play import arq
 
 
-
-@app.on_message(filters.command("song") & ~filters.channel)
+@Client.on_message(filters.command("song") & ~filters.channel)
 def song(client, message):
 
     user_id = message.from_user.id
@@ -59,10 +61,10 @@ def song(client, message):
         results[0]["views"]
 
     except Exception as e:
-        m.edit("Mahnı yüklənmədi! Mahnı adını düzgün yazın")
+        m.edit("❌ Mahnı yüklənmədi! Mahnı adını düzgün yazın")
         print(str(e))
         return
-    m.edit("🎵 Mahnı yüklənir... ")
+    m.edit(" Mahnı yüklənir...")
     try:
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             info_dict = ydl.extract_info(link, download=False)
@@ -90,7 +92,7 @@ def song(client, message):
         )
         m.delete()
     except Exception as e:
-        m.edit("❌ Xəta baş verdi!\nBot sahibinə məlumat verin: @Samil")
+        m.edit("❌ Error")
         print(e)
 
     try:
@@ -263,8 +265,82 @@ def time_to_seconds(time):
     return sum(int(x) * 60 ** i for i, x in enumerate(reversed(stringt.split(":"))))
 
 
+@Client.on_message(filters.command("saavn") & ~filters.edited)
+async def jssong(_, message):
+    global is_downloading
+    if len(message.command) < 2:
+        await message.reply_text("/saavn requires an argument.")
+        return
+    if is_downloading:
+        await message.reply_text(
+            "Another download is in progress, try again after sometime."
+        )
+        return
+    is_downloading = True
+    text = message.text.split(None, 1)[1]
+    query = text.replace(" ", "%20")
+    m = await message.reply_text("Searching...")
+    try:
+        songs = await arq.saavn(query)
+        if not songs.ok:
+            await message.reply_text(songs.result)
+            return
+        sname = songs.result[0].song
+        slink = songs.result[0].media_url
+        ssingers = songs.result[0].singers
+        await m.edit("Downloading")
+        song = await download_song(slink)
+        await m.edit("Uploading")
+        await message.reply_audio(audio=song, title=sname, performer=ssingers)
+        os.remove(song)
+        await m.delete()
+    except Exception as e:
+        is_downloading = False
+        await m.edit(str(e))
+        return
+    is_downloading = False
 
-@app.on_message(filters.command(["vsong", "video"]))
+
+# Deezer Music
+
+
+@Client.on_message(filters.command("deezer") & ~filters.edited)
+async def deezsong(_, message):
+    global is_downloading
+    if len(message.command) < 2:
+        await message.reply_text("/deezer requires an argument.")
+        return
+    if is_downloading:
+        await message.reply_text(
+            "Another download is in progress, try again after sometime."
+        )
+        return
+    is_downloading = True
+    text = message.text.split(None, 1)[1]
+    query = text.replace(" ", "%20")
+    m = await message.reply_text("Searching...")
+    try:
+        songs = await arq.deezer(query, 1)
+        if not songs.ok:
+            await message.reply_text(songs.result)
+            return
+        title = songs.result[0].title
+        url = songs.result[0].url
+        artist = songs.result[0].artist
+        await m.edit("Downloading")
+        song = await download_song(url)
+        await m.edit("Uploading")
+        await message.reply_audio(audio=song, title=title, performer=artist)
+        os.remove(song)
+        await m.delete()
+    except Exception as e:
+        is_downloading = False
+        await m.edit(str(e))
+        return
+    is_downloading = False
+
+
+@Client.on_message(filters.command(["vsong", "video"]))
 async def ytmusic(client, message: Message):
     global is_downloading
     if is_downloading:
@@ -276,7 +352,7 @@ async def ytmusic(client, message: Message):
     urlissed = get_text(message)
 
     pablo = await client.send_message(
-        message.chat.id, f"`{urlissed}` Axtarılır..."
+        message.chat.id, f"`Youtube Serverlərindən {urlissed} əldə edilir. Zəhmət olmasa, gözləyin.`"
     )
     if not urlissed:
         await pablo.edit("Yanlış Komanda Sintaksis, Daha çox məlumat üçün Kömək Menyusunu yoxlayın!")
@@ -326,7 +402,7 @@ async def ytmusic(client, message: Message):
 
     c_time = time.time()
     file_stark = f"{ytdl_data['id']}.mp4"
-    capy = f"**Adı:** `{thum}``"
+    capy = f"**Video Adı ➠** `{thum}` \n**Üçün İstədi :** `{urlissed}` \n**Kanal :** `{thums}` \n**Bağlantı :** `{mo}`"
     await client.send_video(
         message.chat.id,
         video=open(file_stark, "rb"),
@@ -339,16 +415,9 @@ async def ytmusic(client, message: Message):
         progress_args=(
             pablo,
             c_time,
-            f"`{urlissed} Adlı Video Yüklənir`",
+            f"`YouTube Music-dən {urlissed} Mahnısı yüklənir!`",
             file_stark,
         ),
-       reply_markup=InlineKeyboardMarkup(
-                     [
-                         [
-                             InlineKeyboardButton("Play list", url=f"https://t.me/Vsongaz")
-                         ]
-                     ]
-                 ),
     )
     await pablo.delete()
     is_downloading = False
