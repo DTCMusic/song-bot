@@ -33,7 +33,7 @@ from youtubesearchpython import SearchVideos
 # from DaisyXMusic.modules.play import arq
 
 
-@Client.on_message(filters.command("song") & ~filters.channel)
+@app.on_message(filters.command("song") & ~filters.channel)
 def song(client, message):
 
     user_id = message.from_user.id
@@ -340,7 +340,7 @@ async def deezsong(_, message):
     is_downloading = False
 
 
-@Client.on_message(filters.command(["vsong", "video"]))
+@app.on_message(filters.command(["vsong", "video"]))
 async def ytmusic(client, message: Message):
     global is_downloading
     if is_downloading:
