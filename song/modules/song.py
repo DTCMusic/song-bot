@@ -92,7 +92,7 @@ def song(client, message):
         )
         m.delete()
     except Exception as e:
-        m.edit("❌ Error")
+        m.edit("Xəta baş verdi!\nBot Sahibinə Bildirin: @Samil")
         print(e)
 
     try:
@@ -389,7 +389,7 @@ async def ytmusic(client, message: Message):
 
             if duration > DURATION_LIMIT:
                 await pablo.edit(
-                    f"❌ {DURATION_LIMIT} dəqiqədən uzun videolara icazə verilmir, verilən video {duration} dəqiqədir"
+                    f"`{duration}` adlı videonu axtarıram"
                 )
                 is_downloading = False
                 return
