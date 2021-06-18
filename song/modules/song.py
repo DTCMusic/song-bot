@@ -29,7 +29,7 @@ from pyrogram.types import Message
 from youtube_search import YoutubeSearch
 from youtubesearchpython import SearchVideos
 
-# from DaisyXMusic.config import DURATION_LIMIT
+from config import DURATION_LIMIT
 # from DaisyXMusic.modules.play import arq
 
 
