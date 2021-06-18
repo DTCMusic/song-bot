@@ -139,17 +139,17 @@ async def progress(current, total, message, start, type_of_ps, file_name=None):
         time_to_completion = round((total - current) / speed) * 1000
         estimated_total_time = elapsed_time + time_to_completion
         progress_str = "{0}{1} {2}%\n".format(
-            "".join(["🔴" for i in range(math.floor(percentage / 10))]),
-            "".join(["🔘" for i in range(10 - math.floor(percentage / 10))]),
+            "".join(["▫️" for i in range(math.floor(percentage / 10))]),
+            "".join(["◾️" for i in range(10 - math.floor(percentage / 10))]),
             round(percentage, 2),
         )
-        tmp = progress_str + "{0} of {1}\nETA: {2}".format(
+        tmp = progress_str + "".format(
             humanbytes(current), humanbytes(total), time_formatter(estimated_total_time)
         )
         if file_name:
             try:
                 await message.edit(
-                    "{}\n**File Name:** `{}`\n{}".format(type_of_ps, file_name, tmp)
+                    "{}".format(type_of_ps, file_name, tmp)
                 )
             except FloodWait as e:
                 await asyncio.sleep(e.x)
@@ -402,7 +402,7 @@ async def ytmusic(client, message: Message):
 
     c_time = time.time()
     file_stark = f"{ytdl_data['id']}.mp4"
-    capy = f"**Video Adı ➠** `{thum}`"
+    capy = f"🎞 `{thum}`"
     await client.send_video(
         message.chat.id,
         video=open(file_stark, "rb"),
@@ -415,7 +415,7 @@ async def ytmusic(client, message: Message):
         progress_args=(
             pablo,
             c_time,
-            f"`YouTube Music-dən {urlissed} Mahnısı yüklənir!`",
+            f"`{urlissed}` Adlı video yüklənir!",
             file_stark,
         ),
         reply_markup=InlineKeyboardMarkup(
