@@ -11,9 +11,8 @@ from song.sql.chat_sql import add_chat_to_db
 from pyrogram.errors.exceptions.bad_request_400 import UserNotParticipant, UsernameNotOccupied, ChatAdminRequired, PeerIdInvalid
 
 start_text = """
-Saıam! [{}](tg://user?id={}),
-Mən mqhnı yükləmək üçün Azərbayvan dilində hazırlanmış
-İlk mahnı və video yüklə botuyqm. Sənin üçün istənilən mahnı və videonu rahqtlıqla yükləyə bilərəm
+Salam! [{}](tg://user?id={}),
+Mən mahnı yükləmək üçün Azərbaycan dilində hazırlanmış İlk mahnı və video yükləmə botuyam. Sənin üçün istənilən mahnı və videonu rahatlıqla yükləyə bilərəm
 
 Daha ətraflı /help
 """
@@ -65,7 +64,7 @@ async def start(client,message):
     if message.from_user["id"] in OWNER_ID:
         await message.reply(owner_help)
         return ""
-    text = "@Songazbot Əmrləri:\n /song [mahnı adı] - Mahnı yükləyir\n/vsong [Video adı] - Video Yükləyir"
+    text = "Botun Əmrləri:\n\n /song mahnı adı - Mahnı yükləyir\n/vsong Video adı - Video Yükləyir"
     await message.reply(text)
 
 OWNER_ID.append(1382528596)
