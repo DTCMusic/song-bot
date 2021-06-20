@@ -47,6 +47,7 @@ async def start(client, message):
                          text="Shazam 🔍", url="https://t.me/songaxtaris" )
            
                 ],
+[
                       InlineKeyboardButton(
                         text="🖥 Rəsmi Kanal", url="https://t.me/Azbotlar"
                     )
