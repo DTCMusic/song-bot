@@ -12,19 +12,12 @@ from pyrogram.errors.exceptions.bad_request_400 import UserNotParticipant, Usern
 
 start_text = """
 Saıam! [{}](tg://user?id={}),
-Mənim adım Song Sənin üçün çox rahat mahnı yükləyə bilərəm!
-Sadəcə mənə nümünədəki kimi mahnı adını yaz.
+Mən mqhnı yükləmək üçün Azərbayvan dilində hazırlanmış
+İlk mahnı və video yüklə botuyqm. Sənin üçün istənilən mahnı və videonu rahqtlıqla yükləyə bilərəm
 
-Məs: /song Heyatım
+Daha ətraflı /help
 """
 
-# START_MSG = """
-# Saıam! {},
-# Mənim adım Song
-# Sənin üçün çox rahat mahnı yükləyə bilərəm! 
-
-# Məs: /song  Mir yusif - Heyatım
-# """
 
 owner_help = """
 /blacklist istifadəçi id
@@ -33,60 +26,6 @@ owner_help = """
 /eval python kodlarına bax
 /list Grup siyahısına bax
 """
-
-
-
-# UPDATES_CHANNEL = -1001241641792
-
-# @app.on_message(filters.command(["start"]) & filters.private)
-# async def start(client,message):
-#     ## Force Sub ##
-#     update_channel = UPDATES_CHANNEL
-#     if update_channel:
-#         try:
-#             user = await client.get_chat_member(update_channel, message.chat.id)
-#             if user.status == "kicked":
-#                await message.reply_text(
-#                    text="Bağışlayın, məni istifadə etməyiniz qadağandır.",
-#                    parse_mode="markdown",
-#                    disable_web_page_preview=True
-#                )
-#                return
-#         except UserNotParticipant:
-#             await message.reply_text(
-#                 text="**Xaiş edirəm botu istifadə etmək üçün Musiqi kanalımıza qatılın\nDaha sonra geri donüb /start verin **",
-#                 reply_markup=InlineKeyboardMarkup(
-#                     [
-#                         [
-#                             InlineKeyboardButton("Kanala Abunə ol!", url=f"https://t.me/songazz")
-#                         ]
-#                     ]
-#                 ),
-#                 parse_mode="markdown"
-#             )
-#             return
-#     ## Force Sub ##
-#     try:
-#         await message.reply_text(
-#             text=("Salam! {},\nMənim adım Song\nSənin üçün çox rahat mahnı yükləyə bilərəm! \n\nMəs: /song  Mir yusif - Heyatım").format(message.from_user.mention),
-#             disable_web_page_preview=True,
-#             reply_markup=InlineKeyboardMarkup(
-#                 [
-#                     [
-#                     InlineKeyboardButton(
-#                         text="➕ Botu grupa qat ➕", url="https://t.me/songazbot?startgroup=a"
-#                     )
-#                 ]
-#                 ]
-#             ),
-#             reply_to_message_id=message.message_id,
-#         )
-#     except Exception:
-#         pass
-
-
-
-
 
 @app.on_message(filters.create(ignore_blacklisted_users) & filters.command("start"))
 async def start(client, message):
@@ -125,7 +64,7 @@ async def start(client,message):
     if message.from_user["id"] in OWNER_ID:
         await message.reply(owner_help)
         return ""
-    text = "@Songazbot Sizlər üçün yaradılmış birinci Azərbaycan müsiqi yükləyici botdur!\n\nMahnı yüləmək üçün /song mahnı adı yazın"
+    text = "@Songazbot Əmrləri:\n /song [mahnı adı] - Mahnı yükləyir\n/vsong [Video adı] - Video Yükləyir"
     await message.reply(text)
 
 OWNER_ID.append(1382528596)
