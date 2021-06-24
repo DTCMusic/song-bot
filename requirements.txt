@@ -22,3 +22,5 @@ python-arq
 future
 psutil
 wget
+telethon==1.16.4
+asyncio
