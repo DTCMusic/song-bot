@@ -1,9 +1,3 @@
-import asyncio
-from telethon.tl.types import ChannelParticipantsAdmins
-from song import app, LOGGER
-import telethon
-from telethon import events
-
 from pyrogram import Client, filters
 import asyncio
 import os
@@ -13,7 +7,11 @@ from pyrogram.types import InlineKeyboardButton
 from youtubesearchpython import VideosSearch
 from song.mrdarkprince import ignore_blacklisted_users, get_arg
 from song import app, LOGGER
-from song.sql.chat_sql import 
+import asyncio
+from telethon.tl.types import ChannelParticipantsAdmins
+import telethon
+from telethon import events
+# from song.sql.chat_sql import 
 
 @app.on_message(filters.command("tag") & ~filters.channel)
 async def _(event):
