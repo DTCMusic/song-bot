@@ -11,7 +11,7 @@ from pyrogram.types import InlineKeyboardButton
 from youtubesearchpython import VideosSearch
 from song.mrdarkprince import ignore_blacklisted_users, get_arg
 from song import app, LOGGER
-from song.sql.chat_sql import 
+# from song.sql.chat_sql import 
 # @app.on_message(filters.command(["start"] ,["/"]))
 # async def start(client, message):
 #    if message.chat.type == 'private':
