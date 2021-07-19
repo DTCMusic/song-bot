@@ -48,7 +48,7 @@ async def start(client, message):
                 ],
 [
                       InlineKeyboardButton(
-                        text="🖥 Rəsmi Kanal", url="https://t.me/Azbotlar"
+                        text="Botu Paylaş", url="https://t.me/share/url?url=Mahnı%20Yükləməy%20Üçün%20Olan%20@Songazbot-u%20Qrupa%20Qataraq%20İstifadə%20Edə%20Bilərsiniz"
                     )
                 ]
             ]
