@@ -64,7 +64,7 @@ def song(client, message):
         m.edit("❌ Mahnı yüklənmədi! Mahnı adını düzgün yazın")
         print(str(e))
         return
-    m.edit(" Mahnı yüklənir...")
+    m.edit(f" {title} adlı mahnı yüklənir..")
     try:
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             info_dict = ydl.extract_info(link, download=False)
@@ -85,7 +85,7 @@ def song(client, message):
             reply_markup=InlineKeyboardMarkup(
                      [
                          [
-                             InlineKeyboardButton("Play list", url=f"https://t.me/songazz")
+                             InlineKeyboardButton("🎵 Play list", url=f"https://t.me/songazz")
                          ]
                      ]
                  ),
