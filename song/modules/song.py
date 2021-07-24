@@ -50,7 +50,7 @@ def song(client, message):
         results = YoutubeSearch(query, max_results=1).to_dict()
         link = f"https://youtube.com{results[0]['url_suffix']}"
         # print(results)
-        title = results[0]["title"][:40]
+        title = results[0]["title"][:35]
         thumbnail = results[0]["thumbnails"][0]
         thumb_name = f"thumb{title}.jpg"
         thumb = requests.get(thumbnail, allow_redirects=True)
@@ -64,7 +64,7 @@ def song(client, message):
         m.edit("❌ Mahnı yüklənmədi! Mahnı adını düzgün yazın")
         print(str(e))
         return
-    m.edit(f" {title} adlı mahnı yüklənir..")
+    m.edit(f" {title} - **adlı mahnı yüklənir** ✅")
     try:
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             info_dict = ydl.extract_info(link, download=False)
