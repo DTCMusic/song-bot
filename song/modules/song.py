@@ -50,7 +50,7 @@ def song(client, message):
         results = YoutubeSearch(query, max_results=1).to_dict()
         link = f"https://youtube.com{results[0]['url_suffix']}"
         # print(results)
-        title = results[0]["title"][:35]
+        title = results[0]["title"][:60]
         thumbnail = results[0]["thumbnails"][0]
         thumb_name = f"thumb{title}.jpg"
         thumb = requests.get(thumbnail, allow_redirects=True)
