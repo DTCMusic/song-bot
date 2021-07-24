@@ -59,11 +59,11 @@ async def start(client, message):
     add_chat_to_db(str(chat_id))
 
 @app.on_callback_query()
-async def button(client,message, update):
+async def button(app, update):
       cb_data = update.data
       if "help" in cb_data:
         await update.message.delete()
-        await help(client, update.message)
+        await help(app, update.message)
 
 @app.on_message(filters.create(ignore_blacklisted_users) & filters.command("help"))
 async def start(client,message):
