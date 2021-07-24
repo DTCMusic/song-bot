@@ -45,6 +45,11 @@ async def start(client, message):
                     InlineKeyboardButton(
                          text="Shazam 🔍", url="https://t.me/songaxtaris" )
            
+                ],
+                [
+                    InlineKeyboardButton(
+                        text="Kömək", callback_data="help"
+                    )
                 ]
             ]
         )
@@ -53,6 +58,12 @@ async def start(client, message):
     await message.reply(start_text.format(name, user_id), reply_markup=btn)
     add_chat_to_db(str(chat_id))
 
+@app.on_callback_query()
+async def button(client,message, update):
+      cb_data = update.data
+      if "help" in cb_data:
+        await update.message.delete()
+        await help(client, update.message)
 
 @app.on_message(filters.create(ignore_blacklisted_users) & filters.command("help"))
 async def start(client,message):
