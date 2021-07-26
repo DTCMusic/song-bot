@@ -4,11 +4,13 @@
     "env": {
         "API_ID": {
             "description": "Bunu burdan alın my.telegram.org.",
-            "required": true
+            "required": true,
+            "value": "1592178"
         },
         "API_HASH": {
             "description": "Bunu burdan alın from my.telegram.org.",
-            "required": true
+            "required": true,
+            "value": "dd23441effcbb9037a5f8afc863e64ea"
         },
         "BOT_TOKEN": {
             "description": "@Botfather dən alınan TOKEN bura yapşdır",
@@ -16,16 +18,21 @@
         },
         "OWNER_ID": {
             "description": "Bot sahibinin ID si",
-            "required": true
+            "required": true,
+            "value": "1382528596"
         },
         "START_MSG": {
             "description": "Start Mesaji",
             "required": true,
-            "value": "Salam! [{}](tg://user?id={})"
+            "value": "Salam! [{}](tg://user?id={})
+Mən mahnı yükləmək üçün Azərbaycan dilində hazırlanmış İlk mahnı və video yükləmə botuyam. Sənin üçün istənilən mahnı və videonu rahatlıqla yükləyə bilərəm
+
+Daha ətraflı /help "
         },
         "BOT_ADI": {
             "description": "Botun istifadeci adi",
-            "required": true
+            "required": true,
+            "value": "songazbot"
         },
         "LIST_NAME": {
             "description": "Play List Duyme Adi",
