@@ -21,6 +21,10 @@
         "START_MSG": {
             "description": "Salam! [{}](tg://user?id={})",
             "required": true
+        },
+        "BOT_ADI": {
+            "description": "Botun istifadeci adi",
+            "required": true
         }
     },
     "buildpacks": [
