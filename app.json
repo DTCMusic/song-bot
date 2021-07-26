@@ -26,13 +26,25 @@
             "description": "Botun istifadeci adi",
             "required": true
         },
+        "LIST_NAME": {
+            "description": "Play List Duyme Adi",
+            "required": false,
+            "value": "🎵 Play List"
+        },
+        "LIST_URL": {
+            "description": "Duyme Linki",
+            "required": false,
+            "value": "t.me/songazz"
+        },
         "BTN_NAME": {
-            "description": "Duyme adi",
-            "required": false
+            "description": "Elave Duyme Adi",
+            "required": false,
+            "value": "🔍 Shazam"
         },
         "BTN_URL": {
-            "description": "Duyme Linki",
-            "required": false
+            "description": "Elave Duyme Linki",
+            "required": false,
+            "value": "t.me/songaxtaris"
         }
     },
     "buildpacks": [
