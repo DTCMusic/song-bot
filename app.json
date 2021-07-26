@@ -19,7 +19,7 @@
             "required": true
         },
         "START_MSG": {
-            "description": "Start Mesajini Yazin",
+            "description": "Salam! [{}](tg://user?id={})",
             "required": true
         },
     },
