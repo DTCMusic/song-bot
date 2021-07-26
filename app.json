@@ -19,8 +19,9 @@
             "required": true
         },
         "START_MSG": {
-            "description": "Salam! [{}](tg://user?id={})",
-            "required": true
+            "description": "Start Mesaji",
+            "required": true,
+            "value": "Salam! [{}](tg://user?id={})"
         },
         "BOT_ADI": {
             "description": "Botun istifadeci adi",
