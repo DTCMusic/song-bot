@@ -21,7 +21,7 @@
         "START_MSG": {
             "description": "Salam! [{}](tg://user?id={})",
             "required": true
-        },
+        }
     },
     "buildpacks": [
         {
