@@ -1,5 +1,7 @@
 # © @Samil
-from config import OWNER_ID, START_MSG
+from config import OWNER_ID
+from config import START_MSG
+from config import BOT_ADI
 from pyrogram.types.bots_and_keyboards import reply_keyboard_markup
 from song.modules import *
 from pyrogram import idle, filters
@@ -36,7 +38,7 @@ async def start(client, message):
             [
                 [
                     InlineKeyboardButton(
-                        text="➕ Botu grupa qat ➕", url="https://t.me/songazbot?startgroup=a"
+                        text="➕ Botu grupa qat ➕", url="https://t.me/{BOT_ADI}?startgroup=a"
                     )
                 ],
                 [
