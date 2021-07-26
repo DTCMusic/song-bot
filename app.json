@@ -17,7 +17,11 @@
         "OWNER_ID": {
             "description": "Bot sahibinin ID si",
             "required": true
-        }
+        },
+        "START_MSG": {
+            "description": "Start Mesajini Yazin",
+            "required": true
+        },
     },
     "buildpacks": [
         {
