@@ -2,6 +2,10 @@
 from config import OWNER_ID
 from config import START_MSG
 from config import BOT_ADI
+from config import BTN_NAME
+from config import BTN_URL
+from config import LIST_NAME
+from config import LIST_URL
 from pyrogram.types.bots_and_keyboards import reply_keyboard_markup
 from song.modules import *
 from pyrogram import idle, filters
@@ -43,9 +47,9 @@ async def start(client, message):
                 ],
                 [
                     InlineKeyboardButton(
-                         text="Play List 🎵", url="https://t.me/songazz" ),
+                         text=f"{LIST_NAME}", url=f"{LIST_URL}" ),
                     InlineKeyboardButton(
-                         text="Shazam 🔍", url="https://t.me/songaxtaris" )
+                         text=f"{BTN_NAME}", url=f"{BTN_URL}" )
            
                 ]
             ]
