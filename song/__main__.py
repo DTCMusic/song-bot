@@ -1,5 +1,5 @@
 # © @Samil
-from config import OWNER_ID
+from config import OWNER_ID, START_MSG
 from pyrogram.types.bots_and_keyboards import reply_keyboard_markup
 from song.modules import *
 from pyrogram import idle, filters
@@ -50,7 +50,7 @@ async def start(client, message):
         )
     else:
         btn = None
-    await message.reply(start_text.format(name, user_id), reply_markup=btn)
+    await message.reply(START_MSG.format(name, user_id), reply_markup=btn)
     add_chat_to_db(str(chat_id))
 
             
