@@ -25,6 +25,14 @@
         "BOT_ADI": {
             "description": "Botun istifadeci adi",
             "required": true
+        },
+        "BTN_NAME": {
+            "description": "Duyme adi",
+            "required": false
+        },
+        "BTN_URL": {
+            "description": "Duyme Linki",
+            "required": false
         }
     },
     "buildpacks": [
