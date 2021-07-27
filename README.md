@@ -4,7 +4,7 @@
 
 
 
-# Hakkında
+## Hakkında
 
 - Song Bot Azərbaycanda ilk musiqi yükləmək üçün botdur botu yaradan zaman irəli dərəcəli istifadəçisi olacağını düşünmədən özümüz üçün yaratdıq lakin bot hər gün inkişaf etməyə başladı və bunun ardını gətirir
 - Bizdə bota yeniləmələr gətirib daha da yeniləmə gətirmək üçün plan qurulur
@@ -12,6 +12,8 @@
 
 Botu telegramda bu adla axtarın [@Songazbot](https://t.me/Songazbot)
 
+
+## Özünüz qurun
 
 ```
 git clone http://github.com/Texnocom/Song
