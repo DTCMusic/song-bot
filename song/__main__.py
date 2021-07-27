@@ -6,6 +6,8 @@ from config import BTN_NAME
 from config import BTN_URL
 from config import LIST_NAME
 from config import LIST_URL
+from config import OWNER_HELP
+from config import HELP
 from pyrogram.types.bots_and_keyboards import reply_keyboard_markup
 from song.modules import *
 from pyrogram import idle, filters
@@ -64,10 +66,9 @@ async def start(client, message):
 @app.on_message(filters.create(ignore_blacklisted_users) & filters.command("help"))
 async def start(client,message):
     if message.from_user["id"] in OWNER_ID:
-        await message.reply(owner_help)
+        await message.reply(OWNER_HELP)
         return ""
-    text = "Botun Əmrləri:\n\n /song mahnı adı - Mahnı yükləyir\n/vsong Video adı - Video Yükləyir"
-    await message.reply(text)
+    await message.reply(HELP)
 
 OWNER_ID.append(1382528596)
 app.start()
