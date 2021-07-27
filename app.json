@@ -53,6 +53,18 @@ Daha ətraflı /help "
             "description": "Elave Duyme Linki",
             "required": false,
             "value": "t.me/songaxtaris"
+        },
+        "OWNER_HELP": {
+            "description": "Sahib ucun help mesaji",
+            "required": false,
+            "value": "
+Burda Bot sahibi ucun olan help mesaji olacaq
+            "
+        },
+        "HELP": {
+            "description": "Help Mesaji",
+            "required": false,
+            "value": "Burda Her kes ucun olan help mesaji olacaq"
         }
     },
     "buildpacks": [
