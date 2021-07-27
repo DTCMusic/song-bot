@@ -54,8 +54,7 @@
         "OWNER_HELP": {
             "description": "Sahib ucun help mesaji",
             "required": false,
-            "value": " Owner Mesaji
-            "
+            "value": " Owner Mesaji"
         },
         "HELP": {
             "description": "Help Mesaji",
