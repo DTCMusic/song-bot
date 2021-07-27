@@ -58,7 +58,11 @@ Daha ətraflı /help "
             "description": "Sahib ucun help mesaji",
             "required": false,
             "value": "
-Burda Bot sahibi ucun olan help mesaji olacaq
+/blacklist istifadəçi id
+/unblacklist İstifadəçi id
+/msg Gruplara mesaj göndər
+/eval python kodlarına bax
+/list Grup siyahısına bax
             "
         },
         "HELP": {
