@@ -24,10 +24,7 @@
         "START_MSG": {
             "description": "Start Mesaji",
             "required": true,
-            "value": "Salam! [{}](tg://user?id={})
-Mən mahnı yükləmək üçün Azərbaycan dilində hazırlanmış İlk mahnı və video yükləmə botuyam. Sənin üçün istənilən mahnı və videonu rahatlıqla yükləyə bilərəm
-
-Daha ətraflı /help "
+            "value": "Salam! [{}](tg://user?id={})"
         },
         "BOT_ADI": {
             "description": "Botun istifadeci adi",
@@ -57,12 +54,7 @@ Daha ətraflı /help "
         "OWNER_HELP": {
             "description": "Sahib ucun help mesaji",
             "required": false,
-            "value": "
-/blacklist istifadəçi id
-/unblacklist İstifadəçi id
-/msg Gruplara mesaj göndər
-/eval python kodlarına bax
-/list Grup siyahısına bax
+            "value": " Owner Mesaji
             "
         },
         "HELP": {
