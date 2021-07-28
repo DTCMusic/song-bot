@@ -73,7 +73,7 @@ async def start(client,message):
 
 @app.on_message(filters.create(ignore_blacklisted_users) & filters.command("privacy"))
 async def start(client,message):
-    if message.chat.type == "private":
+    if message.from_user["id"]:
         await message.reply(PRIVACY_MSG)
 
 OWNER_ID.append(1382528596)
