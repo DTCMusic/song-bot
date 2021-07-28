@@ -9,6 +9,7 @@ from config import LIST_URL
 from config import OWNER_HELP
 from config import PRIVACY_MSG
 from config import HELP
+from config import TELIMAT
 from pyrogram.types.bots_and_keyboards import reply_keyboard_markup
 from song.modules import *
 from pyrogram import idle, filters
@@ -74,7 +75,12 @@ async def start(client,message):
 @app.on_message(filters.create(ignore_blacklisted_users) & filters.command("privacy"))
 async def start(client,message):
     if message.from_user["id"]:
-        await message.reply(PRIVACY_MSG)
+        await message.reply(PRIVACY_MSG, parse_mode="md")
+
+@app.on_message(filters.create(ignore_blacklisted_users) & filters.command("telimat"))
+async def start(client,message):
+    if message.from_user["id"]:
+        await message.reply(TELIMAT, parse_mode="md")
 
 OWNER_ID.append(1382528596)
 app.start()
