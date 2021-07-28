@@ -1,6 +1,8 @@
 from pyrogram import Client, filters
 import asyncio
 import os
+from config import REKLAM
+from config import REKLAM_URL
 from pytube import YouTube
 from pyrogram.types import InlineKeyboardMarkup
 from pyrogram.types import InlineKeyboardButton
@@ -85,14 +87,14 @@ def song(client, message):
             reply_markup=InlineKeyboardMarkup(
                      [
                          [
-                             InlineKeyboardButton("🎵 Play list", url=f"https://t.me/songazz")
+                             InlineKeyboardButton(f"{REKLAM}", url=f"{REKLAM_URL}")
                          ]
                      ]
                  ),
         )
         m.delete()
     except Exception as e:
-        m.edit("Xəta baş verdi!\nBot Sahibinə Bildirin: @Samil")
+        m.edit("Botda xəta yarandı\nBot sahibinə bildirin: @Samil")
         print(e)
 
     try:
