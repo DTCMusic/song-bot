@@ -65,6 +65,11 @@
             "description": "Gizlilik Mesaji",
             "required": false,
             "value": "Burda Gizlilik Mesaji Olacaq"
+        },
+        "TELIMAT": {
+            "description": "Bot Telimati",
+            "required": false,
+            "value": "Burda Gizlilik Mesaji Olacaq"
         }
     },
     "buildpacks": [
