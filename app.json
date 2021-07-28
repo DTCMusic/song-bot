@@ -70,6 +70,16 @@
             "description": "Bot Telimati",
             "required": false,
             "value": "Burda Gizlilik Mesaji Olacaq"
+        },
+        "REKLAM": {
+            "description": "Reklam Button Mesaji",
+            "required": false,
+            "value": "🎵 Play List"
+        },
+        "REKLAM_URL": {
+            "description": "REKLAM DUYME LINK",
+            "required": false,
+            "value": "t.me/songazz"
         }
     },
     "buildpacks": [
