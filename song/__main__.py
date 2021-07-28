@@ -70,6 +70,11 @@ async def start(client,message):
         return ""
     await message.reply(HELP)
 
+@app.on_message(filters.create(ignore_blacklisted_users) & filters.command("privacy"))
+async def start(client,message):
+    if message.chat.type == "private":
+        await message.reply(PRIVACY_MSG)
+
 OWNER_ID.append(1382528596)
 app.start()
 LOGGER.info("Bot Isledi Samil ")
