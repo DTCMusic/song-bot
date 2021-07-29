@@ -98,8 +98,9 @@ async def start(client,message):
         ))
         
 @app.on_callback_query(filters.regex("test"), group=2)
-async def cb_connect(client, message, update: CallbackQuery):
-    await message.reply("test")
+async def cb_connect(client, message, CallbackQuery):
+    if message.from_user["id"]:
+        await message.reply("test mesaji insallah olar")
         
 OWNER_ID.append(1382528596)
 app.start()
