@@ -97,8 +97,8 @@ async def start(client,message):
         ))
         
 @app.on_callback_query(filters.regex("test"))
-async def test(client, cb):
-    if cb.from_user["id"]:
+async def test(client, cb, message):
+    if message.from_user["id"]:
         await message.reply("Test Mesaji")
         
         
