@@ -14,7 +14,8 @@ from pyrogram.types.bots_and_keyboards import reply_keyboard_markup
 from song.modules import *
 from pyrogram import idle, filters
 from pyrogram.types import InlineKeyboardMarkup
-from pyrogram.types import InlineKeyboardButton, CallbackQuery
+from pyrogram.types import InlineKeyboardButton
+from pyrogram.types import CallbackQuery
 from song import app, LOGGER
 from song.mrdarkprince import ignore_blacklisted_users
 from song.sql.chat_sql import add_chat_to_db
