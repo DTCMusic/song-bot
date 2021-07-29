@@ -86,7 +86,7 @@ async def start(client,message):
 @app.on_message(filters.create(ignore_blacklisted_users) & filters.command("test"))
 async def start(client,message):
     if message.from_user["id"]:
-        await message.reply(TELIMAT, parse_mode="md", reply_markup = InlineKeyboardMarkup(
+        await message.reply("test button ", parse_mode="md", reply_markup = InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
@@ -98,7 +98,7 @@ async def start(client,message):
         
 @app.on_callback_query(filters.regex("test"))
 async def test(client, cb):
-    if message.from_user["id"]:
+    if cb.from_user["id"]:
         await message.reply("Test Mesaji")
         
         
