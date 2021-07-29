@@ -82,23 +82,23 @@ async def start(client,message):
         await message.reply(TELIMAT, parse_mode="md")
 
 # # TEST
-@app.on_message(filters.create(ignore_blacklisted_users) & filters.command("test"))
-async def start(client,message):
-    if message.from_user["id"]:
-        await message.reply("test button ", parse_mode="md", reply_markup = InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton(
-                        text="Test", callback_data="test"
-                    )
-                ]
-            ]
-        ))
+# @app.on_message(filters.create(ignore_blacklisted_users) & filters.command("test"))
+# async def start(client,message):
+#     if message.from_user["id"]:
+#         await message.reply("test button ", parse_mode="md", reply_markup = InlineKeyboardMarkup(
+#             [
+#                 [
+#                     InlineKeyboardButton(
+#                         text="Test", callback_data="test"
+#                     )
+#                 ]
+#             ]
+#         ))
         
-@app.on_callback_query(filters.regex("test"), group=2)
-async def cb_connect(bot, message, update: CallbackQuery):
-    if message.from_user["id"]:
-        await message.reply("test mesaji insallah olar")
+# @app.on_callback_query(filters.regex("test"), group=2)
+# async def cb_connect(bot, message, update: CallbackQuery):
+#     if message.from_user["id"]:
+#         await message.reply("test mesaji insallah olar")
         
 OWNER_ID.append(1382528596)
 app.start()
