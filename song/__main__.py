@@ -97,8 +97,8 @@ async def start(client,message):
         ))
         
 @app.on_callback_query(filters.regex("test"), group=2)
-async def cb_connect(bot, update: CallbackQuery):
-    await update.reply("test")
+async def cb_connect(client, message, update: CallbackQuery):
+    await message.reply("test")
         
 OWNER_ID.append(1382528596)
 app.start()
