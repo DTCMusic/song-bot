@@ -98,7 +98,7 @@ async def start(client,message):
         ))
         
 @app.on_callback_query(filters.regex("test"), group=2)
-async def cb_connect(client, message):
+async def cb_connect(bot, message, update: CallbackQuery):
     if message.from_user["id"]:
         await message.reply("test mesaji insallah olar")
         
