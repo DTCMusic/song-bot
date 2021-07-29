@@ -97,9 +97,9 @@ async def start(client,message):
         ))
         
 @app.on_callback_query(filters.regex("test"))
-async def test(client, cb, message):
-    if message.from_user["id"]:
-        await message.reply("Test Mesaji")
+async def test(client, cb):
+   try:
+    await cb.reply("Test Mesaji")
         
         
 OWNER_ID.append(1382528596)
