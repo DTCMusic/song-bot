@@ -12,7 +12,7 @@ from config import HELP
 from config import TELIMAT
 from pyrogram.types.bots_and_keyboards import reply_keyboard_markup
 from song.modules import *
-from pyrogram import idle, filters, Client
+from pyrogram import idle, filters
 from pyrogram.types import InlineKeyboardMarkup
 from pyrogram.types import InlineKeyboardButton
 from song import app, LOGGER
@@ -82,24 +82,24 @@ async def start(client,message):
     if message.from_user["id"]:
         await message.reply(TELIMAT, parse_mode="md")
 
-# TEST
-@app.on_message(filters.create(ignore_blacklisted_users) & filters.command("test"))
-async def start(client,message):
-    if message.from_user["id"]:
-        await message.reply("test button ", parse_mode="md", reply_markup = InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton(
-                        text="Test", callback_data="test"
-                    )
-                ]
-            ]
-        ))
+# # TEST
+# @app.on_message(filters.create(ignore_blacklisted_users) & filters.command("test"))
+# async def start(client,message):
+#     if message.from_user["id"]:
+#         await message.reply("test button ", parse_mode="md", reply_markup = InlineKeyboardMarkup(
+#             [
+#                 [
+#                     InlineKeyboardButton(
+#                         text="Test", callback_data="test"
+#                     )
+#                 ]
+#             ]
+#         ))
         
-@app.on_callback_query(filters.regex("test"))
-async def test(client, cb):
-   try:
-    await cb.reply("Test Mesaji")
+# @app.on_callback_query(filters.regex("test"))
+# async def test(client, message, cb):
+#    if message.from_user["id"]:
+#     await message.reply("Test Mesaji")
         
         
 OWNER_ID.append(1382528596)
