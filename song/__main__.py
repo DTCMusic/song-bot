@@ -14,7 +14,7 @@ from pyrogram.types.bots_and_keyboards import reply_keyboard_markup
 from song.modules import *
 from pyrogram import idle, filters
 from pyrogram.types import InlineKeyboardMarkup
-from pyrogram.types import InlineKeyboardButton
+from pyrogram.types import InlineKeyboardButton, CallbackQuery
 from song import app, LOGGER
 from song.mrdarkprince import ignore_blacklisted_users
 from song.sql.chat_sql import add_chat_to_db
@@ -83,24 +83,22 @@ async def start(client,message):
         await message.reply(TELIMAT, parse_mode="md")
 
 # # TEST
-# @app.on_message(filters.create(ignore_blacklisted_users) & filters.command("test"))
-# async def start(client,message):
-#     if message.from_user["id"]:
-#         await message.reply("test button ", parse_mode="md", reply_markup = InlineKeyboardMarkup(
-#             [
-#                 [
-#                     InlineKeyboardButton(
-#                         text="Test", callback_data="test"
-#                     )
-#                 ]
-#             ]
-#         ))
+@app.on_message(filters.create(ignore_blacklisted_users) & filters.command("test"))
+async def start(client,message):
+    if message.from_user["id"]:
+        await message.reply("test button ", parse_mode="md", reply_markup = InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(
+                        text="Test", callback_data="test"
+                    )
+                ]
+            ]
+        ))
         
-# @app.on_callback_query(filters.regex("test"))
-# async def test(client, message, cb):
-#    if message.from_user["id"]:
-#     await message.reply("Test Mesaji")
-        
+@app.on_callback_query(filters.regex("test"), group=2)
+async def cb_connect(bot, update: CallbackQuery):
+    await update.reply("test")
         
 OWNER_ID.append(1382528596)
 app.start()
