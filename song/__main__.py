@@ -12,7 +12,7 @@ from config import HELP
 from config import TELIMAT
 from pyrogram.types.bots_and_keyboards import reply_keyboard_markup
 from song.modules import *
-from pyrogram import idle, filters
+from pyrogram import idle, filters, Client
 from pyrogram.types import InlineKeyboardMarkup
 from pyrogram.types import InlineKeyboardButton
 from song import app, LOGGER
