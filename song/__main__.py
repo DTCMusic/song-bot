@@ -118,7 +118,15 @@ async def button(client, update):
       cb_data = update.data
       if "melumat" in cb_data:
         await update.message.delete()
-#         await melumat(client, update.message)
+        await client.send_message(
+               chat_id=message.chat.id,
+               text="""<b>Topladığımız şəxsi məlumatların növü</b>
+
+Hal-hazırda aşağıdakı məlumatları toplayırıq və işləyirik:
+    • Telegram İstifadəçi Kimliği, ad, soyad, istifadəçi adı (Qeyd: Bunlar ümumi telegram məlumatlarınızdır. "Həqiqi" məlumatlarınızı bilmirik.)
+    • Söhbət üzvlükləri (Qarşılaşdığınız bütün söhbətlərin siyahısı)""",
+            reply_to_message_id=message.message_id
+        )
 
         
         
