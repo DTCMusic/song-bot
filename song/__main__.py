@@ -117,8 +117,9 @@ Hal-hazırda aşağıdakı məlumatları toplayırıq və işləyirik:
 async def button(client, update):
       cb_data = update.data
       if "HMT" in cb_data:
+      if "niye" in cb_data:
         await update.message.delete()
-        await HMT(client, update.message)
+        await help(client, update.message)
 
         
 @app.on_message(filters.command("niye"))
@@ -143,12 +144,6 @@ async def niye(client, message):
 #             reply_to_message_id=message.message_id
 #         )    
         
-@app.on_callback_query()
-async def button(client, update):
-      cb_data = update.data
-      if "niye" in cb_data:
-        await update.message.delete()
-        await niye(client, update.message)
         
 OWNER_ID.append(1382528596)
 app.start()
