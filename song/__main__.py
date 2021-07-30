@@ -118,14 +118,14 @@ async def button(client, update):
       cb_data = update.data
       if "HMT" in cb_data:
         await update.message.delete()
-        await help(client, update.message)
+        await HTM(client, update.message)
         
 @app.on_callback_query()
 async def button(client, update):
       cb_data = update.data
       if "niye" in cb_data:
         await update.message.delete()
-        await help(client, update.message)
+        await niye(client, update.message)
         
 @app.on_message(filters.command("niye"))
 async def niye(client, message):
