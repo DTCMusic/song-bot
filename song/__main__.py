@@ -71,45 +71,83 @@ async def start(client,message):
         return ""
     await message.reply(HELP)
 
+@app.on_message(filters.create(ignore_blacklisted_users) & filters.command("telimat"))
+async def start(client,message):
+    if message.from_user["id"]:
+        await message.reply(TELIMAT, parse_mode="md")
+    
 @app.on_message(filters.create(ignore_blacklisted_users) & filters.command("privacy"))
 async def start(client,message):
     if message.from_user["id"]:
         await message.reply(PRIVACY_MSG, reply_markup=InlineKeyboardMarkup(
                                 [[
                                         InlineKeyboardButton(
-                                            "Help", callback_data="help")
+                                            "Hansı məlumatı toplayırıq", callback_data="HMT"),
+                                        InlineKeyboardButton(
+                                            "Niyə toplayırıq", callback_data="NT"),
+                                        InlineKeyboardButton(
+                                            "Nə edirik", callback_data="NE")
+                                    
                                         
                                     ]]
                             ) ,parse_mode="md")
 
-@app.on_message(filters.create(ignore_blacklisted_users) & filters.command("telimat"))
-async def start(client,message):
-    if message.from_user["id"]:
-        await message.reply(TELIMAT, parse_mode="md")
 
-@app.on_message(filters.command("help"))
-async def help(client, message):
+@app.on_message(filters.command("HMT"))
+async def HMT(client, message):
     if message.chat.type == 'private':   
         await client.send_message(
                chat_id=message.chat.id,
-               text="""<b>Send a song name to download song
-~ @Songazbot</b>""",
+               text="""<b>Topladığımız şəxsi məlumatların növü</b>
+
+Hal-hazırda aşağıdakı məlumatları toplayırıq və işləyirik:
+    • Telegram İstifadəçi Kimliği, ad, soyad, istifadəçi adı (Qeyd: Bunlar ümumi telegram məlumatlarınızdır. "Həqiqi" məlumatlarınızı bilmirik.)
+    • Söhbət üzvlükləri (Qarşılaşdığınız bütün söhbətlərin siyahısı)""",
             reply_to_message_id=message.message_id
         )
-    else:
-        await client.send_message(
-               chat_id=message.chat.id,
-               text="<b>Song Downloader Help\n\nEnter a song name 🎶\n\nExample: `/s Shape of you`</b>",
-            reply_to_message_id=message.message_id
-        )    
+#     else:
+#         await client.send_message(
+#                chat_id=message.chat.id,
+#                text="<b>Song Downloader Help\n\nEnter a song name 🎶\n\nExample: `/s Shape of you`</b>",
+#             reply_to_message_id=message.message_id
+#         )    
         
 @app.on_callback_query()
 async def button(client, update):
       cb_data = update.data
-      if "help" in cb_data:
+      if "HMT" in cb_data:
         await update.message.delete()
-        await help(client, update.message)
+        await HMT(client, update.message)
+
         
+@app.on_message(filters.command("NE"))
+async def NE(client, message):
+    if message.chat.type == 'private':   
+        await client.send_message(
+               chat_id=message.chat.id,
+               text="""<b>Şəxsi məlumatları necə əldə edirik və niyə əldə edirik</b>
+
+İşlədiyimiz şəxsi məlumatların əksəriyyəti aşağıdakı səbəblərdən birinə görə birbaşa bizə təqdim olunur:
+     • Botu istifadə edən istifadəçilərin siyahısını toplamaq
+     • Mesajlarınızı bot vasitəsilə saxlamağı siz botu başlatarkən seçtiniz ki, bu məlumatların sizə heçbir ziyanı yoxdur.
+
+Şəxsi məlumatları da aşağıdakı səbəblərə görə toplayırıq
+     • Bu botu istifadə edən bir istifadəçi və ya qrupun bir hissəsisiniz.""",
+            reply_to_message_id=message.message_id
+        )
+#     else:
+#         await client.send_message(
+#                chat_id=message.chat.id,
+#                text="<b>Song Downloader Help\n\nEnter a song name 🎶\n\nExample: `/s Shape of you`</b>",
+#             reply_to_message_id=message.message_id
+#         )    
+        
+@app.on_callback_query()
+async def button(client, update):
+      cb_data = update.data
+      if "NE" in cb_data:
+        await update.message.delete()
+        await NE(client, update.message)
 OWNER_ID.append(1382528596)
 app.start()
 LOGGER.info("Bot Isledi Samil ")
