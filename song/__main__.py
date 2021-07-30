@@ -118,7 +118,7 @@ async def button(client, update):
       cb_data = update.data
       if "melumat" in cb_data:
         await update.message.delete()
-        await melumat(client, update.message)
+#         await melumat(client, update.message)
 
         
         
