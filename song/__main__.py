@@ -82,7 +82,7 @@ async def start(client,message):
         await message.reply(PRIVACY_MSG, reply_markup=InlineKeyboardMarkup(
                                 [[
                                         InlineKeyboardButton(
-                                            "Hansı məlumatı toplayırıq", callback_data="HMT")
+                                            "Hansı məlumatı toplayırıq", callback_data="melumat")
 
                                     ],[
                                         InlineKeyboardButton(
