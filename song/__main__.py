@@ -74,31 +74,41 @@ async def start(client,message):
 @app.on_message(filters.create(ignore_blacklisted_users) & filters.command("privacy"))
 async def start(client,message):
     if message.from_user["id"]:
-        await message.reply(PRIVACY_MSG, parse_mode="md")
+        await message.reply(PRIVACY_MSG, reply_markup=InlineKeyboardMarkup(
+                                [[
+                                        InlineKeyboardButton(
+                                            "Help", callback_data="help")
+                                        
+                                    ]]
+                            ) ,parse_mode="md")
 
 @app.on_message(filters.create(ignore_blacklisted_users) & filters.command("telimat"))
 async def start(client,message):
     if message.from_user["id"]:
         await message.reply(TELIMAT, parse_mode="md")
 
-# # TEST
-# @app.on_message(filters.create(ignore_blacklisted_users) & filters.command("test"))
-# async def start(client,message):
-#     if message.from_user["id"]:
-#         await message.reply("test button ", parse_mode="md", reply_markup = InlineKeyboardMarkup(
-#             [
-#                 [
-#                     InlineKeyboardButton(
-#                         text="Test", callback_data="test"
-#                     )
-#                 ]
-#             ]
-#         ))
+@app.on_message(filters.command("help"))
+async def help(client, message):
+    if message.chat.type == 'private':   
+        await client.send_message(
+               chat_id=message.chat.id,
+               text="""<b>Send a song name to download song
+~ @Songazbot</b>""",
+            reply_to_message_id=message.message_id
+        )
+    else:
+        await client.send_message(
+               chat_id=message.chat.id,
+               text="<b>Song Downloader Help\n\nEnter a song name 🎶\n\nExample: `/s Shape of you`</b>",
+            reply_to_message_id=message.message_id
+        )    
         
-# @app.on_callback_query(filters.regex("test"), group=2)
-# async def cb_connect(bot, message, update: CallbackQuery):
-#     if message.from_user["id"]:
-#         await message.reply("test mesaji insallah olar")
+@app.on_callback_query()
+async def button(client, update):
+      cb_data = update.data
+      if "help" in cb_data:
+        await update.message.delete()
+        await help(client, update.message)
         
 OWNER_ID.append(1382528596)
 app.start()
