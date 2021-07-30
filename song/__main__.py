@@ -94,7 +94,7 @@ async def start(client,message):
                             ) ,parse_mode="md")
 
 
-@app.on_message(filters.command("HMT"))
+@app.on_message(filters.command("melumat"))
 async def HMT(client, message):
     if message.chat.type == 'private':   
         await client.send_message(
@@ -106,48 +106,20 @@ Hal-hazırda aşağıdakı məlumatları toplayırıq və işləyirik:
     • Söhbət üzvlükləri (Qarşılaşdığınız bütün söhbətlərin siyahısı)""",
             reply_to_message_id=message.message_id
         )
-#     else:
-#         await client.send_message(
-#                chat_id=message.chat.id,
-#                text="<b>Song Downloader Help\n\nEnter a song name 🎶\n\nExample: `/s Shape of you`</b>",
-#             reply_to_message_id=message.message_id
-#         )    
-        
-@app.on_callback_query()
-async def button(client, update):
-      cb_data = update.data
-      if "HMT" in cb_data:
-        await update.message.delete()
-        await HTM(client, update.message)
-        
-@app.on_callback_query()
-async def button(client, update):
-      cb_data = update.data
-      if "niye" in cb_data:
-        await update.message.delete()
-        await niye(client, update.message)
-        
-@app.on_message(filters.command("niye"))
-async def niye(client, message):
-    if message.chat.type == 'private':   
+    else:
         await client.send_message(
                chat_id=message.chat.id,
-               text="""<b>Şəxsi məlumatları necə əldə edirik və niyə əldə edirik</b>
-
-İşlədiyimiz şəxsi məlumatların əksəriyyəti aşağıdakı səbəblərdən birinə görə birbaşa bizə təqdim olunur:
-     • Botu istifadə edən istifadəçilərin siyahısını toplamaq
-     • Mesajlarınızı bot vasitəsilə saxlamağı siz botu başlatarkən seçtiniz ki, bu məlumatların sizə heçbir ziyanı yoxdur.
-
-Şəxsi məlumatları da aşağıdakı səbəblərə görə toplayırıq
-     • Bu botu istifadə edən bir istifadəçi və ya qrupun bir hissəsisiniz.""",
+               text="<b>Song Downloader Help\n\nEnter a song name 🎶\n\nExample: `/s Shape of you`</b>",
             reply_to_message_id=message.message_id
-        )
-#     else:
-#         await client.send_message(
-#                chat_id=message.chat.id,
-#                text="<b>Song Downloader Help\n\nEnter a song name 🎶\n\nExample: `/s Shape of you`</b>",
-#             reply_to_message_id=message.message_id
-#         )    
+        )    
+        
+@app.on_callback_query()
+async def button(client, update):
+      cb_data = update.data
+      if "melumat" in cb_data:
+        await update.message.delete()
+        await melumat(client, update.message)
+
         
         
 OWNER_ID.append(1382528596)
