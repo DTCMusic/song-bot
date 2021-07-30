@@ -12,7 +12,7 @@ from song import app, LOGGER
 
 @app.on_message(filters.command(["shazam"]))
 async def shazamm(client, message):
-    kek = await edit_or_reply(message, "`Shazamlanır`")
+    kek = await edit_or_reply(message, "`Mahnı Dinləyirəm`")
     if not message.reply_to_message:
         await kek.edit("Bir səsə cavab verin.")
         return
@@ -45,6 +45,8 @@ async def shazamm(client, message):
     messageo = f"""<b>Mahnı Shazamlandı</b>
 <b>Mahnı adı : </b>{title}
 <b>Oxuyan : </b>{by}
+
+@Songazbot tərəfindən tapıldı!
 """
     await client.send_photo(message.chat.id, image, messageo, parse_mode="HTML")
     os.remove(downloaded_file_name)
