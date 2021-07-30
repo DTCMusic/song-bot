@@ -42,9 +42,9 @@ async def shazamm(client, message):
     image = nt.get("coverarthq")
     by = zzz.get("subtitle")
     title = zzz.get("title")
-    messageo = f"""<b>Mahnı Shazamlandı</b>
-<b>Mahnı adı : </b>{title}
-<b>Oxuyan : </b>{by}
+    messageo = f"""🔍 <b>Mahnı Məlumatları</b>
+<b>Mahnı adı :</b><code>{title}</code>
+<b>Müğənni : </b><code>{by}</code>
 
 @Songazbot tərəfindən tapıldı!
 """
