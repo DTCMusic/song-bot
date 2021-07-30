@@ -114,7 +114,7 @@ Hal-hazırda aşağıdakı məlumatları toplayırıq və işləyirik:
         )    
         
 @app.on_callback_query()
-async def button(client, update):
+async def button(client, update, message):
       cb_data = update.data
       if "melumat" in cb_data:
         await update.message.delete()
