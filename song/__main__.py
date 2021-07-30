@@ -114,16 +114,11 @@ Hal-hazırda aşağıdakı məlumatları toplayırıq və işləyirik:
         )    
         
 @app.on_callback_query()
-async def button(client, update, message):
+async def button(client, update):
       cb_data = update.data
       if "melumat" in cb_data:
         await update.message.delete()
-        await message.reply("""**Topladığımız şəxsi məlumatların növü**
-
-Hal-hazırda aşağıdakı məlumatları toplayırıq və işləyirik:
-    • Telegram İstifadəçi Kimliği, ad, soyad, istifadəçi adı (Qeyd: Bunlar ümumi telegram məlumatlarınızdır. "Həqiqi" məlumatlarınızı bilmirik.)
-    • Söhbət üzvlükləri (Qarşılaşdığınız bütün söhbətlərin siyahısı)""",parse_mode="md"
-        )
+        await melumat(Jebot, update.message)
 
         
         
