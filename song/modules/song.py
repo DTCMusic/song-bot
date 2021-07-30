@@ -6,7 +6,6 @@ from config import REKLAM_URL
 from pytube import YouTube
 from pyrogram.types import InlineKeyboardMarkup
 from pyrogram.types import InlineKeyboardButton
-from youtubesearchpython import VideosSearch
 from song.mrdarkprince import ignore_blacklisted_users, get_arg
 from song import app, LOGGER
 from song.sql.chat_sql import add_chat_to_db
