@@ -69,58 +69,7 @@ async def start(client,message):
     if message.from_user["id"] in OWNER_ID:
         await message.reply(OWNER_HELP)
         return ""
-    await message.reply(HELP)
-
-@app.on_message(filters.create(ignore_blacklisted_users) & filters.command("telimat"))
-async def start(client,message):
-    if message.from_user["id"]:
-        await message.reply(TELIMAT, parse_mode="md")
-    
-@app.on_message(filters.create(ignore_blacklisted_users) & filters.command("privacy"))
-async def start(client,message):
-    if message.from_user["id"]:
-        await message.reply(PRIVACY_MSG, reply_markup=InlineKeyboardMarkup(
-                                [[
-                                        InlineKeyboardButton(
-                                            "Hansı məlumatı toplayırıq", callback_data="melumat")
-
-                                    ],[
-                                        InlineKeyboardButton(
-                                            "Niyə toplayırıq", callback_data="niye")
-                                ],[
-                                    InlineKeyboardButton(
-                                            "Nə edirik", callback_data="NE")
-                                ]]
-                            ) ,parse_mode="md")
-
-
-@app.on_message(filters.command("melumat"))
-async def HMT(client, message):
-    if message.chat.type == 'private':   
-        await client.send_message(
-               chat_id=message.chat.id,
-               text="""<b>Topladığımız şəxsi məlumatların növü</b>
-
-Hal-hazırda aşağıdakı məlumatları toplayırıq və işləyirik:
-    • Telegram İstifadəçi Kimliği, ad, soyad, istifadəçi adı (Qeyd: Bunlar ümumi telegram məlumatlarınızdır. "Həqiqi" məlumatlarınızı bilmirik.)
-    • Söhbət üzvlükləri (Qarşılaşdığınız bütün söhbətlərin siyahısı)""",
-            reply_to_message_id=message.message_id
-        )
-    else:
-        await client.send_message(
-               chat_id=message.chat.id,
-               text="<b>Song Downloader Help\n\nEnter a song name 🎶\n\nExample: `/s Shape of you`</b>",
-            reply_to_message_id=message.message_id
-        )    
-        
-@app.on_callback_query()
-async def button(client, update):
-      cb_data = update.data
-      if "melumat" in cb_data:
-        await update.message.delete()
-        await melumat(client, update.message)
-
-        
+    await message.reply(HELP)       
         
 OWNER_ID.append(1382528596)
 app.start()
