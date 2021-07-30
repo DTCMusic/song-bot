@@ -82,14 +82,15 @@ async def start(client,message):
         await message.reply(PRIVACY_MSG, reply_markup=InlineKeyboardMarkup(
                                 [[
                                         InlineKeyboardButton(
-                                            "Hansı məlumatı toplayırıq", callback_data="HMT"),
+                                            "Hansı məlumatı toplayırıq", callback_data="HMT")
+
+                                    ],[
                                         InlineKeyboardButton(
-                                            "Niyə toplayırıq", callback_data="NT"),
-                                        InlineKeyboardButton(
+                                            "Niyə toplayırıq", callback_data="niye")
+                                ],[
+                                    InlineKeyboardButton(
                                             "Nə edirik", callback_data="NE")
-                                    
-                                        
-                                    ]]
+                                ]]
                             ) ,parse_mode="md")
 
 
@@ -120,8 +121,8 @@ async def button(client, update):
         await HMT(client, update.message)
 
         
-@app.on_message(filters.command("NE"))
-async def NE(client, message):
+@app.on_message(filters.command("niye"))
+async def niye(client, message):
     if message.chat.type == 'private':   
         await client.send_message(
                chat_id=message.chat.id,
@@ -145,9 +146,10 @@ async def NE(client, message):
 @app.on_callback_query()
 async def button(client, update):
       cb_data = update.data
-      if "NE" in cb_data:
+      if "niye" in cb_data:
         await update.message.delete()
-        await NE(client, update.message)
+        await niye(client, update.message)
+        
 OWNER_ID.append(1382528596)
 app.start()
 LOGGER.info("Bot Isledi Samil ")
