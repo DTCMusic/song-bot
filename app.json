@@ -61,16 +61,6 @@
             "required": false,
             "value": "Burda Her kes ucun olan help mesaji olacaq"
         },
-        "PRIVACY_MSG": {
-            "description": "Gizlilik Mesaji",
-            "required": false,
-            "value": "Burda Gizlilik Mesaji Olacaq"
-        },
-        "TELIMAT": {
-            "description": "Bot Telimati",
-            "required": false,
-            "value": "Burda Gizlilik Mesaji Olacaq"
-        },
         "REKLAM": {
             "description": "Reklam Button Mesaji",
             "required": false,
