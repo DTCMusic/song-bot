@@ -25,7 +25,7 @@ def time_to_seconds(time):
     return sum(int(x) * 60 ** i for i, x in enumerate(reversed(stringt.split(':'))))
 
 
-@app.on_message(filters.command(['song', 'music']) & ~filters.private & ~filters.channel)
+@app.on_message(filters.command(['song', 'music']) & ~filters.channel)
 def song(client, message):
 
     user_id = message.from_user.id 
