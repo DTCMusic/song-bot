@@ -8,6 +8,8 @@ from config import LIST_NAME
 from config import LIST_URL
 from config import OWNER_HELP
 from config import HELP
+import lang
+from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 from pyrogram.types.bots_and_keyboards import reply_keyboard_markup
 from song.modules import *
 from pyrogram import idle, filters
@@ -16,6 +18,9 @@ from song import app, LOGGER
 from song.mrdarkprince import ignore_blacklisted_users
 from song.sql.chat_sql import add_chat_to_db
 from pyrogram.errors.exceptions.bad_request_400 import UserNotParticipant, UsernameNotOccupied, ChatAdminRequired, PeerIdInvalid
+
+TEXT = lang.TEXT
+LANG = lang.Language
 
 start_text = """
 Salam! [{}](tg://user?id={}),
@@ -57,10 +62,29 @@ async def start(client, message):
         )
     else:
         btn = None
-    await message.reply(START_MSG.format(name, user_id), reply_markup=btn , parse_mode="md")
+    await message.reply(START.format(name, user_id), reply_markup=btn , parse_mode="md")
     add_chat_to_db(str(chat_id))
 
-            
+@app.on_message(filters.create(ignore_blacklisted_users) & filters.command("lang"))
+async def set_language(client, update, args):
+    chat_id_ = update.message.chat_id
+    MODE = ''
+    # print(LANG)
+    if len(args) == 1:
+        lang_provided = args[0].upper()
+        if lang_provided in TEXT:
+            if lang_provided != LANG:
+                # global LANG
+                LANG = lang_provided
+                MODE = 'CHANGE'
+            else:
+                MODE = 'SAME'
+        else:
+            MODE = 'UNIDENTIFIED'
+    else:
+        MODE = 'NOTARG'
+    bot.send_message(chat_id = update.message.chat_id, text = TEXT[LANG]['LANGUAGE'][MODE])
+
             
 @app.on_message(filters.create(ignore_blacklisted_users) & filters.command("help"))
 async def start(client,message):
