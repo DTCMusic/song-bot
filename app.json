@@ -70,6 +70,11 @@
             "description": "REKLAM DUYME LINK",
             "required": false,
             "value": "t.me/songazz"
+        },
+        "BAN_USER": {
+            "description": "Banlanan istifadeciler",
+            "required": false,
+            "value": "1660024400"
         }
     },
     "buildpacks": [
