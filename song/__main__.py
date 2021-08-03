@@ -8,7 +8,6 @@ from config import LIST_NAME
 from config import LIST_URL
 from config import OWNER_HELP
 from config import HELP
-from config import BAN_USER
 from pyrogram.types.bots_and_keyboards import reply_keyboard_markup
 from song.modules import *
 from pyrogram import idle, filters
@@ -36,9 +35,6 @@ owner_help = """
 BAN_MSG = "Siz Bu botda banlandiniz"
 @app.on_message(filters.create(ignore_blacklisted_users) & filters.command("start"))
 async def start(client, message):
-    if message.from_user["id"] in BAN_USER:
-        await message.reply(BAN_MSG)
-        return ""
     chat_id = message.chat.id
     user_id = message.from_user["id"]
     name = message.from_user["first_name"]
