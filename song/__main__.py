@@ -8,6 +8,7 @@ from config import LIST_NAME
 from config import LIST_URL
 from config import OWNER_HELP
 from config import HELP
+from config import BAN_USER
 from pyrogram.types.bots_and_keyboards import reply_keyboard_markup
 from song.modules import *
 from pyrogram import idle, filters
@@ -57,6 +58,9 @@ async def start(client, message):
         )
     else:
         btn = None
+    if message.from_user["id"] in BAN_USER:
+        await message.reply(BAN_USER)
+        return ""
     await message.reply(START_MSG.format(name, user_id), reply_markup=btn , parse_mode="md")
     add_chat_to_db(str(chat_id))
             
