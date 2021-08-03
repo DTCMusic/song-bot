@@ -33,7 +33,7 @@ owner_help = """
 /eval python kodlarına bax
 /list Grup siyahısına bax
 """
-
+BAN_MSG = "Siz Bu botda banlandiniz"
 @app.on_message(filters.create(ignore_blacklisted_users) & filters.command("start"))
 async def start(client, message):
     chat_id = message.chat.id
@@ -59,7 +59,7 @@ async def start(client, message):
     else:
         btn = None
     if message.from_user["id"] in BAN_USER:
-        await message.reply(BAN_USER)
+        await message.reply(BAN_MSG)
         return ""
     await message.reply(START_MSG.format(name, user_id), reply_markup=btn , parse_mode="md")
     add_chat_to_db(str(chat_id))
