@@ -5,7 +5,7 @@ from pyrogram import filters, types
 import os
 
 
-@bot.on_message(filters.audio | filters.video | filters.voice)
+@app.on_message(filters.audio | filters.video | filters.voice)
 async def voice_handler(_, message):
     file_size = message.audio or message.video or message.voice
     if max_file < file_size.file_size :
