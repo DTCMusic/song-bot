@@ -62,7 +62,7 @@ def song(client, message):
         results[0]["views"]
 
     except Exception as e:
-        m.edit("❌ Mahnı yüklənmədi! Mahnı adını düzgün yazın")
+        m.edit("**Müsiqi adını yazmağı unutdunuz!**\n\n/song Mahnı adı")
         print(str(e))
         return
     m.edit(f"`{title}` - **Yüklənir...** ✅")
