@@ -25,7 +25,7 @@ logging.basicConfig(
 
 LOGGER = logging.getLogger(__name__)
 
-
+max_file = 30641629
 
 
 def get_user(message: Message, text: str) -> [int, str, None]:
