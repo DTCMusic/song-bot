@@ -16,6 +16,12 @@ from pyrogram import Client
 from pyrogram.errors import FloodWait, MessageNotModified
 from pyrogram.types import Chat, Message, User
 
+from os import path
+from configparser import ConfigParser
+from shazamio import Shazam, exceptions, FactoryArtist, FactoryTrack
+
+shazam = Shazam()
+
 # from innexia  import OWNER_ID, SUPPORT_CHAT
 # from innexia import pbot
 
