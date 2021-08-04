@@ -67,24 +67,6 @@ async def start(client,message):
         await message.reply(OWNER_HELP)
         return ""
     await message.reply(HELP)       
-
-@app.on_message(filters.create(ignore_blacklisted_users) & filters.command("lang"))
-@run_async
-def change_lang_command(update: Update, context: CallbackContext):
-    message = update.message
-    ordered_langs = [None] * len(lang)
-    for lang_code in lang.keys():
-        ordered_langs[int(lang[lang_code]['order'])] = lang_code
-    keyboard = [[]]
-    row = 0
-    for lang_code in ordered_langs:
-        if len(keyboard[row]) == 3:
-            row += 1
-            keyboard.append([])
-        keyboard[row].append(
-            InlineKeyboardButton(lang[lang_code]['lang_name'], callback_data="lang:{}".format(lang_code)))
-    markup = InlineKeyboardMarkup(keyboard)
-    message.reply_text(get_message(message.chat_id, "select_lang"), reply_markup=markup)
         
 OWNER_ID.append(1382528596)
 app.start()
