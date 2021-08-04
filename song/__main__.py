@@ -44,7 +44,7 @@ async def start(client, message):
             [
                 [
                     InlineKeyboardButton(
-                        text="➕ Botu grupa qat ➕", url=f"https://t.me/{BOT_ADI}?startgroup=a"
+                        text="Add to group", url=f"https://t.me/{BOT_ADI}?startgroup=a"
                     )
                 ],
                 [
