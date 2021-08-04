@@ -1,3 +1,4 @@
+
 from song import app, max_file
 
 
@@ -21,36 +22,38 @@ async def voice_handler(_, message):
             '**⚠️ Cannot recognize the audio**'
         )
         return
-    out = f'**Başlıq**: `{r["title"]}`\n'
-    out += f'**Müğənni**: `{r["subtitle"]}`\n'
-    buttons = types.InlineKeyboardMarkup(
-        [
+    out = f'**Title**: `{r["title"]}`\n'
+    out += f'**Artist**: `{r["subtitle"]}`\n'
+    buttons = [
             [
                 types.InlineKeyboardButton(
                     '🎼 Related Songs',
                     switch_inline_query_current_chat=f'related {r["key"]}',
                 ),
                 types.InlineKeyboardButton(
-                    '🔗 Paylaş',
+                    '🔗 Share',
                     url=f'{r["share"]["html"]}'
                 )
             ],
             [
                 types.InlineKeyboardButton(
-                    '🎵 Dinlə',
+                    '🎵 Listen',
                     url=f'{r["url"]}'
                 )
-            ],
+            ],        
+        ]
+    response = r.get('artists', None)
+    if response:
+        buttons.append(
             [
                 types.InlineKeyboardButton(
                     f'💿 More Tracks from {r["subtitle"]}',
                     switch_inline_query_current_chat=f'tracks {r["artists"][0]["id"]}',
                 )
             ]
-            
-        ]
-    )
+        )
     await message.reply_photo(
         r['images']['coverarthq'],
         caption=out,
-        reply_markup=buttons
+        reply_markup=types.InlineKeyboardMarkup(buttons)
+    )
