@@ -15,8 +15,7 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQ
 from song import app, LOGGER
 from song.mrdarkprince import ignore_blacklisted_users
 from song.sql.chat_sql import add_chat_to_db
-from telegram.ext.dispatcher import run_async
-from pyrogram.errors.exceptions.bad_request_400 import UserNotParticipant, UsernameNotOccupied, ChatAdminRequired, PeerIdInvalid
+# from pyrogram.errors.exceptions.bad_request_400 import UserNotParticipant, UsernameNotOccupied, ChatAdminRequired, PeerIdInvalid
 
 start_text = """
 Salam! [{}](tg://user?id={}),
