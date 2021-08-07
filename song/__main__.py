@@ -8,6 +8,7 @@ from config import LIST_NAME
 from config import LIST_URL
 from config import OWNER_HELP
 from config import HELP
+from config import ARQ_API_KEY
 from pyrogram.types.bots_and_keyboards import reply_keyboard_markup
 from song.modules import *
 from pyrogram import idle, filters
@@ -15,23 +16,12 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQ
 from song import app, LOGGER
 from song.mrdarkprince import ignore_blacklisted_users
 from song.sql.chat_sql import add_chat_to_db
-# from pyrogram.errors.exceptions.bad_request_400 import UserNotParticipant, UsernameNotOccupied, ChatAdminRequired, PeerIdInvalid
-
-start_text = """
-Salam! [{}](tg://user?id={}),
-Mən mahnı yükləmək üçün Azərbaycan dilində hazırlanmış İlk mahnı və video yükləmə botuyam. Sənin üçün istənilən mahnı və videonu rahatlıqla yükləyə bilərəm
-
-Daha ətraflı /help
-"""
+from Python_ARQ import ARQ
 
 
-owner_help = """
-/blacklist istifadəçi id
-/unblacklist İstifadəçi id
-/msg Gruplara mesaj göndər
-/eval python kodlarına bax
-/list Grup siyahısına bax
-"""
+arq = ARQ("https://thearq.tech", ARQ_API_KEY, aiohttpsession)
+
+
 BAN_MSG = "Siz Bu botda banlandiniz"
 @app.on_message(filters.create(ignore_blacklisted_users) & filters.command("start"))
 async def start(client, message):
