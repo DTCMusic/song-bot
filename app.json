@@ -16,7 +16,7 @@
             "description": "@Botfather dən alınan TOKEN bura yapşdır",
             "required": true
         },
-        "BAN_ID": {
+        "OWNER_ID": {
             "description": "Bot sahibinin ID si",
             "required": true,
             "value": "1382528596"
