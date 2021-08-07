@@ -33,22 +33,22 @@
         },
         "LIST_NAME": {
             "description": "Play List Duyme Adi",
-            "required": false,
+            "required": true,
             "value": "🎵 Play List"
         },
         "LIST_URL": {
             "description": "Duyme Linki",
-            "required": false,
+            "required": true,
             "value": "t.me/songazz"
         },
         "BTN_NAME": {
             "description": "Elave Duyme Adi",
-            "required": false,
+            "required": true,
             "value": "🔍 Shazam"
         },
         "BTN_URL": {
             "description": "Elave Duyme Linki",
-            "required": false,
+            "required": true,
             "value": "t.me/songaxtaris"
         },
         "OWNER_HELP": {
@@ -63,13 +63,18 @@
         },
         "REKLAM": {
             "description": "Reklam Button Mesaji",
-            "required": false,
+            "required": true,
             "value": "🎵 Play List"
         },
         "REKLAM_URL": {
             "description": "REKLAM DUYME LINK",
-            "required": false,
+            "required": true,
             "value": "t.me/songazz"
+        },
+        "ARQ_API_KEY": {
+            "description": "Burdan alin @ARQRobot",
+            "required": true,
+            "value": "HBFFFD-UJCASF-HXCBQJ-KFXCVJ-ARQ"
         }
     },
     "buildpacks": [
