@@ -70,11 +70,6 @@
             "description": "REKLAM DUYME LINK",
             "required": true,
             "value": "t.me/songazz"
-        },
-        "ARQ_API_KEY": {
-            "description": "Burdan alin @ARQRobot",
-            "required": true,
-            "value": "HBFFFD-UJCASF-HXCBQJ-KFXCVJ-ARQ"
         }
     },
     "buildpacks": [
