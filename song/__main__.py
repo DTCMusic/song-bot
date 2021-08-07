@@ -1,4 +1,4 @@
-# © @Samil
+# © Songazbot/Samil
 from config import OWNER_ID, BOT_ADI
 from config import START_MSG, HELP, OWNER_HELP
 from config import BTN_NAME, BTN_URL
