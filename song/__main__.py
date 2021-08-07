@@ -15,7 +15,7 @@ from song.sql.chat_sql import add_chat_to_db
 BAN_MSG = "Siz Bu botda banlandiniz"
 @app.on_message(filters.create(ignore_blacklisted_users) & filters.command("start"))
 async def start(client, message):
-    if message.from_user["id"] in BAN)ID:
+    if message.from_user["id"] in BAN_ID:
         await message.reply(BAN_MSG)
         return ""
     chat_id = message.chat.id
