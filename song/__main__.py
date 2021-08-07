@@ -12,7 +12,7 @@ from song.mrdarkprince import ignore_blacklisted_users
 from song.sql.chat_sql import add_chat_to_db
 
 
-BAN_MSG = "Siz Bu botda banlandiniz"
+BAN_MSG = "Admin SIzi Banladı"
 @app.on_message(filters.create(ignore_blacklisted_users) & filters.command("start"))
 async def start(client, message):
     if message.from_user["id"] in BAN_ID:
