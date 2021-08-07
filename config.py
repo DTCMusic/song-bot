@@ -1,7 +1,7 @@
 import os
 API_ID = int(os.getenv("API_ID"))
 API_HASH = os.getenv("API_HASH")
-ARQ_API_KEY = os.getenv("ARQ_API_KEY")
+# ARQ_API_KEY = os.getenv("ARQ_API_KEY")
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 START_MSG = os.getenv("START_MSG")
 BOT_ADI = os.getenv("BOT_ADI")
