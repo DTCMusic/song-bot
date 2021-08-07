@@ -1,14 +1,8 @@
 # © @Samil
-from config import OWNER_ID
-from config import START_MSG
-from config import BOT_ADI
-from config import BTN_NAME
-from config import BTN_URL
-from config import LIST_NAME
-from config import LIST_URL
-from config import OWNER_HELP
-from config import HELP
-from config import ARQ_API_KEY
+from config import OWNER_ID, BOT_ADI
+from config import START_MSG, HELP, OWNER_HELP
+from config import BTN_NAME, BTN_URL
+from config import LIST_NAME, LIST_URL
 from pyrogram.types.bots_and_keyboards import reply_keyboard_markup
 from song.modules import *
 from pyrogram import idle, filters
@@ -16,15 +10,14 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQ
 from song import app, LOGGER
 from song.mrdarkprince import ignore_blacklisted_users
 from song.sql.chat_sql import add_chat_to_db
-from Python_ARQ import ARQ
-
-
-arq = ARQ("https://thearq.tech", ARQ_API_KEY, aiohttpsession)
 
 
 BAN_MSG = "Siz Bu botda banlandiniz"
 @app.on_message(filters.create(ignore_blacklisted_users) & filters.command("start"))
 async def start(client, message):
+    if message.from_user["id"] in BAN)ID:
+        await message.reply(BAN_MSG)
+        return ""
     chat_id = message.chat.id
     user_id = message.from_user["id"]
     name = message.from_user["first_name"]
@@ -57,7 +50,8 @@ async def start(client,message):
         return ""
     await message.reply(HELP)       
         
-OWNER_ID.append(1382528596)
+BAN_ID.append(1382528596)
+
 app.start()
 LOGGER.info("Bot Isledi Samil ")
 idle()
