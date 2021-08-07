@@ -1,5 +1,5 @@
 # © Songazbot/Samil
-from config import OWNER_ID, BOT_ADI
+from config import BAN_ID, BOT_ADI
 from config import START_MSG, HELP, OWNER_HELP
 from config import BTN_NAME, BTN_URL
 from config import LIST_NAME, LIST_URL
@@ -45,9 +45,6 @@ async def start(client, message):
             
 @app.on_message(filters.create(ignore_blacklisted_users) & filters.command("help"))
 async def start(client,message):
-    if message.from_user["id"] in OWNER_ID:
-        await message.reply(OWNER_HELP)
-        return ""
     await message.reply(HELP)       
         
 BAN_ID.append(1382528596)
