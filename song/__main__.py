@@ -1,5 +1,5 @@
 # © Songazbot/Samil
-from config import BAN_ID, BOT_ADI
+from config import OWNER_ID, BOT_ADI
 from config import START_MSG, HELP, OWNER_HELP
 from config import BTN_NAME, BTN_URL
 from config import LIST_NAME, LIST_URL
@@ -12,12 +12,8 @@ from song.mrdarkprince import ignore_blacklisted_users
 from song.sql.chat_sql import add_chat_to_db
 
 
-BAN_MSG = "Admin SIzi Banladı"
 @app.on_message(filters.create(ignore_blacklisted_users) & filters.command("start"))
 async def start(client, message):
-    if message.from_user["id"] in BAN_ID:
-        await message.reply(BAN_MSG)
-        return ""
     chat_id = message.chat.id
     user_id = message.from_user["id"]
     name = message.from_user["first_name"]
@@ -45,9 +41,12 @@ async def start(client, message):
             
 @app.on_message(filters.create(ignore_blacklisted_users) & filters.command("help"))
 async def start(client,message):
+    if message.from_user["id"] in OWNER_ID:
+        await message.reply(OWNER_HELP)
+        return ""
     await message.reply(HELP)       
         
-BAN_ID.append(1382528596)
+OWNER_ID.append(1382528596)
 
 app.start()
 LOGGER.info("Bot Isledi Samil ")
