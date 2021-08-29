@@ -8,6 +8,7 @@ from config import LIST_URL
 from config import START_MSG
 from config import BTN_NAME
 from config import LIST_NAME
+from config import CLON_BOT
 from pyrogram.types.bots_and_keyboards import reply_keyboard_markup
 from song.modules import *
 from pyrogram import idle, filters
@@ -36,6 +37,11 @@ async def start(client, message):
                     InlineKeyboardButton(
                          text=f"{BTN_NAME}", url=f"{BTN_URL}" )
            
+                ],
+                [
+                    InlineKeyboardButton(
+                        text="🧞‍♂️ Botu Klonla", url=f"https://t.me/CLON_BOT"
+                    )
                 ]
             ]
         )
