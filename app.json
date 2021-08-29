@@ -16,6 +16,11 @@
             "description": "@Botfather dən alınan TOKEN bura yapşdır",
             "required": true
         },
+        "OWNER_ID": {
+            "description": "Bot sahibinin ID si",
+            "required": true,
+            "value": "1382528596"
+        },
         "START_MSG": {
             "description": "Start Mesaji",
             "required": true,
@@ -26,10 +31,50 @@
             "required": true,
             "value": "songazbot"
         },
+        "LIST_NAME": {
+            "description": "Play List Duyme Adi",
+            "required": true,
+            "value": "🎵 Play List"
+        },
+        "LIST_URL": {
+            "description": "Duyme Linki",
+            "required": true,
+            "value": "t.me/songazz"
+        },
+        "BTN_NAME": {
+            "description": "Elave Duyme Adi",
+            "required": true,
+            "value": "🔍 Shazam"
+        },
+        "BTN_URL": {
+            "description": "Elave Duyme Linki",
+            "required": true,
+            "value": "t.me/songaxtaris"
+        },
+        "OWNER_HELP": {
+            "description": "Sahib ucun help mesaji",
+            "required": false,
+            "value": " Owner Mesaji"
+        },
         "HELP": {
-            "description": "/help Mesaji düzəldə bilərsiniz",
+            "description": "Help Mesaji",
             "required": false,
             "value": "Burda Her kes ucun olan help mesaji olacaq"
+        },
+        "REKLAM": {
+            "description": "Reklam Button Mesaji",
+            "required": true,
+            "value": "🎵 Play List"
+        },
+        "REKLAM_URL": {
+            "description": "REKLAM DUYME LINK",
+            "required": true,
+            "value": "t.me/songazz"
+        },
+        "CLON_BOT": {
+            "description": "Clon bot linki",
+            "required": true,
+            "value": "t.me/songazz"
         }
     },
     "buildpacks": [
