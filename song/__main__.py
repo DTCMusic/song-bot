@@ -60,5 +60,5 @@ async def start(client,message):
 OWNER_ID.append(1382528596)
 
 app.start()
-LOGGER.info("Bot Isledi Samil ")
+LOGGER.info(F"Bot Aktivdir @{BOT_ADI}")
 idle()
