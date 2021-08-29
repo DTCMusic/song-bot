@@ -16,11 +16,6 @@
             "description": "@Botfather dən alınan TOKEN bura yapşdır",
             "required": true
         },
-        "OWNER_ID": {
-            "description": "Bot sahibinin ID si",
-            "required": true,
-            "value": "1382528596"
-        },
         "START_MSG": {
             "description": "Start Mesaji",
             "required": true,
