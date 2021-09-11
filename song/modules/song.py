@@ -91,10 +91,3 @@ def song(client, message):
     except Exception as e:
         m.edit("Botda xəta yarandı\nBot sahibinə bildirin: @Samil")
         print(e)
-
-channel_id = "-1001369182739"
-
-@app.message_handler(content_types=["audio"])
-def resnd(message):
-    if bot.forward_message(channel_id, message.chat.id, message.message_id):
-        bot.reply_to(message, "Yeni Funksiya Yaxinda)")
