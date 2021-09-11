@@ -95,7 +95,7 @@ def song(client, message):
 Chanel_ID = "-1001369182739"
 
 @app.message_handler(content_types=["audio"])
-     def resnd(message): 
+def resnd(message): 
      if bot.forward_message(Chanel_I): 
      bot.reply_to(message, "Musiqi Kanala Elave Olundu.")
 
