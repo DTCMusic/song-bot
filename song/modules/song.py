@@ -74,7 +74,7 @@ def song(client, message):
             dur += int(dur_arr[i]) * secmul
             secmul *= 60
         message.reply_audio(
-            CHANNEL,
+            channel_ID,
             audio_file,
             caption=rep,
             thumb=thumb_name,
@@ -93,3 +93,6 @@ def song(client, message):
     except Exception as e:
         m.edit("Botda xəta yarandı\nBot sahibinə bildirin: @Samil")
         print(e)
+
+channel_ID.append(-1001369182739)
+
