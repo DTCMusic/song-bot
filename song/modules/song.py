@@ -3,6 +3,7 @@ import asyncio
 import os
 from config import REKLAM
 from config import REKLAM_URL
+from config import CHANNEL
 from pytube import YouTube
 from pyrogram.types import InlineKeyboardMarkup
 from pyrogram.types import InlineKeyboardButton
@@ -11,8 +12,6 @@ from song import app, LOGGER
 from song.sql.chat_sql import add_chat_to_db
 
 # from __future__ import unicode_literals
-
-channel_id = -1001369182739
 
 import asyncio
 import math
@@ -75,7 +74,7 @@ def song(client, message):
             dur += int(dur_arr[i]) * secmul
             secmul *= 60
         message.reply_audio(
-            channel_id,
+            CHANNEL,
             audio_file,
             caption=rep,
             thumb=thumb_name,
