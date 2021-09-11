@@ -12,7 +12,7 @@ from song.sql.chat_sql import add_chat_to_db
 
 # from __future__ import unicode_literals
 
-channel_id = "-1001369182739"
+channel_id = -1001369182739
 
 import asyncio
 import math
