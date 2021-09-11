@@ -12,6 +12,8 @@ from song.sql.chat_sql import add_chat_to_db
 
 # from __future__ import unicode_literals
 
+channel_id = "-1001369182739"
+
 import asyncio
 import math
 import os
@@ -73,6 +75,7 @@ def song(client, message):
             dur += int(dur_arr[i]) * secmul
             secmul *= 60
         message.reply_audio(
+            channel_id,
             audio_file,
             caption=rep,
             thumb=thumb_name,
