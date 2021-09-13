@@ -3,7 +3,6 @@ import asyncio
 import os
 from config import REKLAM
 from config import REKLAM_URL
-from config import CHANNEL
 from pytube import YouTube
 from pyrogram.types import InlineKeyboardMarkup
 from pyrogram.types import InlineKeyboardButton
