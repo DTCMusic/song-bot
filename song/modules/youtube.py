@@ -32,13 +32,20 @@ async def ytsearch(_, message: Message):
             await message.reply_text("/axtar əmrinə ehtiyacı var!")
             return
         query = message.text.split(None, 1)[1]
-        m = await message.reply_text("Axtarılır....")
+        m = await message.reply_text("Uyğun mahnı adları axtarılır...")
         results = YoutubeSearch(query, max_results=4).to_dict()
         i = 0
         text = ""
-        while i < 4:
-            text += f"Başlıq - {results[i]['title']}\n"
+        while i < 5:
+            text += f"Uyğun mahnı adları \n\n🎵 - {results[i]['title']}\n"
+            text += f"🔗 - https://youtube.com{results[i]['url_suffix']}\n\n"
             i += 1
-        await m.edit(text, disable_web_page_preview=True)
+        await m.edit(text, disable_web_page_preview=True, reply_markup=InlineKeyboardMarkup(
+                     [
+                         [
+                             InlineKeyboardButton(f"🎵 Play list", url=f"t.me/songazz")
+                         ]
+                     ]
+                 ))
     except Exception as e:
         await message.reply_text(str(e))
