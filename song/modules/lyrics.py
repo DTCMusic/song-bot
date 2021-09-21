@@ -16,7 +16,7 @@ from song.sql.chat_sql import add_chat_to_db
 
 
 @app.on_message(filters.command(["lyric", "soz"]))
-async def _(client, message):
+async def (client, message):
     lel = await message.reply("🎵 Mahnı sözləri axtarılır...")
     query = message.text
     if not query:
