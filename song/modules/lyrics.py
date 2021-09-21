@@ -2,7 +2,7 @@ import io
 
 # from pyrogram import Client as pbot
 from pyrogram import filters
-# from tswift import Song
+from tswift import Song
 
 from pyrogram import Client, filters
 import asyncio
