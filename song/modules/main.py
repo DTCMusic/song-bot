@@ -8,45 +8,51 @@ from pyromod.helpers import ikb
 from utils.configs import Tr, Var
 from utils.telegraph import post_to_telegraph
 
-Ly = Client(
-    "Lyrics Lite Bot",
-    bot_token=Var.BOT_TOKEN,
-    api_id=Var.API_ID,
-    api_hash=Var.API_HASH,
-)
+rom pyrogram import Client, filters
+import asyncio
+import os
+from config import REKLAM
+from config import REKLAM_URL
+from pytube import YouTube
+from pyrogram.types import InlineKeyboardMarkup
+from pyrogram.types import InlineKeyboardButton
+from song.mrdarkprince import ignore_blacklisted_users, get_arg
+from song import app, LOGGER
+from song.sql.chat_sql import add_chat_to_db
+
+# from __future__ import unicode_literals
+
+import asyncio
+import math
+import os
+import time
+from random import randint
+from urllib.parse import urlparse
+
+import aiofiles
+import aiohttp
+import requests
+import wget
+import youtube_dl
+from pyrogram import Client, filters
+from pyrogram.errors import FloodWait, MessageNotModified
+from pyrogram.types import Message
+from youtube_search import YoutubeSearch
+from youtubesearchpython import SearchVideos
+
 
 genius = Genius(Var.API)
 
 STARTPIC = "https://i.imgur.com/gv2SzKr.jpg"
 
-START_BTN = ikb(
-    [
-        [
-            ("💬 Updates Channel", "t.me/damiensoukara", "url"),
-            ("🗣 Support Group", "t.me/damienhelp", "url"),
-        ],
-        [
-            ("👾 About", "about"),
-            ("📚 Help", "help"),
-            ("❌", "close"),
-        ],
-        [
-            (
-                "🔗 Source Code",
-                "https://github.com/AmineSoukara/PyLyricsBot/fork",
-                "url",
-            ),
-            ("👨‍💻 Developer", "https://bio.link/aminesoukara", "url"),
-        ],
-    ]
-)
+
 
 
 HOMEBTN = ikb([[("🏠", "home"), ("❌", "close")]])
 CLOSEBTN = [("❌", "close")]
 
 
-@Ly.on_callback_query()
+@app.on_callback_query()
 async def cdata(c, q):
 
     data = q.data
@@ -118,16 +124,8 @@ async def cdata(c, q):
         await q.message.delete()
 
 
-@Ly.on_message(filters.private & filters.command(["start"]))
-async def start(c, m):
-    await m.reply_photo(
-        photo=STARTPIC,
-        caption=Tr.START_TEXT.format(m.from_user.mention),
-        reply_markup=START_BTN,
-    )
 
-
-@Ly.on_message(filters.private & filters.text)
+@app.on_message(filters.private & filters.text)
 async def lytxt(c, m):
     if not Var.API:
         return await m.reply_text(
@@ -166,4 +164,4 @@ async def lytxt(c, m):
     )
 
 
-Ly.run()
+app.run()
