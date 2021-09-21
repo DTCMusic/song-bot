@@ -49,15 +49,15 @@ async def voice_handler(_, message):
 #         ]
     response = r.get('artists', None)
     if response:
-#         buttons.append(
-#             [
-#                 types.InlineKeyboardButton(
-#                     f'💿 More Tracks from {r["subtitle"]}',
-#                     switch_inline_query_current_chat=f'tracks {r["artists"][0]["id"]}',
-#                 )
-#             ]
-#         )
+        buttons.append(
+            [
+                types.InlineKeyboardButton(
+                    f'💿 More Tracks from {r["subtitle"]}',
+                    switch_inline_query_current_chat=f'tracks {r["artists"][0]["id"]}',
+                )
+            ]
+        )
     await message.reply_photo(
         r['images']['coverarthq'],
-        caption=out
-#         ,reply_markup=types.InlineKeyboardMarkup(buttons
+        caption=out,
+        reply_markup=types.InlineKeyboardMarkup(buttons
