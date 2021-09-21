@@ -60,5 +60,4 @@ async def voice_handler(_, message):
     await message.reply_photo(
         r['images']['coverarthq'],
         caption=out
-#       ,
-#         reply_markup=types.InlineKeyboardMarkup(buttons
+#         ,reply_markup=types.InlineKeyboardMarkup(buttons
