@@ -32,7 +32,7 @@ async def ytsearch(_, message: Message):
             await message.reply_text("/axtar əmrinə ehtiyacı var!")
             return
         query = message.text.split(None, 1)[1]
-        m = await message.reply_text(f" {results[i]['title']} Axtarılır....")
+        m = await message.reply_text("Axtarılır....")
         results = YoutubeSearch(query, max_results=4).to_dict()
         i = 0
         text = ""
