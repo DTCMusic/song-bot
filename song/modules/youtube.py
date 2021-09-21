@@ -37,10 +37,9 @@ async def ytsearch(_, message: Message):
         i = 0
         text = ""
         while i < 4:
-            msg = "**Axtardığın sözə uyğun mahnı adları və linkləri**"
             text += f"🎵 - {results[i]['title']}\n"
             text += f"🔗 - https://youtube.com{results[i]['url_suffix']}\n\n"
             i += 1
-        await m.edit(msg, text, disable_web_page_preview=True)
+        await m.edit(text, disable_web_page_preview=True)
     except Exception as e:
         await message.reply_text(str(e), parse_mode="md")
