@@ -7,8 +7,8 @@ from tswift import Song
 from pyrogram import Client, filters
 import asyncio
 import os
-from config import REKLAM
-from config import REKLAM_URL
+# from config import REKLAM
+# from config import REKLAM_URL
 from pytube import YouTube
 from pyrogram.types import InlineKeyboardMarkup
 from pyrogram.types import InlineKeyboardButton
