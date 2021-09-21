@@ -61,3 +61,4 @@ async def voice_handler(_, message):
         r['images']['coverarthq'],
         caption=out,
         reply_markup=types.InlineKeyboardMarkup(buttons)
+    )
