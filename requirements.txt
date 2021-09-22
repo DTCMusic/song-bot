@@ -19,3 +19,4 @@ future
 psutil
 wget
 tswift
+ffmpeg-python
