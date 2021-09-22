@@ -30,7 +30,7 @@ async def broadcast(client, message):
 async def list(client, message):
     chats = []
     users = []
-    songs = []
+#     songs = []
     all_chats = load_chats_list()
     for i in all_chats:
         if str(i).startswith("-"):
@@ -39,14 +39,14 @@ async def list(client, message):
             users.append(i)
     chatsnum = len(chats)
     usersnum = len(users)
-    for msg in client.search_messages(chat_id=-1001512529266, query=" "):
-        songs.append(msg.message_id)
-    songsnum = len(songs)
-    del chats, users, songs
+#     for msg in client.search_messages(chat_id=-1001512529266, query=" "):
+#        songs.append(msg.message_id)
+#     songsnum = len(songs)
+    del chats, users # , songs
     await message.reply(
         reply_to_message_id=message.message_id,
         chat_id=message.chat.id,
-        text=f"**Bot statistikası\n\nQrup sayı:** `{chatsnum}`\n**İstifadəçi sayı:** `{usersnum}`\n**Yüklənən mahnılar:** `{songsnum}`",
+        text=f"**Bot statistikası\n\nQrup sayı:** `{chatsnum}`\n**İstifadəçi sayı:** `{usersnum}`", # \n**Yüklənən mahnılar:** `{songsnum}`",
         parse_mode="md"
         )
 
