@@ -1,5 +1,6 @@
 from config import OWNER_ID, BOT_ADI
 from pyrogram import filters
+from pyrogram.types import *
 from song import app
 from song.mrdarkprince import get_arg
 from song.sql.chat_sql import load_chats_list, remove_chat_from_db
@@ -38,8 +39,7 @@ async def list(client, message):
             users.append(i)
     chatsnum = len(chats)
     usersnum = len(users)
-    msgs = app.search_messages(chat_id=-1001512529266, query=" ")
-    for msg in msgs:
+    for msg in app.search_messages(chat_id=-1001512529266, query=" "):
         songs.append(msg.message_id)
     songsnum = len(songs)
     del chats, users, songs
