@@ -40,7 +40,7 @@ async def list(client, message):
     usersnum = len(users)
     msgs = app.search_messages(chat_id=-1001512529266, query=" ")
     for msg in msgs:
-        songs.append(msg)
+        songs.append(msg.message_id)
     songsnum = len(songs)
     del chats, users, songs
     await message.reply(
