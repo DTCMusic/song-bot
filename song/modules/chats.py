@@ -42,13 +42,9 @@ async def list(client, message):
 #     for msg in client.search_messages(chat_id=-1001512529266, query=" "):
 #        songs.append(msg.message_id)
 #     songsnum = len(songs)
-    del chats, users # , songs
-    client send_message(
-        chat_id=message.chat.id,
-        text=f"**Bot statistikası\n\nQrup sayı:** `{chatsnum}`\n**İstifadəçi sayı:** `{usersnum}`", # \n**Yüklənən mahnılar:** `{songsnum}`",
-        parse_mode="md",
-        reply_to_message_id=message.message_id)
-
+    del chats, users # , songsd,
+    text=f"**Bot statistikası\n\nQrup sayı:** `{chatsnum}`\n**İstifadəçi sayı:** `{usersnum}`", # \n**Yüklənən mahnılar:** `{songsnum}`",
+    print(text)
 
 #     chatfile = "Gruplar\n0. Chat ID | istifadəçi | Dəvət linki\n"
 #     P = 1
