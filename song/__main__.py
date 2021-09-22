@@ -36,9 +36,6 @@ async def start(client, message):
                     InlineKeyboardButton(
                          text=f"{BTN_NAME}", url=f"{BTN_URL}" )
            
-                ],
-                [
-                    InlineKeyboardButton('Axtar 🔎', switch_inline_query_current_chat='')
                 ]
             ]
         )
