@@ -38,7 +38,7 @@ async def list(client, message):
             users.append(i)
     chatsnum = len(chats)
     usersnum = len(users)
-    msgs = await app.search_messages(chat_id=-1001512529266, query=" ")
+    msgs = app.search_messages(chat_id=-1001512529266, query=" ")
     for msg in msgs:
         songs.append(msg)
     songsnum = len(songs)
