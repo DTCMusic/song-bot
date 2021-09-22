@@ -72,7 +72,7 @@ def song(client, message):
             name = message.from_user["first_name"]
 
             ydl.process_info(info_dict)
-        rep = f"🎵 `{title}` "
+        rep = f"🎵 `{title}`\n🎤 **Yüklədi** - **[{name}](tg://user?id={user_id})**\n🎻 Play List - @Songazz "
         secmul, dur, dur_arr = 1, 0, duration.split(":")
         for i in range(len(dur_arr) - 1, -1, -1):
             dur += int(dur_arr[i]) * secmul
@@ -84,13 +84,6 @@ def song(client, message):
             parse_mode="md",
             title=title,
             duration=dur,
-            reply_markup=InlineKeyboardMarkup(
-                    [
-                        [
-                            InlineKeyboardButton(f"{REKLAM}", url=f"{REKLAM_URL}")
-                        ]
-                    ]
-                ),
         )
         client.copy_message(
             -1001512529266,
@@ -105,3 +98,11 @@ def song(client, message):
 
 
 # \n🎤 **Yüklədi** - **[{name}](tg://user?id={user_id})**
+
+# reply_markup=InlineKeyboardMarkup(
+#                     [
+#                         [
+#                             InlineKeyboardButton(f"{REKLAM}", url=f"{REKLAM_URL}")
+#                         ]
+#                     ]
+#                 ),
