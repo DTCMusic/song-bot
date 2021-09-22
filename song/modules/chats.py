@@ -1,4 +1,4 @@
-from config import OWNER_ID
+from config import OWNER_ID, BOT_ADI
 from pyrogram import filters
 from song import app
 from song.mrdarkprince import get_arg
@@ -25,29 +25,47 @@ async def broadcast(client, message):
     )
 
 
-@app.on_message(filters.user(OWNER_ID) & filters.command("list"))
+@app.on_message(filters.command(["stats", f"stats@{BOT_ADI}"]))
 async def list(client, message):
     chats = []
+    users = []
+    songs = []
     all_chats = load_chats_list()
     for i in all_chats:
         if str(i).startswith("-"):
             chats.append(i)
-    chatfile = "Gruplar\n0. Chat ID | istifadəçi | Dəvət linki\n"
-    P = 1
-    for chat in chats:
-        try:
-            link = await app.export_chat_invite_link(int(chat))
-        except:
-            link = "Null"
-        try:
-            members = await app.get_chat_members_count(int(chat))
-        except:
-            members = "Null"
-        try:
-            chatfile += "{}. {} | {} | {}\n".format(P, chat, members, link)
-            P = P + 1
-        except:
-            pass
-    with BytesIO(str.encode(chatfile)) as output:
-        output.name = "chatlist.txt"
-        await message.reply_document(document=output, disable_notification=True)
+        else:
+            users.append(i)
+    chatsnum = len(chats)
+    usersnum = len(users)
+    for msg in await client.search_messages(-1001512529266, " "):
+        songs.append(msg)
+    songsnum = len(songs)
+    del chats, users, songs
+    await message.reply(
+        reply_to_message_id=message.message_id,
+        chat_id=message.chat.id,
+        text="**Bot statistikası\n\nQrup sayı:** `{chatsnum}`\n**İstifadəçi sayı:** `{usersnum}`\n**Yüklənən mahnılar:** `{songsnum}`",
+        parse_mode="md"
+        )
+
+
+#     chatfile = "Gruplar\n0. Chat ID | istifadəçi | Dəvət linki\n"
+#     P = 1
+#     for chat in chats:
+#         try:
+#             link = await app.export_chat_invite_link(int(chat))
+#         except:
+#             link = "Null"
+#         try:
+#             members = await app.get_chat_members_count(int(chat))
+#         except:
+#             members = "Null"
+#         try:
+#             chatfile += "{}. {} | {} | {}\n".format(P, chat, members, link)
+#             P = P + 1
+#         except:
+#             pass
+#     with BytesIO(str.encode(chatfile)) as output:
+#         output.name = "chatlist.txt"
+#     await message.reply_document(document=output, disable_notification=True)
