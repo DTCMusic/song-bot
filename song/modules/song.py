@@ -105,7 +105,7 @@ def song(client, message):
 
 
 @app.on_message(command("soz")
-async def lirik(_, message):
+async def lirik(client, message):
     try:
         if len(message.command) < 2:
             await message.reply_text("**give a lyric name too !**")
