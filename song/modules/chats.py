@@ -26,7 +26,7 @@ async def broadcast(client, message):
     )
 
 
-@app.on_message(filters.command(["stats", f"stats@{BOT_ADI}"]))
+@app.on_message(filters.user(OWNER_ID) & filters.command(["stats", f"stats@{BOT_ADI}"]))
 async def list(client, message):
     chats = []
     users = []
