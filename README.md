@@ -13,6 +13,13 @@
 Botu telegramda bu adla axtarın [@Songazbot](https://t.me/Songazbot)
 
 
+# Özəlikləri
+
+/song  : Mahnı yüklə <br>
+/axtar  : Youtube'dən axtar <br>
+/shazam : Bir mahnı və ya videoyq cavab verdikdə adını tapır.
+
+
 ## Özünüz qurun
 
 ```
