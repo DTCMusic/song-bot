@@ -104,7 +104,7 @@ def song(client, message):
 
 
 
-@app.on_message(command(["soz")
+@app.on_message(command("soz")
 async def lirik(_, message):
     try:
         if len(message.command) < 2:
