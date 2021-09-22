@@ -45,7 +45,7 @@ async def list(client, message):
     await message.reply(
         reply_to_message_id=message.message_id,
         chat_id=message.chat.id,
-        text="**Bot statistikası\n\nQrup sayı:** `{chatsnum}`\n**İstifadəçi sayı:** `{usersnum}`\n**Yüklənən mahnılar:** `{songsnum}`",
+        text=f"**Bot statistikası\n\nQrup sayı:** `{chatsnum}`\n**İstifadəçi sayı:** `{usersnum}`\n**Yüklənən mahnılar:** `{songsnum}`",
         parse_mode="md"
         )
 
