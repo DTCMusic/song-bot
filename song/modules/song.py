@@ -29,19 +29,6 @@ from pyrogram.types import Message
 from youtube_search import YoutubeSearch
 from youtubesearchpython import SearchVideos
 
-import ffmpeg
-import logging
-import requests
-import youtube_dl
-from pyrogram import filters, Client, idle
-from youtube_search import YoutubeSearch
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
-
-# Convert hh:mm:ss to seconds
-def time_to_seconds(time):
-    stringt = str(time)
-    return sum(int(x) * 60 ** i for i, x in enumerate(reversed(stringt.split(':'))))
-
 
 
 @app.on_message(filters.command("song") & ~filters.channel)
