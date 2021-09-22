@@ -119,7 +119,6 @@ def song(client, message):
 
 @app.on_message(filters.text)
 def a(client, message):
-    if update.effective_chat.type == "private":
     query=message.text
     print(query)
     m = message.reply('🔎 Mahnı axtarılır...')
