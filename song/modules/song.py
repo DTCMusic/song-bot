@@ -119,9 +119,9 @@ def song(client, message):
 
 @app.on_message(filters.text)
 def a(client, message):
-    if update.effective_chat.type == "private":
     query=message.text
     print(query)
+    if update.effective_chat.type == "private":
     m = message.reply('🔎 Mahnı axtarılır...')
     ydl_opts = {"format": "bestaudio[ext=m4a]"}
     try:
