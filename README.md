@@ -31,5 +31,7 @@ python -m song
 
 Lahiyəçi: [Samil](https://t.me/samil)
 
+# Təşəkkürlər
+ • [Azim Azizov](https://github.com/azimazizov9150)
 
 
