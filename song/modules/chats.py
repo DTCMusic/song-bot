@@ -43,7 +43,7 @@ async def list(client, message):
 #        songs.append(msg.message_id)
 #     songsnum = len(songs)
     del chats, users # , songsd,
-    await message.reply(f"📊 **Bot statistikası\n\n👤 **İstifadəçi sayı:** `{usersnum}`\n👥 **Qrup sayı:** `{chatsnum}`") # \n**Yüklənən mahnılar:** `{songsnum}`",
+    await message.reply(f"📊 **Bot statistikası\n\n👤 İstifadəçi sayı:** `{usersnum}`\n👥 **Qrup sayı:** `{chatsnum}`") # \n**Yüklənən mahnılar:** `{songsnum}`",
 
 #     chatfile = "Gruplar\n0. Chat ID | istifadəçi | Dəvət linki\n"
 #     P = 1
