@@ -68,7 +68,7 @@ def song(client, message):
         m.edit("**Müsiqi adını yazmağı unutdunuz!**\n\n/song Mahnı adı")
         print(str(e))
         return
-    m.edit(f"`{title}` - **Yüklənir...** ✅")
+    m.edit(f"🎶 **[{name}](tg://user?id={user_id})** tərəfindən tələb olunan `{title}` yüklənir... ✅")
     try:
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             info_dict = ydl.extract_info(link, download=False)
@@ -79,7 +79,7 @@ def song(client, message):
             name = message.from_user["first_name"]
 
             ydl.process_info(info_dict)
-        rep = f"🎶 **[{name}](tg://user?id={user_id})** tərəfindən tələb olunan `{title}` adlı mahnı\n🎵 **Yüklədi** - **[{name}](tg://user?id={user_id})**"
+        rep = f"🎶`{title}` \n🎵 **Yüklədi** - **[{name}](tg://user?id={user_id})**"
         secmul, dur, dur_arr = 1, 0, duration.split(":")
         for i in range(len(dur_arr) - 1, -1, -1):
             dur += int(dur_arr[i]) * secmul
