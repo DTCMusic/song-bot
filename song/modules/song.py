@@ -58,6 +58,12 @@ def song(client, message):
         results[0]["url_suffix"]
         results[0]["views"]
 
+        chat_id = message.chat.id
+        user_id = message.from_user["id"]
+        name = message.from_user["first_name"]
+
+
+
     except Exception as e:
         m.edit("**Müsiqi adını yazmağı unutdunuz!**\n\n/song Mahnı adı")
         print(str(e))
@@ -73,7 +79,7 @@ def song(client, message):
             name = message.from_user["first_name"]
 
             ydl.process_info(info_dict)
-        rep = f"🎶 `{title}`\n🎵 **Yüklədi** - **[{name}](tg://user?id={user_id})**"
+        rep = f"🎶 **[{name}](tg://user?id={user_id})** tərəfindən tələb olunan `{title}` adlı mahnı\n🎵 **Yüklədi** - **[{name}](tg://user?id={user_id})**"
         secmul, dur, dur_arr = 1, 0, duration.split(":")
         for i in range(len(dur_arr) - 1, -1, -1):
             dur += int(dur_arr[i]) * secmul
