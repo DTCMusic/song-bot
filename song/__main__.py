@@ -53,7 +53,7 @@ async def start(client,message):
                     InlineKeyboardButton(
                          text=f"{LIST_NAME}", url=f"{LIST_URL}" ),
                     InlineKeyboardButton(
-                         text=f"🎶 Sizin Mahnılar", url="t.me/sonqaz" )
+                         text=f"🎶 Yüklənənlər ", url="t.me/sonqaz" )
            
                 ]
             ]
