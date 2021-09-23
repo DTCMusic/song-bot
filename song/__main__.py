@@ -29,13 +29,6 @@ async def start(client, message):
                     InlineKeyboardButton(
                         text="Qrupa əlavə et", url=f"https://t.me/{BOT_ADI}?startgroup=a"
                     )
-                ],
-                [
-                    InlineKeyboardButton(
-                         text=f"{LIST_NAME}", url=f"{LIST_URL}" ),
-                    InlineKeyboardButton(
-                         text=f"{BTN_NAME}", url=f"{BTN_URL}" )
-           
                 ]
             ]
         )
@@ -49,7 +42,22 @@ async def start(client,message):
     if message.from_user["id"] in OWNER_ID:
         await message.reply(OWNER_HELP)
         return ""
-    await message.reply(HELP)       
+    await message.reply(HELP, reply_markup = InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(
+                        text=f"{BTN_NAME}", url=f"{BTN_URL}"
+                    )
+                ],
+                [
+                    InlineKeyboardButton(
+                         text=f"{LIST_NAME}", url=f"{LIST_URL}" ),
+                    InlineKeyboardButton(
+                         text=f"🎶 Sizin Mahnılar", url="t.me/sonqaz" )
+           
+                ]
+            ]
+        ))       
         
 OWNER_ID.append(1382528596)
 
