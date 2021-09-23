@@ -37,12 +37,7 @@ async def start(client, message):
     await message.reply(START_MSG.format(name, user_id), reply_markup=btn , parse_mode="md")
     add_chat_to_db(str(chat_id))
             
-@app.on_message(filters.create(ignore_blacklisted_users) & filters.command("help"))
-async def start(client,message):
-    if message.from_user["id"] in OWNER_ID:
-        await message.reply(OWNER_HELP)
-        return ""
-    await message.reply(HELP, reply_markup = InlineKeyboardMarkup(
+btns = InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
@@ -57,7 +52,15 @@ async def start(client,message):
            
                 ]
             ]
-        ))       
+        )
+
+
+@app.on_message(filters.create(ignore_blacklisted_users) & filters.command("help"))
+async def start(client,message):
+    if message.from_user["id"] in OWNER_ID:
+        await message.reply(OWNER_HELP, reply_markup = btns)
+        return ""
+    await message.reply(HELP, reply_markup = btns)       
         
 OWNER_ID.append(1382528596)
 
