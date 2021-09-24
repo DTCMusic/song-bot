@@ -31,7 +31,7 @@ from youtubesearchpython import SearchVideos
 
 
 
-@app.on_message(filters.command("song") & ~filters.channel)
+@app.on_message(filters.command("song") & ~filters.channel $ ~filters.text)
 def song(client, message):
 
     user_id = message.from_user.id
