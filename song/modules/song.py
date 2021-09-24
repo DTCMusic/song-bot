@@ -31,13 +31,14 @@ from youtubesearchpython import SearchVideos
 
 
 
-@app.on_message(filters.command("song") & ~filters.channel $ ~filters.text)
+@app.on_message(filters.command("song") & ~filters.channel filters.text)
 def song(client, message):
 
     user_id = message.from_user.id
     user_name = message.from_user.first_name
     rpk = "[" + user_name + "](tg://user?id=" + str(user_id) + ")"
-
+    
+    query=message.text
     query = ""
     for i in message.command[1:]:
         query += " " + str(i)
