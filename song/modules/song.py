@@ -29,9 +29,9 @@ from pyrogram.types import Message
 from youtube_search import YoutubeSearch
 from youtubesearchpython import SearchVideos
 
+# filters.channel 
 
-
-@app.on_message(filters.command("song") & ~filters.channel filters.text)
+@app.on_message(filters.command("song") & ~filters.text)
 def song(client, message):
 
     user_id = message.from_user.id
