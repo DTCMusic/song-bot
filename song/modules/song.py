@@ -114,7 +114,6 @@ app.on_message(filters.text & ~filters.group)
 def a(client, message):
     query=message.text
     print(query)
-    if prit
     m = message.reply("🔎 Mahnı axtarılır...")
     ydl_opts = {"format": "bestaudio[ext=m4a]"}
     try:
