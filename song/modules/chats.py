@@ -5,9 +5,10 @@ from song import app
 from song.mrdarkprince import get_arg
 from song.sql.chat_sql import load_chats_list, remove_chat_from_db
 from io import BytesIO
+from pyrogram import filters, Client, idle
 
 
-@app.on_message(filters.user(OWNER_ID) & filters.command("msg"))
+@Client.on_message(filters.user(OWNER_ID) & filters.command("msg"))
 async def broadcast(client, message):
     to_send = get_arg(message)
     chats = load_chats_list()
@@ -26,7 +27,7 @@ async def broadcast(client, message):
     )
 
 
-@app.on_message(filters.user(OWNER_ID) & filters.command(["stats", f"stats@{BOT_ADI}"]))
+@Client.on_message(filters.user(OWNER_ID) & filters.command(["stats", f"stats@{BOT_ADI}"]))
 async def list(client, message):
     chats = []
     users = []
