@@ -16,3 +16,4 @@ ffmpeg
 Pillow
 wget
 ffmpeg-python
+ffmpeg-normalize
