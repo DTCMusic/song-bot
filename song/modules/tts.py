@@ -48,7 +48,7 @@ def convert(text):
     return audio
 
 
-@app.on_message(filters.command("ses"))
+@app.on_message(filters.command("tts"))
 async def text_to_speech(_, message: Message):
     if not message.reply_to_message:
         return await message.reply_text("💡 Bir səsə cavab verin...")
