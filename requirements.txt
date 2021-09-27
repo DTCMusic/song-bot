@@ -15,3 +15,4 @@ search_engine_parser
 ffmpeg
 Pillow
 wget
+ffmpeg-python
