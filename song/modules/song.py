@@ -108,11 +108,15 @@ def song(client, message):
         )
         m.delete()
     except Exception as e:
-        m.edit("Botda xəta yarandı. Bot sahibinə bildirin",
-            reply_markup=InlineKeyboardMarkup(
+            chat_id = message.chat.id
+            user_id = message.from_user["id"]
+            name = message.from_user["first_name"]
+        m.edit(f"ℹ️ Salam **[{name}](tg://user?id={user_id})** Botda bu xəta yarandısa zəhmət olmasa **bot sahibi ilə əlaqə saxlayın**.",
+               parse_mode="md",
+               reply_markup=InlineKeyboardMarkup(
                     [
                         [
-                            InlineKeyboardButton(f"Samil", url=f"t.me/samil")
+                            InlineKeyboardButton(f"📞 Əlaqə", url=f"t.me/samil")
                         ]
                     ]
                 ))
