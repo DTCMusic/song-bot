@@ -108,7 +108,7 @@ def song(client, message):
         )
         m.delete()
     except Exception as e:
-        m.edit("ℹ️ Salam Botda bu xəta yarandısa zəhmət olmasa **bot sahibi ilə əlaqə saxlayın.**",
+        m.edit("ℹ️ Bu mesajı aldınızsa aşağıdakıları yoxlayın.\n\n1. Mahnı oxuyanın adını yazın\n2. Mahnı adını düzgün yazın.\n3. Başqa mahnı adı yazıb yoxlayın\n\nBu hallarda hələdə düzəlmədisə **BOT SAHİBİ İLƏ ƏLAQƏ SAXLAYIN**",
                parse_mode="md",
                reply_markup=InlineKeyboardMarkup(
                     [
