@@ -68,7 +68,7 @@ def song(client, message):
         m.edit("**Müsiqi adını yazmağı unutdunuz!**\n\n/song Mahnı adı")
         print(str(e))
         return
-    m.edit(f"🎶 **[{name}](tg://user?id={user_id})** tərəfindən tələb olunan `{title}` yüklənir... ✅")
+    m.edit(f"🎵 `{title}` yüklənir... ✅")
     try:
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             info_dict = ydl.extract_info(link, download=False)
@@ -77,9 +77,11 @@ def song(client, message):
             chat_id = message.chat.id
             user_id = message.from_user["id"]
             name = message.from_user["first_name"]
+            
+#  \n **Yüklədi** - **[{name}](tg://user?id={user_id})**
 
             ydl.process_info(info_dict)
-        rep = f"🎶`{title}` \n🎵 **Yüklədi** - **[{name}](tg://user?id={user_id})**"
+        rep = f"🎵 `{title}`"
         secmul, dur, dur_arr = 1, 0, duration.split(":")
         for i in range(len(dur_arr) - 1, -1, -1):
             dur += int(dur_arr[i]) * secmul
@@ -106,7 +108,14 @@ def song(client, message):
         )
         m.delete()
     except Exception as e:
-        m.edit("Botda xəta yarandı\nBot sahibinə bildirin: @Samil")
+        m.edit("Botda xəta yarandı. Bot sahibinə bildirin",
+            reply_markup=InlineKeyboardMarkup(
+                    [
+                        [
+                            InlineKeyboardButton(f"Samil", url=f"t.me/samil")
+                        ]
+                    ]
+                ))
         print(e)
 # \n🎤 **Yüklədi** - **[{name}](tg://user?id={user_id})**
 
