@@ -57,7 +57,6 @@ def song(client, message):
         duration = results[0]["duration"]
         results[0]["url_suffix"]
         results[0]["views"]
-        artist=[0]["artist"]
 
         chat_id = message.chat.id
         user_id = message.from_user["id"]
@@ -93,7 +92,6 @@ def song(client, message):
             thumb=thumb_name,
             parse_mode="md",
             title=title,
-            performer=artist,
             duration=dur,
             reply_markup=InlineKeyboardMarkup(
                     [
