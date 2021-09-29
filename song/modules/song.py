@@ -93,7 +93,7 @@ def song(client, message):
             thumb=thumb_name,
             parse_mode="md",
             title=title,
-            performer=artist
+            performer=artist,
             duration=dur,
             reply_markup=InlineKeyboardMarkup(
                     [
