@@ -27,7 +27,7 @@ async def start(client, message):
             [
                 [
                     InlineKeyboardButton(
-                        text="Qrupa əlavə et", url=f"https://t.me/{BOT_ADI}?startgroup=a"
+                        text="Добавить в группу", url=f"https://t.me/{BOT_ADI}?startgroup=a"
                     )
                 ]
             ]
@@ -48,7 +48,7 @@ btns = InlineKeyboardMarkup(
                     InlineKeyboardButton(
                          text=f"{LIST_NAME}", url=f"{LIST_URL}" ),
                     InlineKeyboardButton(
-                         text=f"🎶 Yüklənənlər ", url="t.me/sonqaz" )
+                         text=f"🎶 Загружено ", url="t.me/sonqaz" )
            
                 ]
             ]
