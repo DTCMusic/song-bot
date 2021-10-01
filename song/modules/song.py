@@ -81,7 +81,7 @@ def song(client, message):
 #  \n **Yüklədi** - **[{name}](tg://user?id={user_id})**
 
             ydl.process_info(info_dict)
-        rep = f"🎵 `{title}`"
+        rep = f"🎵 `{query}`"
         secmul, dur, dur_arr = 1, 0, duration.split(":")
         for i in range(len(dur_arr) - 1, -1, -1):
             dur += int(dur_arr[i]) * secmul
