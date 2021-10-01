@@ -68,7 +68,7 @@ def song(client, message):
         m.edit("**Mahnı adını yazmağı unutdunuz və ya düzgün formatda yazmadınız**\n/song Mahnı adı")
         print(str(e))
         return
-    m.edit(f"🎵 `{title}` загружен... ✅")
+    m.edit(f"🎵 `{query}` Yüklənir... ✅")
     try:
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             info_dict = ydl.extract_info(link, download=False)
