@@ -42,7 +42,7 @@ def song(client, message):
     for i in message.command[1:]:
         query += " " + str(i)
     print(query)
-    m = message.reply("🔎 Ищу музыку...")
+    m = message.reply("🔎 Axtarılır...")
     ydl_opts = {"format": "bestaudio[ext=m4a]"}
     try:
         results = YoutubeSearch(query, max_results=1).to_dict()
@@ -65,7 +65,7 @@ def song(client, message):
 
 
     except Exception as e:
-        m.edit("**Вы забыли написать название музыки!**\n\n/song Название песни")
+        m.edit("**Mahnı adını yazmağı unutdunuz və ya düzgün formatda yazmadınız**\n/song Mahnı adı")
         print(str(e))
         return
     m.edit(f"🎵 `{title}` загружен... ✅")
@@ -108,12 +108,12 @@ def song(client, message):
         )
         m.delete()
     except Exception as e:
-        m.edit("ℹ️ Если вы получили это сообщение, проверьте следующее.\n\n1.Напишите имя певца\n2. Напишите название песни правильно.\n3. Попробуйте другое название песни\n\nЕсли эти дела еще не решены **Связаться с ВЛАДЕЛЬЦЕМ**",
+        m.edit("ℹ️ Bu mesajı aldınızsa bot sahibi ilə əlaqə saxlamazdan əvvəl mahnı adınız düzgün yazın. Bu xətanı birdaha alsaınız **Bot sahibinə bildirin**",
                parse_mode="md",
                reply_markup=InlineKeyboardMarkup(
                     [
                         [
-                            InlineKeyboardButton(f"📞 Контакт", url=f"t.me/samil")
+                            InlineKeyboardButton(f"📞 Əlaqə", url=f"t.me/samil")
                         ]
                     ]
                 ))
