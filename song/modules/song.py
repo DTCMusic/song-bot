@@ -48,7 +48,7 @@ def song(client, message):
         results = YoutubeSearch(query, max_results=1).to_dict()
         link = f"https://youtube.com{results[0]['url_suffix']}"
         # print(results)
-        title = results[0]["title"][:60]
+        title = results[0]["title"][:50]
         thumbnail = results[0]["thumbnails"][0]
         thumb_name = f"thumb{title}.jpg"
         thumb = requests.get(thumbnail, allow_redirects=True)
@@ -81,7 +81,7 @@ def song(client, message):
 #  \n **Yüklədi** - **[{name}](tg://user?id={user_id})**
 
             ydl.process_info(info_dict)
-        rep = f"🎵 `{query}`"
+        rep = f"🎵 `{title}`"
         secmul, dur, dur_arr = 1, 0, duration.split(":")
         for i in range(len(dur_arr) - 1, -1, -1):
             dur += int(dur_arr[i]) * secmul
