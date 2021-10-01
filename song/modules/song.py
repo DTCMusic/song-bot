@@ -42,7 +42,7 @@ def song(client, message):
     for i in message.command[1:]:
         query += " " + str(i)
     print(query)
-    m = message.reply("🔎 Mahnı axtarılır...")
+    m = message.reply("🔎 Ищу музыку...")
     ydl_opts = {"format": "bestaudio[ext=m4a]"}
     try:
         results = YoutubeSearch(query, max_results=1).to_dict()
@@ -65,10 +65,10 @@ def song(client, message):
 
 
     except Exception as e:
-        m.edit("**Müsiqi adını yazmağı unutdunuz!**\n\n/song Mahnı adı")
+        m.edit("**Вы забыли написать название музыки!**\n\n/song Название песни")
         print(str(e))
         return
-    m.edit(f"🎵 `{title}` yüklənir... ✅")
+    m.edit(f"🎵 `{title}` загружен... ✅")
     try:
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             info_dict = ydl.extract_info(link, download=False)
@@ -108,12 +108,12 @@ def song(client, message):
         )
         m.delete()
     except Exception as e:
-        m.edit("ℹ️ Bu mesajı aldınızsa aşağıdakıları yoxlayın.\n\n1. Mahnı oxuyanın adını yazın\n2. Mahnı adını düzgün yazın.\n3. Başqa mahnı adı yazıb yoxlayın\n\nBu hallarda hələdə düzəlmədisə **BOT SAHİBİ İLƏ ƏLAQƏ SAXLAYIN**",
+        m.edit("ℹ️ Если вы получили это сообщение, проверьте следующее.\n\n1.Напишите имя певца\n2. Напишите название песни правильно.\n3. Попробуйте другое название песни\n\nЕсли эти дела еще не решены **Связаться с ВЛАДЕЛЬЦЕМ**",
                parse_mode="md",
                reply_markup=InlineKeyboardMarkup(
                     [
                         [
-                            InlineKeyboardButton(f"📞 Əlaqə", url=f"t.me/samil")
+                            InlineKeyboardButton(f"📞 Контакт", url=f"t.me/samil")
                         ]
                     ]
                 ))
