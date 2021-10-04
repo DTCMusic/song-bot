@@ -307,7 +307,7 @@ async def vsong(client, message):
             ytdl_data = ytdl.extract_info(link, download=True)
             file_name = ytdl.prepare_filename(ytdl_data)
     except Exception as e:
-        return await msg.edit(f"🚫 **error:** {e}")
+        return await msg.edit(f"🚫 **Xəta:** {e}")
     preview = wget.download(thumbnail)
     await msg.edit("📤 **Video yüklənir...**")
     await message.reply_video(
@@ -315,10 +315,21 @@ async def vsong(client, message):
         duration=int(ytdl_data["duration"]),
         thumb=preview,
         caption=ytdl_data["title"],
+        reply_markup=InlineKeyboardMarkup(
+                    [
+                        [
+                            InlineKeyboardButton(f"📞 Əlaqə", url=f"t.me/samil")
+                        ]
+                    ]
+                )
     )
+            client.copy_message(
+            -1001578939797,
+            message.chat.id,
+            mess.message_id
+        )
     try:
         os.remove(file_name)
         await msg.delete()
     except Exception as e:
         print(e)
-
