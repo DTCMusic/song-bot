@@ -301,8 +301,10 @@ async def vsong(client, message):
         results[0]["url_suffix"]
         results[0]["views"]
         message.from_user.mention
-        msg = await message.reply(f"📥 {title} **video yüklənir...**")
+   except Exception as e:
+        print(e)
     try:
+        msg = await message.reply(f"📥 {title} **video yüklənir...**")
         with YoutubeDL(ydl_opts) as ytdl:
             ytdl_data = ytdl.extract_info(link, download=True)
             file_name = ytdl.prepare_filename(ytdl_data)
