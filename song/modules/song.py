@@ -279,7 +279,7 @@ def time_to_seconds(times):
 
 
 @app.on_message(filters.create(ignore_blacklisted_users) & filters.command("video"))
-async def vsong(client, message):
+async def video(client, message):
     ydl_opts = {
         "format": "best",
         "keepvideo": True,
