@@ -325,12 +325,4 @@ async def vsong(client, message):
                     ]
                 ),
         )
-    client.copy_message(
-        -1001578939797,
-        message.chat.id,
-        mes.message_id
-        )
-        m.delete()
-    except Exception as e:
-        print(e)
 
