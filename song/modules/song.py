@@ -312,7 +312,7 @@ async def vsong(client, message):
         return await msg.edit(f"🚫 **Xəta:** {e}")
     preview = wget.download(thumbnail)
 #     await msg.edit("📤 **Video yüklənir...**")
-    mes = message.reply_video(
+    message = message.reply_video(
         file_name,
         duration=int(ytdl_data["duration"]),
         thumb=preview,
@@ -328,6 +328,6 @@ async def vsong(client, message):
     client.copy_message(
         -1001578939797,
         message.chat.id,
-        mes.message_id
+        message.message_id
         )
 
