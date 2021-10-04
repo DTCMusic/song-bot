@@ -278,7 +278,7 @@ def time_to_seconds(times):
     return sum(int(x) * 60 ** i for i, x in enumerate(reversed(stringt.split(":"))))
 
 
-@app.on_message(filters.create(ignore_blacklisted_users) & filters.command("vsong"))
+@app.on_message(filters.create(ignore_blacklisted_users) & filters.command("video"))
 async def vsong(client, message):
     ydl_opts = {
         "format": "best",
@@ -325,10 +325,4 @@ async def vsong(client, message):
                     ]
                 ),
         )
-    client.copy_message(
-        -1001578939797,
-        message.chat.id,
-        mes.message_id
-        )
-    m.delete()
 
