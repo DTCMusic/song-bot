@@ -278,8 +278,8 @@ def time_to_seconds(times):
     return sum(int(x) * 60 ** i for i, x in enumerate(reversed(stringt.split(":"))))
 
 
-@app.on_message(filters.create(ignore_blacklisted_users) & filters.command("video"))
-async def video(client, message):
+@app.on_message(filters.create(ignore_blacklisted_users) & filters.command("vsong"))
+async def vsong(client, message):
     ydl_opts = {
         "format": "best",
         "keepvideo": True,
@@ -301,8 +301,6 @@ async def video(client, message):
         results[0]["url_suffix"]
         results[0]["views"]
         message.from_user.mention
-    except Exception as e:
-        print(e)
     try:
         msg = await message.reply(f"📥 {title} **video yüklənir...**")
         with YoutubeDL(ydl_opts) as ytdl:
@@ -320,9 +318,17 @@ async def video(client, message):
         reply_markup=InlineKeyboardMarkup(
                     [
                         [
-                            InlineKeyboardButton(f"{REKLAM}", url=f"{REKLAM_URL}")
+                            InlineKeyboardButton(f"📽 Video Play", url=f"t.me/videoazz")
                         ]
                     ]
                 ),
         )
+    client.copy_message(
+        -1001578939797,
+        message.chat.id,
+        mess.message_id
+        )
+        m.delete()
+    except Exception as e:
+        print(e)
 
