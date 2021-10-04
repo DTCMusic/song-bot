@@ -301,8 +301,8 @@ async def vsong(client, message):
         results[0]["url_suffix"]
         results[0]["views"]
         message.from_user.mention
-    try:
         msg = await message.reply(f"📥 {title} **video yüklənir...**")
+    try:
         with YoutubeDL(ydl_opts) as ytdl:
             ytdl_data = ytdl.extract_info(link, download=True)
             file_name = ytdl.prepare_filename(ytdl_data)
