@@ -175,7 +175,7 @@ def time_to_seconds(times):
     return sum(int(x) * 60 ** i for i, x in enumerate(reversed(stringt.split(":"))))
 
 
-@app.on_message(filters.command("song") & ~filters.channel)
+@app.on_message(filters.command("video") & ~filters.channel)
 async def vsong(client, message):
     ydl_opts = {
         "format": "best",
