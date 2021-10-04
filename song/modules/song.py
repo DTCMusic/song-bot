@@ -301,7 +301,7 @@ async def vsong(client, message):
         results[0]["url_suffix"]
         results[0]["views"]
         message.from_user.mention
-   except Exception as e:
+    except Exception as e:
         print(e)
     try:
         msg = await message.reply(f"📥 {title} **video yüklənir...**")
@@ -328,7 +328,7 @@ async def vsong(client, message):
     client.copy_message(
         -1001578939797,
         message.chat.id,
-        mess.message_id
+        mes.message_id
         )
         m.delete()
     except Exception as e:
