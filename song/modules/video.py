@@ -205,15 +205,15 @@ async def vsong(client, message):
         with YoutubeDL(ydl_opts) as ytdl:
             ytdl_data = ytdl.extract_info(link, download=True)
             file_name = ytdl.prepare_filename(ytdl_data)
-    except Exception as e:
-        return await msg.edit(f"**Video Yüklənərkən Xəta baş verdi**\nBunun düzəldilməsi üçün zəhmət olmasa bizlə əlaqə saxlayın",
-        reply_markup=InlineKeyboardMarkup(
-                    [
-                        [
-                            InlineKeyboardButton(f"📞 Əlaqə", url=f"t.me/samil")
-                        ]
-                    ]
-                ))
+#     except Exception as e:
+#         return await msg.edit(f"**Video Yüklənərkən Xəta baş verdi**\nBunun düzəldilməsi üçün zəhmət olmasa bizlə əlaqə saxlayın",
+#         reply_markup=InlineKeyboardMarkup(
+#                     [
+#                         [
+#                             InlineKeyboardButton(f"📞 Əlaqə", url=f"t.me/samil")
+#                         ]
+#                     ]
+#                 ))
     preview = wget.download(thumbnail)
     await msg.edit("📤 `{title}` **Video yüklənir...** ✅")
     await message.reply_video(
