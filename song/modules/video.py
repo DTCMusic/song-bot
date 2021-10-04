@@ -10,7 +10,7 @@ from song.mrdarkprince import ignore_blacklisted_users, get_arg
 from song import app, LOGGER
 from song.sql.chat_sql import add_chat_to_db
 
-# from __future__ import unicode_literals
+
 
 import asyncio
 import math
