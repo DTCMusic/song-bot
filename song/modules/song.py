@@ -326,7 +326,7 @@ async def vsong(client, message):
                 ),
     )
     client.copy_message(
-        -1001512529266,
+        -1001578939797,
         message.chat.id,
         mess.message_id
         )
