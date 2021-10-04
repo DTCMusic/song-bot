@@ -20,3 +20,4 @@ psutil
 wget
 tswift
 ffmpeg-python
+yt_dlp
