@@ -175,9 +175,7 @@ def time_to_seconds(times):
     return sum(int(x) * 60 ** i for i, x in enumerate(reversed(stringt.split(":"))))
 
 
-@app.on_message(
-    command(["video", "video@songazbot"]) & ~filters.edited
-)
+@app.on_message(filters.command("song") & ~filters.channel)
 async def vsong(client, message):
     ydl_opts = {
         "format": "best",
@@ -208,7 +206,14 @@ async def vsong(client, message):
             ytdl_data = ytdl.extract_info(link, download=True)
             file_name = ytdl.prepare_filename(ytdl_data)
     except Exception as e:
-        return await msg.edit(f"**Xəta baş verdi**:\n{e}")
+        return await msg.edit(f"**Video Yüklənərkən Xəta baş verdi**\nBunun düzəldilməsi üçün zəhmət olmasa bizlə əlaqə saxlayın",
+        reply_markup=InlineKeyboardMarkup(
+                    [
+                        [
+                            InlineKeyboardButton(f"📞 Əlaqə", url=f"t.me/samil")
+                        ]
+                    ]
+                ))
     preview = wget.download(thumbnail)
     await msg.edit("📤 `{title}` **Video yüklənir...** ✅")
     await message.reply_video(
