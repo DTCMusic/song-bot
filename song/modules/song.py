@@ -324,14 +324,10 @@ async def vsong(client, message):
                         ]
                     ]
                 ),
+    )
+    client.copy_message(
+        -1001512529266,
+        message.chat.id,
+        mess.message_id
         )
-       client.copy_message(
-          -1001512529266,
-          message.chat.id,
-          mess.message_id
-        )
-    try:
-        os.remove(file_name)
-        await msg.delete()
-    except Exception as e:
-        print(e)
+
