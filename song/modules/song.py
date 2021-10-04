@@ -312,7 +312,7 @@ async def vsong(client, message):
         return await msg.edit(f"🚫 **Xəta:** {e}")
     preview = wget.download(thumbnail)
 #     await msg.edit("📤 **Video yüklənir...**")
-    vid = message.reply_video(
+    mes = message.reply_video(
         file_name,
         duration=int(ytdl_data["duration"]),
         thumb=preview,
@@ -325,21 +325,9 @@ async def vsong(client, message):
                     ]
                 ),
     )
-    client.copy_message(
+    client.copy_video(
         -1001578939797,
         message.chat.id,
-        vid.message_id
+        mes.message_id
         )
-        m.delete()
-    except Exception as e:
-        m.edit("ℹ️ Bu mesajı aldınızsa bot sahibi ilə əlaqə saxlamazdan əvvəl mahnı adınız düzgün yazın. Bu xətanı birdaha alsaınız **Bot sahibinə bildirin**",
-               parse_mode="md",
-               reply_markup=InlineKeyboardMarkup(
-                    [
-                        [
-                            InlineKeyboardButton(f"📞 Əlaqə", url=f"t.me/samil")
-                        ]
-                    ]
-                ))
-        print(e)
 
