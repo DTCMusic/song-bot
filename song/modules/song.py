@@ -318,10 +318,10 @@ async def vsong(client, message):
         reply_markup=InlineKeyboardMarkup(
                     [
                         [
-                            InlineKeyboardButton(f"📞 Əlaqə", url=f"t.me/samil")
+                            InlineKeyboardButton(f"{REKLAM}", url=f"{REKLAM_URL}")
                         ]
                     ]
-                )
+                ),
     )
             client.copy_message(
             -1001578939797,
