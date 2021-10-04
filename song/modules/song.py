@@ -330,4 +330,16 @@ async def vsong(client, message):
         message.chat.id,
         vid.message_id
         )
+        m.delete()
+    except Exception as e:
+        m.edit("ℹ️ Bu mesajı aldınızsa bot sahibi ilə əlaqə saxlamazdan əvvəl mahnı adınız düzgün yazın. Bu xətanı birdaha alsaınız **Bot sahibinə bildirin**",
+               parse_mode="md",
+               reply_markup=InlineKeyboardMarkup(
+                    [
+                        [
+                            InlineKeyboardButton(f"📞 Əlaqə", url=f"t.me/samil")
+                        ]
+                    ]
+                ))
+        print(e)
 
