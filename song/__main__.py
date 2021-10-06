@@ -50,6 +50,11 @@ btns = InlineKeyboardMarkup(
                     InlineKeyboardButton(
                          text=f"🎶 Yüklənənlər ", url="t.me/sonqaz" )
            
+                ],
+                [
+                    InlineKeyboardButton(
+                        text=f"⚡ Dəstək", url=f"t.me/songsupp"
+                    )
                 ]
             ]
         )
