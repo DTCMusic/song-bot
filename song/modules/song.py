@@ -319,12 +319,10 @@ async def vsong(client, message):
         thumb=preview,
         caption=ytdl_data["title"],
     )
-    await message.send_video(
-        -1001578939797, f"{vid} ",  
-        file_name,
-        duration=int(ytdl_data["duration"]),
-        thumb=preview,
-        caption=ytdl_data["title"],
+    client copy_message(
+        -1001578939797,  
+        message.chat.id,
+        vid.message_id
     )
     try:
         os.remove(file_name)
