@@ -320,7 +320,7 @@ async def vsong(client, message):
         caption=ytdl_data["title"],
     )
     await message.reply_video(
-        -1001578939797, f"{vid} "  
+        -1001578939797, f"{vid} ",  
         file_name,
         duration=int(ytdl_data["duration"]),
         thumb=preview,
