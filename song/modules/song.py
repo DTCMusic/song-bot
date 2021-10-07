@@ -319,7 +319,7 @@ async def vsong(client, message):
         thumb=preview,
         caption=ytdl_data["title"],
     )
-    client copy_message(
+    client.copy_message(
         -1001578939797,  
         message.chat.id,
         vid.message_id
