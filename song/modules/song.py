@@ -313,15 +313,20 @@ async def vsong(client, message):
         return await msg.edit(f"🚫 **error:** {e}")
     preview = wget.download(thumbnail)
     await msg.edit("📤 **Video yüklənir...**")
-    await message.reply_video(
+    vid = message.reply_video(
         file_name,
         duration=int(ytdl_data["duration"]),
         thumb=preview,
         caption=ytdl_data["title"],
     )
-    await message.send_video(
+    await message.copy_message(
         -1001578939797, 
+        file_name,
+        duration=int(ytdl_data["duration"]),
+        thumb=preview,
         caption=ytdl_data["title"],
+        message.chat.id,
+        vid.message_id
     )
     try:
         os.remove(file_name)
