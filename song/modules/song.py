@@ -319,7 +319,7 @@ async def vsong(client, message):
         thumb=preview,
         caption=ytdl_data["title"],
     )
-    await message.reply_video(
+    await message.send_video(
         -1001578939797, f"{vid} ",  
         file_name,
         duration=int(ytdl_data["duration"]),
