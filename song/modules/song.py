@@ -319,7 +319,7 @@ async def vsong(client, message):
         thumb=preview,
         caption=ytdl_data["title"],
     )
-    await message.copy_message(
+    await copy_message(
         -1001578939797, 
         file_name,
         duration=int(ytdl_data["duration"]),
