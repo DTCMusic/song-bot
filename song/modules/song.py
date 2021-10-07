@@ -310,7 +310,7 @@ async def vsong(client, message):
             ytdl_data = ytdl.extract_info(link, download=True)
             file_name = ytdl.prepare_filename(ytdl_data)
     except Exception as e:
-        return await msg.edit(f"🚫 **error:** {e}")
+        return await msg.edit(f"🚫 **Xeta:** {e}")
     preview = wget.download(thumbnail)
     await msg.edit("📤 **Video yüklənir...**")
     vid = message.reply_video(
