@@ -58,7 +58,7 @@ async def vsong(client, message):
             ytdl_data = ytdl.extract_info(link, download=True)
             file_name = ytdl.prepare_filename(ytdl_data)
     except Exception as e:
-        return await msg.edit(f"ℹ️ Salam!\nBu mesajı aldığınız zaman dəstək qrupun qatılarağ bunu bildirin\n**Həll Yolları**\n\n• __Mahnı adını düzgün yazın__\n• __Mahnı adını dəyişdirin__\n• __Sənətçi adi ilə yazın__",
+        return await msg.edit(f"ℹ️ Salam!\nBu mesajı aldığınız zaman dəstək qrupun qatılarağ bunu bildirin\n**Həll Yolları**\n\n• __Video adını düzgün yazın__\n• __Video adını dəyişdirin__\n• __Sənətçi adi ilə yazın__",
                parse_mode="md",
                reply_markup=InlineKeyboardMarkup(
                     [
