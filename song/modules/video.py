@@ -8,8 +8,6 @@ import requests
 import wget
 import youtube_dl
 
-from config import REKLAM
-from config import REKLAM_URL
 from pytube import YouTube
 
 from song.mrdarkprince import ignore_blacklisted_users, get_arg
@@ -60,7 +58,15 @@ async def vsong(client, message):
             ytdl_data = ytdl.extract_info(link, download=True)
             file_name = ytdl.prepare_filename(ytdl_data)
     except Exception as e:
-        return await msg.edit(f"🚫 **xəta:** Bot sahibinə bildirin")
+        return await msg.edit(f"ℹ️ Salam!\nBu mesajı aldığınız zaman dəstək qrupun qatılarağ bunu bildirin\n**Həll Yolları**\n\n• __Mahnı adını düzgün yazın__\n• __Mahnı adını dəyişdirin__\n• __Sənətçi adi ilə yazın__",
+               parse_mode="md",
+               reply_markup=InlineKeyboardMarkup(
+                    [
+                        [
+                            InlineKeyboardButton(f"📞 Əlaqə", url=f"t.me/SongSupp")
+                        ]
+                    ]
+                ))
     preview = wget.download(thumbnail)
     await msg.edit("📤 **Video yüklənir...**")
     mess = await message.reply_video(
