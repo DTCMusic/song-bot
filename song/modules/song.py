@@ -163,7 +163,7 @@ async def vsong(client, message):
         reply_markup=InlineKeyboardMarkup(
                     [
                         [
-                            InlineKeyboardButton(f"{REKLAM}", url=f"{REKLAM_URL}")
+                            InlineKeyboardButton(f"🎬 Play List", url=f"t.me/videoazz")
                         ]
                     ]
                 ),
