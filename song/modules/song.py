@@ -147,14 +147,14 @@ async def vsong(client, message):
     except Exception as e:
         print(e)
     try:
-        msg = await message.reply("📥 **Video yüklənir...**")
+        msg = await message.reply("🔍 **Viddo Axtarılır...**")
         with YoutubeDL(ydl_opts) as ytdl:
             ytdl_data = ytdl.extract_info(link, download=True)
             file_name = ytdl.prepare_filename(ytdl_data)
     except Exception as e:
         return await msg.edit(f"🚫 **xəta:** Bot sahibinə bildirin")
     preview = wget.download(thumbnail)
-    await msg.edit("📤 **Video yüklənir...**")
+    await msg.edit(f"📥 `{title}` **yüklənir...**")
     mess = await message.reply_video(
         file_name,
         duration=int(ytdl_data["duration"]),
