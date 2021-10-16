@@ -68,7 +68,7 @@ async def vsong(client, message):
                     ]
                 ))
     preview = wget.download(thumbnail)
-    await msg.edit(f"📹 `{title}` **yüklənir** ✅")
+#     await msg.edit(f"📹 `{title}` **yüklənir** ✅")
     mess = await message.reply_video(
         file_name,
         duration=int(ytdl_data["duration"]),
