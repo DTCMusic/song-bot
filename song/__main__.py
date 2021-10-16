@@ -29,6 +29,14 @@ async def start(client, message):
                     InlineKeyboardButton(
                         text="Qrupa əlavə et", url=f"https://t.me/{BOT_ADI}?startgroup=a"
                     )
+                ],
+                [
+                    InlineKeyboardButton(
+                        text="📹 Song List", url=f"https://t.me/songazz"
+                    ),
+                    InlineKeyboardButton(
+                        text="📹 Video List", url=f"https://t.me/Videoazz"
+                    )
                 ]
             ]
         )
