@@ -70,11 +70,6 @@
             "description": "Clon bot linki",
             "required": true,
             "value": "t.me/songazz"
-        },
-        "DATABASE_URL": {
-            "description": "Bot Data",
-            "required": true,
-            "value": "postgres://loeeoxugpxhppg:f612ce112f9980e04eb2479f8e17dfc303d2eb51318e9270362454c21b26729a@ec2-50-16-198-4.compute-1.amazonaws.com:5432/ddc9sokb8q7tnv"
         }
     },
     "buildpacks": [
