@@ -98,13 +98,12 @@ def a(client, message):
         caption=rep,quote=False, 
         title=title, 
         duration=dur, 
-        performer=str(info_dict["uploader"]), 
+        performer="Songazz" #str(info_dict["uploader"]), 
         thumb=thumb_name,
         reply_markup=InlineKeyboardMarkup(
                     [
                         [
-                            InlineKeyboardButton(f"🎵 Play List", url=f"t.me/songazz"),
-                            InlineKeyboardButton('Yenidən Axtar 🔎', switch_inline_query_current_chat='')
+                            InlineKeyboardButton(f"🎵 Play List", url=f"t.me/songazz")
                         ]
                     ]
                 ),
