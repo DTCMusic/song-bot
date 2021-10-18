@@ -174,7 +174,8 @@ async def vsong(client, message):
         file_name,
         duration=int(ytdl_data["duration"]),
         thumb=preview,
-        caption=ytdl_data["title"],
+        caption= f"📹 `{title}`",
+        parse_mode="md",#ytdl_data["title"],
         reply_markup=InlineKeyboardMarkup(
                     [
                         [
