@@ -170,7 +170,7 @@ def a(client, message):
   #  m.edit(f"🎵 `{query}` Yüklənir... ✅")
   #  try:
    #     with youtube_dl.YoutubeDL(ydl_opts) as ydl:
-    $        info_dict = ydl.extract_info(link, download=False)
+    #        info_dict = ydl.extract_info(link, download=False)
     #        audio_file = ydl.prepare_filename(info_dict)
 
     #        chat_id = message.chat.id
