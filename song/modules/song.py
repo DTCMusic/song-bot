@@ -115,7 +115,18 @@ def a(client, message):
         )
         m.delete()
     except Exception as e:
-        m.edit('`Plesase try again later`')
+       m.edit("ℹ️ Salam! yükləmədə prablem yaşadınızsa zəhmət olmasa Lahiyəçiyə və ya Dəstək qrupuna bildirin",
+              parse_mode="md",
+              reply_markup=InlineKeyboardMarkup(
+                   [
+                       [
+                           InlineKeyboardButton(f"🖥 Lahiyəçi", url=f"t.me/Songazz")
+                       ],
+                       [
+                           InlineKeyboardButton(f"📞 Əlaqə", url=f"t.me/SongSupp")
+                       ]
+                   ]
+               ))
         print(e)
     try:
         os.remove(audio_file)
@@ -207,14 +218,6 @@ def a(client, message):
     #    )
    #     m.delete()
   #  except Exception as e:
-   #     m.edit("ℹ️ Salam!\nBu mesajı aldığınız zaman dəstək qrupun qatılarağ bunu bildirin\n**Həll Yolları**\n\n• __Mahnı adını düzgün yazın__\n• __Mahnı adını dəyişdirin__\n• __Sənətçi adi ilə yazın__",
-    #           parse_mode="md",
-    #           reply_markup=InlineKeyboardMarkup(
-     #               [
-                 #       [
-                      #      InlineKeyboardButton(f"📞 Əlaqə", url=f"t.me/SongSupp")
-                    #    ]
-        #            ]
-               # ))
+
     #    print(e)
 # \n🎤 **Yüklədi** - **[{name}](tg://user?id={user_id})**
