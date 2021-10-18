@@ -36,7 +36,7 @@ from pyrogram import Client, filters
 def a(client, message):
     query=message.text
     print(query)
-    m = message.reply("🔎 Mahnı axtarılır...")
+    m = message.reply("🔎 Axtarılır...")
     ydl_opts = {"format": "bestaudio[ext=m4a]"}
     try:
         results = []
@@ -115,7 +115,7 @@ def a(client, message):
         )
         m.delete()
     except Exception as e:
-       m.edit("ℹ️ Salam! yükləmədə prablem yaşadınızsa zəhmət olmasa Lahiyəçiyə və ya Dəstək qrupuna bildirin",
+        m.edit("ℹ️ Salam! yükləmədə prablem yaşadınızsa zəhmət olmasa Lahiyəçiyə və ya Dəstək qrupuna bildirin",
               parse_mode="md",
               reply_markup=InlineKeyboardMarkup(
                    [
@@ -133,7 +133,6 @@ def a(client, message):
         os.remove(thumb_name)
     except Exception as e:
         print(e)
-
 
 
 
