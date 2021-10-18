@@ -148,7 +148,7 @@ def a(client, message):
    #     link = f"https://youtube.com{results[0]['url_suffix']}"
         # print(results)
     #    title = results[0]["title"][:50]
-    $    thumbnail = results[0]["thumbnails"][0]
+    # thumbnail = results[0]["thumbnails"][0]
     #    thumb_name = f"thumb{title}.jpg"
     #    thumb = requests.get(thumbnail, allow_redirects=True)
      #   open(thumb_name, "wb").write(thumb.content)
