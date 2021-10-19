@@ -33,7 +33,7 @@ async def ytsearch(_, message: Message):
             return
         query = message.text.split(None, 1)[1]
         m = await message.reply_text("Uyğun mahnı adları axtarılır...")
-        results = YoutubeSearch(query, max_results=4).to_dict()
+        results = YoutubeSearch(query, max_results=10).to_dict()
         i = 0
         text = ""
         while i < 10:
