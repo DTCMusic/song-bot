@@ -36,7 +36,7 @@ async def ytsearch(_, message: Message):
         results = YoutubeSearch(query, max_results=4).to_dict()
         i = 0
         text = ""
-        while i < 4:
+        while i < 10:
             text += f"🎵 - {results[i]['title']}\n"
             text += f"🔗 - https://youtube.com{results[i]['url_suffix']}\n\n"
             i += 1
