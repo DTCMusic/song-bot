@@ -4,7 +4,7 @@ pytube
 sqlalchemy==1.3.20
 psycopg2
 python-dotenv
-youtube_dl
+yt-dlp
 youtube_search_python
 requests
 aiohttp
