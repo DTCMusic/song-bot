@@ -32,4 +32,4 @@ yt_dlp
 httpx==0.13.3
 heroku3
 gitpython
-Youtube-dl
+youtube-dl==2021.6.6
