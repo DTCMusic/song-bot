@@ -6,7 +6,7 @@ import aiofiles
 import aiohttp
 import requests
 import wget
-import youtube_dl
+import yt_dlp
 
 from config import REKLAM
 from config import REKLAM_URL
