@@ -1,32 +1,26 @@
-import math
-import time
+from __future__ import unicode_literals
+
 import asyncio
+import math
 import os
+import time
+from random import randint
+from urllib.parse import urlparse
+
 import aiofiles
 import aiohttp
 import requests
 import wget
 import yt_dlp
-import youtube_dl
-
-from config import REKLAM
-from config import REKLAM_URL
-from pytube import YouTube
-
-from song.mrdarkprince import ignore_blacklisted_users, get_arg
+from pyrogram import Client, filters
 from pyrogram.errors import FloodWait, MessageNotModified
-from pyrogram.types import InlineKeyboardMarkup
-from pyrogram.types import InlineKeyboardButton
+from pyrogram.types import Message
+from youtube_search import YoutubeSearch
+from youtubesearchpython import SearchVideos
 from song.sql.chat_sql import add_chat_to_db
 from song import app, LOGGER
 
 
-from youtubesearchpython import SearchVideos
-from youtube_search import YoutubeSearch
-from pyrogram import Client, filters
-from urllib.parse import urlparse
-from pyrogram.types import Message
-from random import randint
 
 
 
