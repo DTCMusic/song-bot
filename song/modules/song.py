@@ -98,7 +98,7 @@ def a(client, message):
         caption=rep,quote=False, 
         title=title, 
         duration=dur, 
-        performer= str(info_dict["uploader"]), 
+        performer="@Songazbot" #str(info_dict["uploader"]), 
         thumb=thumb_name,
         reply_markup=InlineKeyboardMarkup(
                     [
