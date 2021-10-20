@@ -29,7 +29,14 @@ from song import app, LOGGER
 
 @app.on_message(filters.command("song") & ~filters.channel)
 def a(client, message):
-    query=message.text
+
+    chat_id = message.chat.id
+    user_id = message.from_user["id"]
+    name = message.from_user["first_name"]
+
+    query = ""
+    for i in message.command[1:]:
+        query += " " + str(i)
     print(query)
     m = message.reply("🔎 Axtarılır...")
     ydl_opts = {"format": "bestaudio[ext=m4a]"}
@@ -59,10 +66,6 @@ def a(client, message):
             thumb = requests.get(thumbnail, allow_redirects=True)
             open(thumb_name, 'wb').write(thumb.content)
 
-            chat_id = message.chat.id
-            user_id = message.from_user["id"]
-            name = message.from_user["first_name"]
-
         except Exception as e:
             print(e)
             m.edit('`Mahnı tapılmadı`')
@@ -78,11 +81,6 @@ def a(client, message):
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             info_dict = ydl.extract_info(link, download=False)
             audio_file = ydl.prepare_filename(info_dict)
-
-            chat_id = message.chat.id
-            user_id = message.from_user["id"]
-            name = message.from_user["first_name"]
-
             ydl.process_info(info_dict)
         rep =  f"🎵 `{title}`"
         secmul, dur, dur_arr = 1, 0, duration.split(':')
