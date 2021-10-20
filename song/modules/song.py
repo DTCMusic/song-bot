@@ -26,7 +26,7 @@ from youtube_search import YoutubeSearch
 from pyrogram import Client, filters
 from urllib.parse import urlparse
 from pyrogram.types import Message
-from yt_dlp import YoutubeDL
+# from yt_dlp import YoutubeDL
 from random import randint
 from pyrogram import Client, filters
 # from __future__ import unicode_literals
