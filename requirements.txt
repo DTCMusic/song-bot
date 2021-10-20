@@ -15,7 +15,6 @@ search_engine_parser
 py-tgcalls==0.5.5
 ffmpeg-python
 googletrans==4.0.0rc1
-ffmpeg
 Pillow
 python-arq
 future
