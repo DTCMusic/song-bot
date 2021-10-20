@@ -58,7 +58,7 @@ def song(client, message):
         m.edit("❌ Bir mahnı adı qeyd edin.")
         print(str(e))
         return
-    m.edit("Downloading the song ")
+    m.edit(f"`{title}` Yüklənir ✅")
     try:
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             info_dict = ydl.extract_info(link, download=False)
