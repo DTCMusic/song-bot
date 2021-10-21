@@ -31,6 +31,9 @@ from random import randint
 # @app.on_message(command(["video", "vsong"]) & ~filters.edited)
 @app.on_message(filters.command("video") & ~filters.channel)
 async def vsong(client, message):
+    chat_id = message.chat.id
+    user_id = message.from_user["id"]
+    name = message.from_user["first_name"]
     ydl_opts = {
         "format": "best",
         "keepvideo": True,
@@ -60,14 +63,15 @@ async def vsong(client, message):
             ytdl_data = ytdl.extract_info(link, download=True)
             file_name = ytdl.prepare_filename(ytdl_data)
     except Exception as e:
-        return await msg.edit(f"🚫 **xəta:** Bot sahibinə bildirin")
+        return await msg.edit(f"**Biraz Sonra yenidən yoxla yoruldum** 😂 ")
     preview = wget.download(thumbnail)
-    await msg.edit("📤 **Video yüklənir...**")
+    await msg.edit(f"📤 `{title}` **Adlı Video yüklənir...**")
     mess = await message.reply_video(
         file_name,
         duration=int(ytdl_data["duration"]),
         thumb=preview,
-        caption=ytdl_data["title"],
+        caption=f"📹 `{title}`\nYükləyən - {name}",
+        parse_mode="md",
         reply_markup=InlineKeyboardMarkup(
                     [
                         [
