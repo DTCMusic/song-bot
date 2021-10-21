@@ -71,7 +71,7 @@ async def vsong(client, message):
         reply_markup=InlineKeyboardMarkup(
                     [
                         [
-                            InlineKeyboardButton(f"{REKLAM}", url=f"{REKLAM_URL}")
+                            InlineKeyboardButton(f"📹 Video List", url=f"t.me/ytuaz")
                         ]
                     ]
                 ),
