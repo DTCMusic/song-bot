@@ -38,7 +38,7 @@ async def song(client, message):
         await status.edit(f"📥 `{yt.title}`")
         return ""
     yt = YouTube(video_link)
-    audio = yt.streams.filter(only_audio=True).first()
+    audio = yt.streams.filter(only_audio=False).first()
     try:
         download = audio.download(filename=f"{str(yt.title)}")
     except Exception as ex:
