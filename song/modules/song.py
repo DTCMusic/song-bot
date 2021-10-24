@@ -46,6 +46,7 @@ async def song(client, message):
         LOGGER.error(ex)
         return ""
     rename = os.rename(download, f"{str(yt.title)}.mp3")
+    song_photo="./thumb.jpg"
     await app.send_chat_action(message.chat.id, "upload_audio")
     mess = await app.send_audio(
         chat_id=message.chat.id,
@@ -54,7 +55,8 @@ async def song(client, message):
         audio=f"{str(yt.title)}.mp3",
         duration=int(yt.length),
         title=str(yt.title),
-        performer=str(info_dict["uploader"]),
+        performer=str(yt["uploader"]),
+        thumb=song_photo,
         reply_to_message_id=message.message_id,
         reply_markup=InlineKeyboardMarkup(
                     [
