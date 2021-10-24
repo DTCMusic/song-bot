@@ -1,4 +1,5 @@
 from __future__ import unicode_literals
+
 import asyncio
 import math
 import os
@@ -11,16 +12,10 @@ import aiohttp
 import requests
 import wget
 import yt_dlp
-import youtube_dl
-
-import ffmpeg
-import logging
-import requests
-from pyrogram import filters, Client, idle
-from youtube_search import YoutubeSearch
-
+from pyrogram import Client, filters
 from pyrogram.errors import FloodWait, MessageNotModified
 from pyrogram.types import Message
+from youtube_search import YoutubeSearch
 from youtubesearchpython import SearchVideos
 from pyrogram.types import InlineKeyboardMarkup
 from pyrogram.types import InlineKeyboardButton
@@ -46,7 +41,7 @@ def song(client, message):
         results = YoutubeSearch(query, max_results=1).to_dict()
         link = f"https://youtube.com{results[0]['url_suffix']}"
         # print(results)
-        title = results[0]["title"][:40]
+        title = results[0]["title"][:60]
         thumbnail = results[0]["thumbnails"][0]
         thumb_name = f"thumb{title}.jpg"
         thumb = requests.get(thumbnail, allow_redirects=True)
@@ -60,7 +55,7 @@ def song(client, message):
         m.edit("❌ Mahnını tapa bilmədim. Və ya yalnış format! düzgün daxil edin")
         print(str(e))
         return
-    m.edit("Downloading the song ")
+    m.edit(f"🎵 `{title}` Yüklənir.")
     try:
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             info_dict = ydl.extract_info(link, download=False)
