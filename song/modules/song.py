@@ -1,27 +1,11 @@
-from __future__ import unicode_literals
-
-import asyncio
-import math
-import os
-import time
-from random import randint
-from urllib.parse import urlparse
-
-import aiofiles
-import aiohttp
-import requests
-import wget
-import yt_dlp
-import youtube_dl
 from pyrogram import Client, filters
-from pyrogram.errors import FloodWait, MessageNotModified
-from pyrogram.types import Message
-from youtube_search import YoutubeSearch
-from youtubesearchpython import SearchVideos
+import asyncio
+import os
+from pytube import YouTube
 from pyrogram.types import InlineKeyboardMarkup
 from pyrogram.types import InlineKeyboardButton
+from youtubesearchpython import VideosSearch
 from song.utils import get_arg
-
 from song.sql.chat_sql import add_chat_to_db
 from song import app, LOGGER
 
