@@ -39,7 +39,7 @@ def song(client, message):
         query += " " + str(i)
     print(query)
     m = message.reply("🔎 Axtarılır...")
-    ydl_opts = {"format": "bestaudio[ext=m4a]"}
+    ydl_opts = {"format": "bestaudio[ext=mp3]"}
     try:
         results = YoutubeSearch(query, max_results=1).to_dict()
         link = f"https://youtu.be{results[0]['url_suffix']}"
@@ -139,7 +139,7 @@ def song(client, message):
 #         audio=f"{str(yt.title)}.mp3",
 #         duration=int(yt.length),
 #         title=str(yt.title),
-#         performer="@songazbot",
+#         performer=str(info_dict["uploader"]),
 #         reply_to_message_id=message.message_id,
 #         reply_markup=InlineKeyboardMarkup(
 #                     [
