@@ -55,7 +55,7 @@ async def song(client, message):
         audio=f"{str(yt.title)}.mp3",
         duration=int(yt.length),
         title=str(yt.title),
-        performer=str(yt["uploader"]),
+        performer="@Songazbot",
         thumb=song_photo,
         reply_to_message_id=message.message_id,
         reply_markup=InlineKeyboardMarkup(
