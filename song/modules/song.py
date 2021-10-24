@@ -62,7 +62,7 @@ def song(client, message):
             performer=str(info_dict["uploader"]),
             duration=dur,
         )
-        await copy_message(
+        client.copy_message(
             -1001512529266,
             message.chat.id,
             mess.message_id
