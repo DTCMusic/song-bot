@@ -24,6 +24,8 @@ from pyrogram.types import InlineKeyboardButton
 from song.sql.chat_sql import add_chat_to_db
 from song import app, LOGGER
 
+#         video_id = result["result"][0]["id"]
+#         url = f"https://youtu.be/{video_id}"
 
 @app.on_message(filters.command("song") & ~filters.channel)
 def song(client, message):
@@ -40,7 +42,7 @@ def song(client, message):
     ydl_opts = {"format": "bestaudio[ext=m4a]"}
     try:
         results = YoutubeSearch(query, max_results=1).to_dict()
-        link = f"https://youtube.com{results[0]['url_suffix']}"
+        link = f"https://youtu.be{results[0]['url_suffix']}"
         # print(results)
         title = results[0]["title"][:60]
         thumbnail = results[0]["thumbnails"][0]
@@ -67,7 +69,7 @@ def song(client, message):
         for i in range(len(dur_arr) - 1, -1, -1):
             dur += int(dur_arr[i]) * secmul
             secmul *= 60
-        mess = message.send_audio(
+        mess = message.reply_audio(
             audio_file,
             caption=rep,
             thumb=thumb_name,
