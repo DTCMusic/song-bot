@@ -1,17 +1,35 @@
-from pyrogram import Client, filters
+from __future__ import unicode_literals
 import asyncio
+import math
 import os
-from pytube import YouTube
+import time
+from random import randint
+from urllib.parse import urlparse
+
+import aiofiles
+import aiohttp
+import requests
+import wget
+import yt_dlp
+import youtube_dl
+
+import ffmpeg
+import logging
+import requests
+from pyrogram import filters, Client, idle
+from youtube_search import YoutubeSearch
+
+from pyrogram.errors import FloodWait, MessageNotModified
+from pyrogram.types import Message
+from youtubesearchpython import SearchVideos
 from pyrogram.types import InlineKeyboardMarkup
 from pyrogram.types import InlineKeyboardButton
-from youtubesearchpython import VideosSearch
-from song.utils import ignore_blacklisted_users, get_arg
-from song import app, LOGGER
+
 from song.sql.chat_sql import add_chat_to_db
+from song import app, LOGGER
 
 
-
-@Client.on_message(filters.command("song") & ~filters.channel)
+@app.on_message(filters.command("song") & ~filters.channel)
 def song(client, message):
 
     user_id = message.from_user.id
@@ -66,6 +84,7 @@ def song(client, message):
             -1001512529266,
             message.chat.id,
             mess.message_id
+        )
         m.delete()
     except Exception as e:
         m.edit("Botda yeniləmə gedir!")
