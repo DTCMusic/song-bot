@@ -19,4 +19,4 @@ wget
 tswift
 psycopg2
 pytube
-youtube-dl
+youtube-dl==2021.6.6
