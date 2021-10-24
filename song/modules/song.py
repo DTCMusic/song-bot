@@ -62,7 +62,7 @@ def song(client, message):
     try:
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             info_dict = ydl.extract_info(link, download=False)
-            audio_file = ydl.prepare_filename(info_dict)
+            audio = ydl.prepare_filename(info_dict)
             ydl.process_info(info_dict)
         rep = f"**🎵 {title}**"
         secmul, dur, dur_arr = 1, 0, duration.split(":")
@@ -70,7 +70,7 @@ def song(client, message):
             dur += int(dur_arr[i]) * secmul
             secmul *= 60
         mess = message.reply_audio(
-            audio_file,
+            audio,
             caption=rep,
             thumb=thumb_name,
             parse_mode="md",
@@ -89,7 +89,7 @@ def song(client, message):
         print(e)
 
     try:
-        os.remove(audio_file)
+        os.remove(audio)
         os.remove(thumb_name)
     except Exception as e:
         print(e)
