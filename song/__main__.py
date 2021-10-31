@@ -64,7 +64,6 @@ async def bots(client, message):
     else:
         btn = None
     await message.reply("🤖 **Digər botlarımız.**", reply_markup=btn , parse_mode="md")
-    add_chat_to_db(str(chat_id))    
 
             
         
