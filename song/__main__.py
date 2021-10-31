@@ -37,7 +37,43 @@ async def start(client, message):
     await message.reply("**Kanal - @Songazz**", parse_mode="md")
     await message.reply(START_MSG.format(name, user_id), reply_markup=btn , parse_mode="md")
     add_chat_to_db(str(chat_id))
+    
+@app.on_message(filters.create(ignore_blacklisted_users) & filters.command("bots"))
+async def start(client, message):
+    if message.chat.type == "private":
+        btn = InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(
+                        text="🔎 Shazam", url="t.me/shazamazbot"
+                    ),
+                    InlineKeyboardButton(
+                        text="🎤 Voicaz", url="t.me/Voicazbot"
+                    )
+                ],
+                [
+                    InlineKeyboardButton(
+                        text="👤 Tagger", url="t.me/FulltagBot"
+                    ),
+                    InlineKeyboardButton(
+                        text="🎶 TikTok", url="t.me/ttazbot"
+                    )
+                ]
+            ]
+        )
+    else:
+        btn = None
+    await message.reply("🤖 **Digər botlarımız.**", reply_markup=btn , parse_mode="md")
+    add_chat_to_db(str(chat_id))    
+
             
+        
+        
+        
+  
+        
+        
+        
 btns = InlineKeyboardMarkup(
             [
                 [
