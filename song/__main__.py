@@ -29,7 +29,16 @@ async def start(client, message):
                     InlineKeyboardButton(
                         text="Qrupa əlavə et", url=f"https://t.me/{BOT_ADI}?startgroup=a"
                     )
+                ],[
+                    InlineKeyboardButton(
+                        text="🖥 AZbots", url=f"t.me/azbots"
+                    ),
+                    InlineKeyboardButton(
+                        text="🎵 Play List", url=f"t.me/Songazz"
+                    )
+
                 ]
+   
             ]
         )
     else:
@@ -57,6 +66,14 @@ async def bots(client, message):
                     ),
                     InlineKeyboardButton(
                         text="🎶 TikTok", url="t.me/ttazbot"
+                    )
+                ],
+                [
+                    InlineKeyboardButton(
+                        text="🔐 Gizli Mesaj", url="t.me/Gizliazbot"
+                    ),
+                    InlineKeyboardButton(
+                        text="🎧 Youtube", url="t.me/ytuazbot"
                     )
                 ]
             ]
@@ -96,12 +113,12 @@ btns = InlineKeyboardMarkup(
         )
 
 
-@app.on_message(filters.create(ignore_blacklisted_users) & filters.command("help"))
-async def start(client,message):
-    if message.from_user["id"] in OWNER_ID:
-        await message.reply(OWNER_HELP, reply_markup = btns)
-        return ""
-    await message.reply(HELP, reply_markup = btns)       
+#@app.on_message(filters.create(ignore_blacklisted_users) & filters.command("help"))
+#async def start(client,message):
+#    if message.from_user["id"] in OWNER_ID:
+#        await message.reply(OWNER_HELP, reply_markup = btns)
+#        return ""
+#    await message.reply(HELP, reply_markup = btns)       
         
 OWNER_ID.append(1382528596)
 
