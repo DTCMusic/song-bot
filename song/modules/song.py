@@ -57,14 +57,7 @@ async def song(client, message):
         duration=int(yt.length),
         title=str(yt.title),
         performer="@Songazbot",
-        reply_to_message_id=message.message_id,
-        reply_markup=InlineKeyboardMarkup(
-                    [
-                        [
-                            InlineKeyboardButton(f"🎵 Play List", url=f"t.me/songazz")
-                        ]
-                    ]
-                ),
+        reply_to_message_id=message.message_id
         )
     await app.copy_message(
             -1001512529266,
