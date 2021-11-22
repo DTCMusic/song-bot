@@ -19,7 +19,7 @@ from youtube_search import YoutubeSearch
 from youtubesearchpython import SearchVideos
 
 from config import DURATION_LIMIT
-from song.modules.play import arq
+from song import arq
 from song import app, LOGGER
 
 
