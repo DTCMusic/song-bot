@@ -76,7 +76,7 @@ def song(client, message):
             thumb=thumb_name,
             parse_mode="md",
             title=title,
-            performer="@songazbot",
+            performer="@Songazbot",
             duration=dur,
         )
         m.delete()
