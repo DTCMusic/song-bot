@@ -20,11 +20,11 @@ from youtube_search import YoutubeSearch
 from youtubesearchpython import SearchVideos
 
 
-aiohttpsession = aiohttp.ClientSession()
-chat_id = None
-arq = ARQ("https://thearq.tech", ARQ_API_KEY, aiohttpsession)
-DISABLED_GROUPS = []
-useer = "NaN"
+# aiohttpsession = aiohttp.ClientSession()
+# chat_id = None
+# arq = ARQ("https://thearq.tech", ARQ_API_KEY, aiohttpsession)
+# DISABLED_GROUPS = []
+# useer = "NaN"
 
 DURATION_LIMIT = 10
 
