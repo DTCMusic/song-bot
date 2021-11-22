@@ -1,78 +1,57 @@
 from pyrogram import Client, filters
-
-import youtube_dl
-from youtube_search import YoutubeSearch
-import requests
-
+import asyncio
 import os
-import time
-# from config import Config
-from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+from pytube import YouTube
+from pyrogram.types import InlineKeyboardMarkup
+from pyrogram.types import InlineKeyboardButton
+from youtubesearchpython import VideosSearch
+from song.utils import ignore_blacklisted_users, get_arg
 from song import app, LOGGER
+from song.sql.chat_sql import add_chat_to_db
 
-app.on_message(filters.command(['song']))
-def a(client, message):
-    query = ''
-    for i in message.command[1:]:
-        query += ' ' + str(i)
-    print(query)
-    m = message.reply('🔎 Axtarılır')
-    ydl_opts = {"format": "bestaudio[ext=m4a]"}
+
+def yt_search(song):
+    videosSearch = VideosSearch(song, limit=1)
+    result = videosSearch.result()
+    if not result:
+        return False
+    else:
+        video_id = result["result"][0]["id"]
+        url = f"https://youtu.be/{video_id}"
+        return url
+
+
+@app.on_message(filters.create(ignore_blacklisted_users) & filters.command("song"))
+async def song(client, message):
+    chat_id = message.chat.id
+    user_id = message.from_user["id"]
+    add_chat_to_db(str(chat_id))
+    args = get_arg(message) + " " + "song"
+    if args.startswith(" "):
+        await message.reply("/song əmri ilə mahnı adı axtarın")
+        return ""
+    status = await message.reply("Axtarılır...")
+    video_link = yt_search(args)
+    if not video_link:
+        await status.edit("Mahnı tapılmadı.")
+        return ""
+    yt = YouTube(video_link)
+    audio = yt.streams.filter(only_audio=True).first()
     try:
-        results = []
-        count = 0
-        while len(results) == 0 and count < 6:
-            if count>0:
-                time.sleep(1)
-            results = YoutubeSearch(query, max_results=1).to_dict()
-            count += 1
-        # results = YoutubeSearch(query, max_results=1).to_dict()
-        try:
-            link = f"https://youtube.com{results[0]['url_suffix']}"
-            # print(results)
-            title = results[0]["title"]
-            thumbnail = results[0]["thumbnails"][0]
-            duration = results[0]["duration"]
-            views = results[0]["views"]
-
-            ## UNCOMMENT THIS IF YOU WANT A LIMIT ON DURATION. CHANGE 1800 TO YOUR OWN PREFFERED DURATION AND EDIT THE MESSAGE (30 minutes cap) LIMIT IN SECONDS
-            # if time_to_seconds(duration) >= 7000:  # duration limit
-            #     m.edit("Exceeded 30mins cap")
-            #     return
-
-            performer = f"[@Songazbot]" 
-            thumb_name = f'thumb{message.message_id}.jpg'
-            thumb = requests.get(thumbnail, allow_redirects=True)
-            open(thumb_name, 'wb').write(thumb.content)
-
-        except Exception as e:
-            print(e)
-            m.edit('**Mahnı tapılmadı yenidən yoxlayın !**')
-            return
-    except Exception as e:
-        m.edit(
-            "**/song əmri ilə mahnı adını yazın**"
-        )
-        print(str(e))
-        return
-    m.edit("`Yüklənir`")
-    try:
-        with youtube_dl.YoutubeDL(ydl_opts) as ydl:
-            info_dict = ydl.extract_info(link, download=False)
-            audio_file = ydl.prepare_filename(info_dict)
-            ydl.process_info(info_dict)
-        rep = f'🎶 {title}'
-        secmul, dur, dur_arr = 1, 0, duration.split(':')
-        for i in range(len(dur_arr)-1, -1, -1):
-            dur += (int(dur_arr[i]) * secmul)
-            secmul *= 60
-        message.reply_audio(audio_file, caption=rep, parse_mode='HTML',quote=False, title=title, duration=dur, performer=performer, thumb=thumb_name)
-        m.delete()
-    except Exception as e:
-        m.edit('**Xəta baş verdi bot sahibi ilə əlaqəyə keç @Samil**')
-        print(e)
-    try:
-        os.remove(audio_file)
-        os.remove(thumb_name)
-    except Exception as e:
-        print(e)
+        download = audio.download(filename=f"{str(user_id)}")
+    except Exception as ex:
+        await status.edit("Mahnlnı yükləmədim!")
+        LOGGER.error(ex)
+        return ""
+    rename = os.rename(download, f"{str(yt.title)}.mp3")
+    await app.send_chat_action(message.chat.id, "upload_audio")
+    await app.send_audio(
+        chat_id=message.chat.id,
+        audio=f"{str(yt.title)}.mp3",
+        duration=int(yt.length),
+        title=str(yt.title),
+        performer=str(yt.author),
+        reply_to_message_id=message.message_id,
+    )
+    await status.delete()
+    os.remove(f"{str(yt.title)}.mp3")
