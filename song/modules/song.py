@@ -6,7 +6,7 @@ import requests
 
 import os
 import time
-from config import Config
+# from config import Config
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from song import app, LOGGER
 
