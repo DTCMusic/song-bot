@@ -7,14 +7,19 @@ import math
 import shlex
 import sys
 import time
+import aiofiles
+import aiohttp
+import ffmpeg
 import traceback
 from functools import wraps
+from Python_ARQ import ARQ
 from typing import Callable, Coroutine, Dict, List, Tuple, Union
 
 from PIL import Image
 from pyrogram import Client
 from pyrogram.errors import FloodWait, MessageNotModified
 from pyrogram.types import Chat, Message, User
+from config import ARQ_API_KEY
 
 # from innexia  import OWNER_ID, SUPPORT_CHAT
 # from innexia import pbot
@@ -24,6 +29,13 @@ logging.basicConfig(
 )
 
 LOGGER = logging.getLogger(__name__)
+
+aiohttpsession = aiohttp.ClientSession()
+chat_id = None
+arq = ARQ("https://thearq.tech", ARQ_API_KEY, aiohttpsession)
+DISABLED_GROUPS = []
+useer = "NaN"
+
 
 max_file = 30641629
 
