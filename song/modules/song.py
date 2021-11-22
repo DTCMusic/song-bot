@@ -13,6 +13,7 @@ import requests
 import wget
 import yt_dlp
 from pyrogram import Client, filters
+from config import ARQ_API_KEY
 from pyrogram.errors import FloodWait, MessageNotModified
 from pyrogram.types import Message
 from youtube_search import YoutubeSearch
