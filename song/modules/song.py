@@ -42,10 +42,10 @@ def song(client, message):
         link = f"https://youtube.com{results[0]['url_suffix']}"
         # print(results)
         title = results[0]["title"][:40]
-       #thumbnail = results[0]["thumbnails"][0]
-       # thumb_name = f"thumb{title}.jpg"
-       # thumb = requests.get(thumbnail, allow_redirects=True)
-       # open(thumb_name, "wb").write(thumb.content)
+        thumbnail = results[0]["thumbnails"][0]
+        thumb_name = f"thumb{title}.jpg"
+        thumb = requests.get(thumbnail, allow_redirects=True)
+        open(thumb_name, "wb").write(thumb.content)
 
         duration = results[0]["duration"]
         results[0]["url_suffix"]
@@ -65,11 +65,11 @@ def song(client, message):
         secmul, dur, dur_arr = 1, 0, duration.split(":")
         for i in range(len(dur_arr) - 1, -1, -1):
             dur += int(dur_arr[i]) * secmul
-            secmul *= 60
+            secmul *= 5
         mess = message.reply_audio(
             audio_file,
             caption=rep,
-          # thumb=thumb_name,
+            thumb=thumb_name,
             parse_mode="md",
             title=title,
             duration=dur,
