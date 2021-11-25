@@ -72,13 +72,6 @@ def song(_, message):
             parse_mode="md",
             title=title,
             duration=dur,
-            reply_markup=InlineKeyboardMarkup(
-                    [
-                        [
-                            InlineKeyboardButton(f"🎵 Play List", url=f"t.me/songazz")
-                        ]
-                    ]
-                ),
         )
         client.copy_message(
             -1001512529266,
