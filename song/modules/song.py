@@ -80,7 +80,7 @@ def song(_, message):
                     ]
                 ),
         )
-      await app.copy_message(
+        client.copy_message(
             -1001512529266,
             message.chat.id,
             mess.message_id
