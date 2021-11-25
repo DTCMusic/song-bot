@@ -73,7 +73,7 @@ def song(_, message):
             title=title,
             duration=dur,
         )
-        await copy_message(
+        client.copy_message(
             -1001512529266,
             message.chat.id,
             mess.message_id
