@@ -18,6 +18,9 @@ from pyrogram.types import Message
 from youtube_search import YoutubeSearch
 from yt_dlp import YoutubeDL
 
+from pyrogram.types import InlineKeyboardMarkup
+from pyrogram.types import InlineKeyboardButton
+
 from song import app, LOGGER
 # from helpers.decorators import humanbytes
 # from helpers.filters import command
@@ -59,7 +62,7 @@ def song(client, message):
             info_dict = ydl.extract_info(link, download=False)
             audio_file = ydl.prepare_filename(info_dict)
             ydl.process_info(info_dict)
-        rep = f"🎵 {title}\n🎶 **Play List:** @Songazz\n🧞‍♂️ **Yüklədi:** {name}"
+        rep = f"🎵 {title}"
         secmul, dur, dur_arr = 1, 0, duration.split(":")
         for i in range(len(dur_arr) - 1, -1, -1):
             dur += int(float(dur_arr[i])) * secmul
@@ -73,6 +76,13 @@ def song(client, message):
             parse_mode="md",
             title=title,
             duration=dur,
+            reply_markup=InlineKeyboardMarkup(
+                    [
+                        [
+                            InlineKeyboardButton(f"🎵 Play List", url=f"t.me/songazz")
+                        ]
+                    ]
+                ),
         )
         client.copy_message(
             -1001512529266,
