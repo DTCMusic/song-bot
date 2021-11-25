@@ -79,3 +79,8 @@ def song(client, message):
             message.chat.id,
             mess.message_id
         )
+    try:
+        os.remove(audio_file)
+        os.remove(thumb_name)
+    except Exception as e:
+        print(e)
