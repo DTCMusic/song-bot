@@ -47,6 +47,7 @@ def song(client, message):
         thumb = requests.get(thumbnail, allow_redirects=True)
         open(thumb_name, "wb").write(thumb.content)
         duration = results[0]["duration"]
+        name = message.from_user["first_name"]
 
     except Exception as e:
         m.edit("Zəhmət olmasa mahnı adını düzgün yazın!")
@@ -58,12 +59,12 @@ def song(client, message):
             info_dict = ydl.extract_info(link, download=False)
             audio_file = ydl.prepare_filename(info_dict)
             ydl.process_info(info_dict)
-        rep = f"🎵 {title}\n🎶 **Play List:** @Songazz"
+        rep = f"🎵 {title}\n🎶 **Play List:** @Songazz\n🧞‍♂️ **Yüklədi:** {name}"
         secmul, dur, dur_arr = 1, 0, duration.split(":")
         for i in range(len(dur_arr) - 1, -1, -1):
             dur += int(float(dur_arr[i])) * secmul
             secmul *= 60
-        m.edit("📤 Mahnı yüklənir...")
+        m.edit(f"📤 `{title}`")
         mess = message.reply_audio(
             audio_file,
             caption=rep,
