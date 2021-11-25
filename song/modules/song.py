@@ -34,7 +34,7 @@ ydl_opts = {
 
 
 @app.on_message(filters.command("song"))
-def song(_, client, message):
+def song(_, message):
     query = " ".join(message.command[1:])
     m = message.reply("🔎 Mahnı axtarılır...")
     ydl_ops = {"format": "bestaudio[ext=m4a]"}
@@ -73,7 +73,7 @@ def song(_, client, message):
             title=title,
             duration=dur,
         )
-        client.copy_message(
+        message.copy_message(
             -1001512529266,
             message.chat.id,
             mess.message_id
