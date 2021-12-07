@@ -3,7 +3,7 @@
 </p>
 
 
-
+v3
 ## Hakkında
 
 - Song Bot Azərbaycanda ilk musiqi yükləmək üçün botdur botu yaradan zaman irəli dərəcəli istifadəçisi olacağını düşünmədən özümüz üçün yaratdıq lakin bot hər gün inkişaf etməyə başladı və bunun ardını gətirir
