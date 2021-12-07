@@ -6,6 +6,7 @@ import os
 import time
 from random import randint
 from urllib.parse import urlparse
+# import config
 
 import aiofiles
 import aiohttp
@@ -22,9 +23,24 @@ from pyrogram.types import InlineKeyboardMarkup
 from pyrogram.types import InlineKeyboardButton
 
 from song import app, LOGGER
+
+from song.modules.check_user import handle_user_status
+from song.modules.database import Database
+
 # from helpers.decorators import humanbytes
 # from helpers.filters import command
 
+# LOG_CHANNEL = config.LOG_CHANNEL
+# AUTH_USERS = config.AUTH_USERS
+# DB_URL = config.DB_URL
+# DB_NAME = config.DB_NAME
+
+# db = Database(DB_URL, DB_NAME)
+
+
+@app.on_message(filters.private)
+async def _(bot, cmd):
+    await handle_user_status(bot, cmd)
 
 ydl_opts = {
         'format':'best',
@@ -37,9 +53,9 @@ ydl_opts = {
 
 
 @app.on_message(filters.command("song"))
-def song(client, message):
-    query = " ".join(message.command[1:])
-    m = message.reply("🔎 Mahnı axtarılır...")
+def song(bot, cmd): #client, message,
+    query = " ".join(cmd.command[1:])
+    m = cmd.reply("🔎 Mahnı axtarılır...")
     ydl_ops = {"format": "bestaudio[ext=m4a]"}
     try:
         results = YoutubeSearch(query, max_results=1).to_dict()
@@ -50,7 +66,7 @@ def song(client, message):
         thumb = requests.get(thumbnail, allow_redirects=True)
         open(thumb_name, "wb").write(thumb.content)
         duration = results[0]["duration"]
-        name = message.from_user["first_name"]
+        name = cmd.from_user["first_name"]
 
     except Exception as e:
         m.edit("Zəhmət olmasa mahnı adını düzgün yazın!")
@@ -68,7 +84,7 @@ def song(client, message):
             dur += int(float(dur_arr[i])) * secmul
             secmul *= 60
         m.edit(f"📤 `{title}`")
-        mess = message.reply_audio(
+        mess = cmd.reply_audio(
             audio_file,
             caption=rep,
             thumb=thumb_name,
@@ -84,9 +100,9 @@ def song(client, message):
                     ]
                 ),
         )
-        client.copy_message(
+        bot.copy_message(
             -1001512529266,
-            message.chat.id,
+            cmd.chat.id,
             mess.message_id
         )
         m.delete()
