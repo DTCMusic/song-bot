@@ -114,7 +114,7 @@ async def sts(c, m):
         await m.delete()
         return
     await m.reply_text(
-        text=f"**Istifadəçilər 📂:** `{await db.total_users_count()}`\n\n**Bildirişi aktiv edənlər 🔔 :** `{await db.total_notif_users_count()}`",
+        text=f"**Istifadəçilər 📂:** `{await db.total_users_count()}`\n**Bildirişi aktiv edənlər 🔔 :** `{await db.total_notif_users_count()}`",
         parse_mode="Markdown",
         quote=True
     )
@@ -230,7 +230,7 @@ async def callback_handlers(bot: Client, cb: CallbackQuery):
         else:
             await db.set_notif(user_id, notif=True)
         await cb.message.edit(
-            f"`Bu paneldə ayarları dəyişdirə bilərsiniz`\nVar olan bildiriş ayarı **{await db.get_notif(user_id)}**",
+            f"`Bu paneldə ayarları dəyişdirə bilərsiniz`\n\nVar olan bildiriş ayarı **{await db.get_notif(user_id)}**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
