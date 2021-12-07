@@ -20,3 +20,5 @@ tswift
 psycopg2
 pytube
 youtube-dl==2021.6.6
+motor
+dnspython
