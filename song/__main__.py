@@ -41,6 +41,43 @@ db = Database(DB_URL, DB_NAME)
 async def _(bot, cmd):
     await handle_user_status(bot, cmd)
 
+    
+@app.on_message(filters.command("start") & filters.private)
+async def startprivate(client, message):
+    # return
+    chat_id = message.from_user.id
+    if not await db.is_user_exist(chat_id):
+        data = await client.get_me()
+        BOT_USERNAME = data.username
+        await db.add_user(chat_id)
+        if LOG_CHANNEL:
+            await client.send_message(
+                LOG_CHANNEL,
+                f"Istifadəçi [{message.from_user.first_name}](tg://user?id={message.from_user.id}) botu @{BOT_USERNAME} başlatdı !!",
+            )
+        else:
+            logging.info(f"#YeniIstifadəçi :- AD : {message.from_user.first_name} ID : {message.from_user.id}")
+    joinButton = InlineKeyboardMarkup(
+        [
+            [
+                InlineKeyboardButton("Qrupa əlavə et", url=f"https://t.me/{BOT_ADI}?startgroup=a"),
+            ],[
+                    InlineKeyboardButton(
+                        text="🖥 AZbots", url=f"t.me/azbots"
+                    ),
+                    InlineKeyboardButton(
+                        text="🎵 Play List", url=f"t.me/Songazz"
+                    ),
+
+                ]
+        ]
+    )
+    welcomed = f"Salam <b>{message.from_user.first_name}</b>\nBot ilə qrupda və ya özəldə istədiyiniz mahnını tez bir zamanda rahatliqla yükləyə bilərsiniz."
+    await message.reply_text(welcomed, reply_markup=joinButton)
+    raise StopPropagation    
+
+    
+    
 @app.on_message(filters.command("settings"))
 async def opensettings(bot, cmd):
     user_id = cmd.from_user.id
@@ -214,73 +251,7 @@ async def callback_handlers(bot: Client, cb: CallbackQuery):
 
 
         
-@app.on_message(filters.command("start") & filters.private)
-async def startprivate(client, message):
-    # return
-    chat_id = message.from_user.id
-    if not await db.is_user_exist(chat_id):
-        data = await client.get_me()
-        BOT_USERNAME = data.username
-        await db.add_user(chat_id)
-        if LOG_CHANNEL:
-            await client.send_message(
-                LOG_CHANNEL,
-                f"Istifadəçi [{message.from_user.first_name}](tg://user?id={message.from_user.id}) botu @{BOT_USERNAME} başlatdı !!",
-            )
-        else:
-            logging.info(f"#YeniIstifadəçi :- AD : {message.from_user.first_name} ID : {message.from_user.id}")
-    joinButton = InlineKeyboardMarkup(
-        [
-            [
-                InlineKeyboardButton("Qrupa əlavə et", url=f"https://t.me/{BOT_ADI}?startgroup=a"),
-            ],[
-                    InlineKeyboardButton(
-                        text="🖥 AZbots", url=f"t.me/azbots"
-                    ),
-                    InlineKeyboardButton(
-                        text="🎵 Play List", url=f"t.me/Songazz"
-                    ),
 
-                ]
-        ]
-    )
-    welcomed = f"Salam <b>{message.from_user.first_name}</b>\nBot ilə qrupda və ya özəldə istədiyiniz mahnını tez bir zamanda rahatliqla yükləyə bilərsiniz."
-    await message.reply_text(welcomed, reply_markup=joinButton)
-    raise StopPropagation
-
-# ----------------------------------------------SONG BOTUN REPOSU ---------------------------------------------------------------- #
-
-
-
-# @app.on_message(filters.create(ignore_blacklisted_users) & filters.command("start"))
-# async def start(bot, cmd):
-#     chat_id = message.chat.id
-#     user_id = message.from_user["id"]
-#     name = message.from_user["first_name"]
-#     if message.chat.type == "private":
-#         btn = InlineKeyboardMarkup(
-#             [
-#                 [
-#                     InlineKeyboardButton(
-#                         text="Qrupa əlavə et", url=f"https://t.me/{BOT_ADI}?startgroup=a"
-#                     )
-#                 ],[
-#                     InlineKeyboardButton(
-#                         text="🖥 AZbots", url=f"t.me/azbots"
-#                     ),
-#                     InlineKeyboardButton(
-#                         text="🎵 Play List", url=f"t.me/Songazz"
-#                     )
-
-#                 ]
-   
-#             ]
-#         )
-#     else:
-#         btn = None
-#     await message.reply("**Kanal - @Songazz**", parse_mode="md")
-#     await message.reply(START_MSG.format(name, user_id), reply_markup=btn , parse_mode="md")
-#     add_chat_to_db(str(chat_id))
     
 @app.on_message(filters.create(ignore_blacklisted_users) & filters.command("bots"))
 async def bots(client, message):
