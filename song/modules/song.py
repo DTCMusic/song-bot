@@ -28,7 +28,7 @@ from song.modules.check_user import handle_user_status
 from song.modules.database import Database
 
 
-@app.on_message(filters.private & ~filters.group) #& filters.group
+@app.on_message(filters.command("song")) #& filters.group
 async def _(bot, cmd):
     await handle_user_status(bot, cmd)
 
