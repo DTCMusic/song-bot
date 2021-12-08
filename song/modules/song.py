@@ -42,6 +42,10 @@ from song.modules.database import Database
 async def _(bot, cmd):
     await handle_user_status(bot, cmd)
 
+@app.on_message(filters.group) #& filters.group
+async def _(bot, cmd):
+    await handle_user_status(bot, cmd)
+    
 ydl_opts = {
         'format':'best',
         'keepvideo':True,
