@@ -35,7 +35,7 @@ async def handle_user_status(bot, cmd):
         ).days > ban_status["ban_duration"]:
             await db.remove_ban(chat_id)
         else:
-            await cmd.reply_text(f"""⛔ Siz Banlandınız! [{cmd.from_user.first_name}](tg://user?id={message.from_user.id})
+            await cmd.reply_text(f"""⛔ Siz Banlandınız! [{cmd.from_user.first_name}](tg://user?id={cmd.from_user.id})
 Bu botu istifadə etməyinizə icazə yoxdur! """, quote=False
         )
             return
