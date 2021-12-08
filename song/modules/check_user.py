@@ -35,13 +35,8 @@ async def handle_user_status(bot, cmd):
         ).days > ban_status["ban_duration"]:
             await db.remove_ban(chat_id)
         else:
-            await cmd.reply_text("👋 Salam! Admin sizi botu özəldən istifadə etməyinizi qadağa etdi! ⛔️\n(Botu qrupda istifadə edə bilərsiniz)\n\nBunun haqsız yerə olduğunu düşünürsünüzsə adminə bildirin!", quote=False, reply_markup=InlineKeyboardMarkup(
-                    [
-                        [
-                            InlineKeyboardButton(f"📞Əlaqə", url=f"t.me/Samil")
-                        ]
-                    ]
-                ),
+            await cmd.reply_text("""⛔ Siz Banlandınız! [{message.from_user.first_name}](tg://user?id={message.from_user.id})
+Bu botu istifadə etməyinizə icazə yoxdur! """, quote=False
         )
             return
     await cmd.continue_propagation()
