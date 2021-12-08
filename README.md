@@ -2,8 +2,6 @@
   <img src="https://telegra.ph/file/ffef3464135401c0e3731.png" width="200" height="200">
 </p>
 
-
-v3
 ## Hakkında
 
 - Song Bot Azərbaycanda ilk musiqi yükləmək üçün botdur botu yaradan zaman irəli dərəcəli istifadəçisi olacağını düşünmədən özümüz üçün yaratdıq lakin bot hər gün inkişaf etməyə başladı və bunun ardını gətirir
@@ -13,11 +11,13 @@ v3
 Botu telegramda bu adla axtarın [@Songazbot](https://t.me/Songazbot)
 
 
-# Özəlikləri
+# Özəlliklər
 
-/song  : Mahnı yüklə <br>
-/axtar  : Youtube'dən axtar <br>
-/shazam : Bir mahnı və ya videoyq cavab verdikdə adını tapır.
+• Youtube mahnı yüklə <br>
+• Bildirişləri bağlama özəlliyi <br>
+• İstifadəçi banlama özəlliyi (admin) <br>
+• broadcast grup və istifadəçilərə mesaj göndər (admin) <br>
+• Bot statistikasina bax (admin) <br>
 
 
 ## Özünüz qurun
