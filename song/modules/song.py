@@ -27,18 +27,8 @@ from song import app, LOGGER
 from song.modules.check_user import handle_user_status
 from song.modules.database import Database
 
-# from helpers.decorators import humanbytes
-# from helpers.filters import command
 
-# LOG_CHANNEL = config.LOG_CHANNEL
-# AUTH_USERS = config.AUTH_USERS
-# DB_URL = config.DB_URL
-# DB_NAME = config.DB_NAME
-
-# db = Database(DB_URL, DB_NAME)
-
-
-@app.on_message(filters.private) #& filters.group
+@app.on_message(filters.private & ~filters.group) #& filters.group
 async def _(bot, cmd):
     await handle_user_status(bot, cmd)
 
