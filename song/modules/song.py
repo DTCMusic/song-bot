@@ -38,7 +38,7 @@ from song.modules.database import Database
 # db = Database(DB_URL, DB_NAME)
 
 
-@app.on_message(filters.private & filters.group)
+@app.on_message(filters.group ) #& filters.group
 async def _(bot, cmd):
     await handle_user_status(bot, cmd)
 
