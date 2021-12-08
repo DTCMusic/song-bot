@@ -78,7 +78,7 @@ async def startprivate(client, message):
 
     
     
-@app.on_message(filters.command("settings"))
+@app.on_message(filters.command("settings") & filters.private)
 async def opensettings(bot, cmd):
     user_id = cmd.from_user.id
     await cmd.reply_text(
