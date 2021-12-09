@@ -36,7 +36,7 @@ async def handle_user_status(bot, cmd):
             await db.remove_ban(chat_id)
         else:
             await cmd.reply_text(f"""⛔ Siz Banlandınız! [{cmd.from_user.first_name}](tg://user?id={cmd.from_user.id})
-Bu botu istifadə etməyinizə icazə yoxdur! """, quote=False
+Bu botu istifadə etməyinizə icazə yoxdur! """, quote=True
         )
             return
     await cmd.continue_propagation()
