@@ -153,7 +153,7 @@ def song(bot, cmd): #client, message,
             audio_file,
             caption=rep,
             thumb=thumb_name,
-            performer="Alhayaat Jamila🤍🕊️",
+            performer="ᴀʟʜᴀʏᴀᴀᴛ ᴊᴀᴍɪʟᴀོ",
             parse_mode="md",
             title=title,
             duration=dur
