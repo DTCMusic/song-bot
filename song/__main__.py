@@ -69,7 +69,12 @@ async def startprivate(client, message):
                         text="🎵 Play List", url=f"t.me/Songazz"
                     ),
 
-                ]
+                ],
+               [
+                  InlineKeyboardButton(
+                        text="🔹️Yeni versiya", url=f"t.me/Songazbot"
+                    ),
+               ]
         ]
     )
     welcomed = f"Salam <b>{message.from_user.first_name}</b>\nBu bot ilə youtubedən mahnı yükləyə bilərsiniz. <code>/song mahnı adı</code>\n\n🔔 Bildiriş ayarları üçün /settings"
