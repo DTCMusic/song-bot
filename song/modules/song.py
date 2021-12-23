@@ -119,7 +119,7 @@ def song(bot, cmd): #client, message,
 
 
 
-@app.on_message(filters.text)
+@app.on_message(filters.filters.regex(ytregex)
 async def song(bot, cmd):
     if message.chat.type == "private":
         query = " ".join(cmd.command[1:])
