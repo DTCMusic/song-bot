@@ -120,11 +120,10 @@ def song(bot, cmd): #client, message,
 
 
 @app.on_message(filters.filters.regex(ytregex)
-async def song(bot, cmd):
-    if message.chat.type == "private":
-        query = " ".join(cmd.command[1:])
-        m = cmd.reply("🔎 Mahnı axtarılır...")
-        ydl_ops = {"format": "bestaudio[ext=m4a]"}
+def song(bot, cmd):
+    query = " ".join(cmd.command[1:])
+    m = cmd.reply("🔎 Mahnı axtarılır...")
+    ydl_ops = {"format": "bestaudio[ext=m4a]"}
     try:
         results = YoutubeSearch(query, max_results=1).to_dict()
         link = f"https://youtube.com{results[0]['url_suffix']}"
