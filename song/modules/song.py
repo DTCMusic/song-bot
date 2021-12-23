@@ -112,9 +112,9 @@ def song(bot, cmd): #client, message,
 
 
 
-@app.on_message(filters.filters.regex(ytregex))
+@app.on_message(filters.text) #filters.regex(ytregex))
 def song(bot, cmd):
-    query = " ".join(cmd.command[1:])
+    query = " " #.join(cmd.command[1:])
     m = cmd.reply("🔎 Mahnı axtarılır...")
     ydl_ops = {"format": "bestaudio[ext=m4a]"}
     try:
