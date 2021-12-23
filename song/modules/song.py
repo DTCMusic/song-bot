@@ -120,8 +120,8 @@ def song(bot, cmd): #client, message,
 
 
 @app.on_message(filters.text)
+async def song(bot, cmd):
     if message.chat.type == "private":
-def song(bot, cmd): #client, message,
     query = " ".join(cmd.command[1:])
     m = cmd.reply("🔎 Mahnı axtarılır...")
     ydl_ops = {"format": "bestaudio[ext=m4a]"}
