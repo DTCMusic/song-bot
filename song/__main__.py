@@ -72,8 +72,8 @@ async def startprivate(client, message):
                 ]
         ]
     )
-    welcomed = f"Salam <b>{message.from_user.first_name}</b>\nBu bot ilə youtubedən mahnı yükləyə bilərsiniz. <code>/song mahnı adı</code>\n\n🔔 Bildiriş ayarları üçün /settings"
-    await message.reply_text(START_MSG, reply_markup=joinButton)
+    welcomed = f"Salam <b>{message.from_user.first_name}</b>\nBot Azərbaycan dilində yaradılan ilk musiqi yükləmə botudur. Bot ilə istənilən mahnı və videonu rahatlıqla yükləyə bilərsiniz\nMənə sadəcə mahnı adı göndərin\n<code>Mir Yusif - Ağ təyyarə</code>"
+    await message.reply_text(welcomed, reply_markup=joinButton)
     raise StopPropagation    
 
     
