@@ -1,4 +1,4 @@
-# © Songazbot/Samil
+# © Songazbot | TG./Samil
 from config import OWNER_ID
 from config import BOT_ADI
 from config import HELP
