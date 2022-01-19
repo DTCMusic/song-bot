@@ -84,7 +84,7 @@ def song(bot, cmd): #client, message,
         for i in range(len(dur_arr) - 1, -1, -1):
             dur += int(float(dur_arr[i])) * secmul
             secmul *= 60
-        m.edit(f"🎁 `{title}`")
+        m.edit(f"🎵 `{title}`")
         mess = cmd.reply_audio(
             audio_file,
             caption=rep,
@@ -92,7 +92,14 @@ def song(bot, cmd): #client, message,
             performer="Song 🇦🇿",
             parse_mode="md",
             title=title,
-            duration=dur
+            duration=dur,
+            reply_markup=InlineKeyboardMarkup(
+                    [
+                        [
+                            InlineKeyboardButton(f"🎵 Play List", url=f"t.me/songazz")
+                        ]
+                    ]
+                ),
         )
         bot.copy_message(
             -1001512529266,
