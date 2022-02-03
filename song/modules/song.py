@@ -23,23 +23,6 @@ from pyrogram.types import InlineKeyboardMarkup
 from pyrogram.types import InlineKeyboardButton
 
 from song import app, LOGGER
-
-from song.modules.check_user import handle_user_status
-from song.modules.database import Database
-
-
-@app.on_message(filters.command("song")) #& filters.group
-async def _(bot, cmd):
-    await handle_user_status(bot, cmd)
-
-@app.on_message(filters.private)
-async def _(bot, cmd): 
-    await handle_user_status(bot, cmd)
-
-
-# @app.on_message(filters.ytregex) #& filters.group
-# async def _(bot, cmd):
-#     await handle_user_status(bot, cmd)
     
 ydl_opts = {
         'format':'best',
