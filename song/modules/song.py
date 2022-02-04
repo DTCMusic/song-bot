@@ -56,7 +56,7 @@ def song(bot, cmd): #client, message,
         m.edit("❗ Zəhmət olmasa mahnı adını düzgün yazın!")
         print(str(e))
         return
-    m.edit("🔍 Mahnı axtarılır...")
+    m.edit("🔍 Mahnı yüklənir...")
     try:
         with yt_dlp.YoutubeDL(ydl_ops) as ydl:
             info_dict = ydl.extract_info(link, download=False)
@@ -67,7 +67,7 @@ def song(bot, cmd): #client, message,
         for i in range(len(dur_arr) - 1, -1, -1):
             dur += int(float(dur_arr[i])) * secmul
             secmul *= 60
-        m.edit(f"🎵 `{title}`")
+        m.edit(f"🎵 {title}")
         mess = cmd.reply_audio(
             audio_file,
             caption=rep,
