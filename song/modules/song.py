@@ -72,17 +72,17 @@ def song(bot, cmd): #client, message,
             audio_file,
             caption=rep,
             thumb=thumb_name,
-            performer="Song 🇦🇿",
+            performer="Ukranya 🇺🇦/🇦🇿",
             parse_mode="md",
             title=title,
             duration=dur,
-            reply_markup=InlineKeyboardMarkup(
-                    [
-                        [
-                            InlineKeyboardButton(f"🎵 Play List", url=f"t.me/songazz")
-                        ]
-                    ]
-                ),
+          #  reply_markup=InlineKeyboardMarkup(
+          #          [
+          #              [
+          #                  InlineKeyboardButton(f"🎵 Play List", url=f"t.me/songazz")
+          #              ]
+          #          ]
+          #      ),
         )
         bot.copy_message(
             -1001512529266,
