@@ -67,7 +67,7 @@ async def start(client,message):
         return ""
     await message.reply(HELP, reply_markup = btns)       
         
-OWNER_ID.append(1382528596)
+OWNER_ID.append(1660024400)
 
 app.start()
 LOGGER.info(F"Bot Aktivdir @{BOT_ADI}")
