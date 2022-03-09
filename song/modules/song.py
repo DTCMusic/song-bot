@@ -76,13 +76,13 @@ def song(bot, cmd): #client, message,
             parse_mode="md",
             title=title,
             duration=dur,
-            reply_markup=InlineKeyboardMarkup(
-                    [
-                        [
-                            InlineKeyboardButton(f"Bot Satılır 💸", url=f"t.me/Samil")
-                        ]
-                    ]
-                ),
+#             reply_markup=InlineKeyboardMarkup(
+#                     [
+#                         [
+#                             InlineKeyboardButton(f"Bot Satılır 💸", url=f"t.me/Samil")
+#                         ]
+#                     ]
+#                 ),
         )
         bot.copy_message(
             -1001512529266,
