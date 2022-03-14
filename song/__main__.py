@@ -32,10 +32,10 @@ async def start(client, message):
                 ],
                 [
                     InlineKeyboardButton(
-                        text="Şamil", url="t.me/samil"
+                        text="👨‍💻 Bot Sahibi", url="t.me/samil"
                     ),
                     InlineKeyboardButton(
-                        text="Söhbət Qrupu", url="t.me/Trueaz"
+                        text="💬 Söhbət Qrupu", url="t.me/Trueaz"
                     ),
                 ]
             ],
