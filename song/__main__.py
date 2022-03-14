@@ -29,8 +29,16 @@ async def start(client, message):
                     InlineKeyboardButton(
                         text="Qrupa əlavə et", url=f"https://t.me/{BOT_ADI}?startgroup=a"
                     )
+                ],
+                [
+                    InlineKeyboardButton(
+                        text="Şamil", user_id=OWNER_ID
+                    ),
+                    InlineKeyboardButton(
+                        text="Söhbət Qrupu", url="t.me/Trueaz"
+                    ),
                 ]
-            ]
+            ],
         )
     else:
         btn = None
