@@ -35,7 +35,7 @@ async def start(client, message):
                         text="👨‍💻 Bot Sahibi", url="t.me/samil"
                     ),
                     InlineKeyboardButton(
-                        text="💬 Söhbət Qrupu", url="t.me/Trueaz"
+                        text="🎵 Play List", url="t.me/Songazz"
                     ),
                 ]
             ],
