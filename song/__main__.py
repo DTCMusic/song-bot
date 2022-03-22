@@ -32,7 +32,7 @@ async def start(client, message):
                 ],
                 [
                     InlineKeyboardButton(
-                        text="👨‍💻 Bot Sahibi", url="t.me/samil"
+                        text="🗞 Bot Sahibi", url="t.me/sxamil"
                     ),
                     InlineKeyboardButton(
                         text="🎵 Play List", url="t.me/Songazz"
@@ -40,7 +40,7 @@ async def start(client, message):
                 ],
                 [
                     InlineKeyboardButton(
-                        text="🎵 Play List", callback_data="test"
+                        text="🇦🇿 Dil Seçin", callback_data="langAZ"
                     ),
                 ]
             ],
@@ -50,6 +50,129 @@ async def start(client, message):
     await message.reply(START_MSG.format(name, user_id), reply_markup=btn , parse_mode="md")
     add_chat_to_db(str(chat_id))
             
+
+@app.on_callback_query(filters.regex("^(startAZ)$"))
+async def cb_help_az(_, cq: CallbackQuery):
+    chat_id = message.chat.id
+    user_id = message.from_user["id"]
+    name = message.from_user["first_name"]
+    if message.chat.type == "private":
+        btn = InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(
+                        text="Qrupa əlavə et", url=f"https://t.me/{BOT_ADI}?startgroup=a"
+                    )
+                ],
+                [
+                    InlineKeyboardButton(
+                        text="🗞 Bot Sahibi", url="t.me/sxamil"
+                    ),
+                    InlineKeyboardButton(
+                        text="🎵 Play List", url="t.me/Songazz"
+                    ),
+                ],
+                [
+                    InlineKeyboardButton(
+                        text="🇦🇿 Dil Seçin", callback_data="langAZ"
+                    ),
+                ]
+            ],
+        )
+    else:
+        btn = None
+    await cq.edit_message_text("""
+Salam! [{}](tg://user?id={})
+Bot Azərbaycan dilində yaradılan ilk musiqi yükləmə botudur. Bot ilə istənilən mahnını rahatlıqla yükləyə bilərsiniz
+
+Mənə sadəcə mahnı adı göndərin
+`/song Mir Yusif - Ağ təyyarə`
+""".format(name, user_id), reply_markup=btn , parse_mode="md")
+    add_chat_to_db(str(chat_id))
+
+@app.on_callback_query(filters.regex("^(startTR)$"))
+async def cb_help_tr(_, cq: CallbackQuery):
+    chat_id = message.chat.id
+    user_id = message.from_user["id"]
+    name = message.from_user["first_name"]
+    if message.chat.type == "private":
+        btn = InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(
+                        text="Grupa Ekle", url=f"https://t.me/{BOT_ADI}?startgroup=a"
+                    )
+                ],
+                [
+                    InlineKeyboardButton(
+                        text="🗞 Blog", url="t.me/sxamil"
+                    ),
+                    InlineKeyboardButton(
+                        text="🎵 Play List", url="t.me/Songazz"
+                    ),
+                ],
+                [
+                    InlineKeyboardButton(
+                        text="🇦🇿 Dil Seçin", callback_data="langAZ"
+                    ),
+                ]
+            ],
+        )
+    else:
+        btn = None
+    await cq.edit_message_text("""
+Selam! [{}](tg://user?id={})
+Bot, Azerbaycan dilinde oluşturulan ilk müzik indirme botudur. Bot ile istediğiniz şarkıyı kolayca indirebilirsiniz.
+
+Bana şarkının adını göndermen yeterli
+`/song Murat Göğebakan - Vurgunum`
+""".format(name, user_id), reply_markup=btn , parse_mode="md")
+    add_chat_to_db(str(chat_id))
+
+
+@app.on_callback_query(filters.regex("^(langAZ)$"))
+async def cb_help_az(_, cq: CallbackQuery):
+    await cq.edit_message_text(
+        text= "❗ **Zəhmət olmasa dilinizi seçin**",
+        reply_markup=DEFAULT_LANG,
+        parse_mode="md",
+        disable_web_page_preview=True
+    )
+
+@app.on_callback_query(filters.regex("^(langTR)$"))
+async def cb_help_tr(_, cq: CallbackQuery):
+    await cq.edit_message_text(
+        text= "❗ **Lütfen dilinizi seçin**",
+        reply_markup=DEFAULT_LANG,
+        parse_mode="md",
+        disable_web_page_preview=True
+    )
+
+
+DEFAULT_LANG = InlineKeyboardMarkup(
+        [
+            [
+                InlineKeyboardButton(
+                    text="🇦🇿 Azərbaycan",
+                    callback_data="startAZ"
+                ),
+                InlineKeyboardButton(
+                    text="🇹🇷 Türkçe",
+                    callback_data="startTR"
+                )
+            ]
+        ]
+    )
+
+
+
+# @app.on_message(filters.create(ignore_blacklisted_users) & filters.command("help"))
+# async def start(client,message):
+#     if message.from_user["id"] in OWNER_ID:
+#         await message.reply(OWNER_HELP, reply_markup = btns)
+#         return ""
+#     await message.reply(HELP, reply_markup = btns)       
+
 btns = InlineKeyboardMarkup(
             [
                 [
@@ -71,23 +194,6 @@ btns = InlineKeyboardMarkup(
                 ]
             ]
         )
-
-@app.on_callback_query(filters.regex("^(test)$"))
-async def cb_help(_, cq: CallbackQuery):
-    await cq.edit_message_text(
-        text= "Bu duyme testidir.",
-#         reply_markup=DEFAULT_HELP_MARKUP,
-        parse_mode="md",
-        disable_web_page_preview=True
-    )
-
-
-@app.on_message(filters.create(ignore_blacklisted_users) & filters.command("help"))
-async def start(client,message):
-    if message.from_user["id"] in OWNER_ID:
-        await message.reply(OWNER_HELP, reply_markup = btns)
-        return ""
-    await message.reply(HELP, reply_markup = btns)       
         
 OWNER_ID.append(1660024400)
 
