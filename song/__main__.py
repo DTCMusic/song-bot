@@ -98,7 +98,7 @@ START_BTN_TR = InlineKeyboardMarkup(
 
 
 @app.on_callback_query(filters.regex("^(startTR)$"))
-async def start_tr(_, cq: CallbackQuery):
+async def start_az(_, cq: CallbackQuery):
     await cq.edit_message_text(
         text= START_AZ,
         reply_markup=START_BTN_AZ,
