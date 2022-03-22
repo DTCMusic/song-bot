@@ -59,7 +59,7 @@ START_BTN_AZ = InlineKeyboardMarkup(
                 ],
                 [
                     InlineKeyboardButton(
-                        text="🗞 Bot Sahibi", url="t.me/sxamil"
+                        text="🗞 Blog", url="t.me/sxamil"
                     ),
                     InlineKeyboardButton(
                         text="🎵 Play List", url="t.me/Songazz"
