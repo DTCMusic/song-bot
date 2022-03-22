@@ -56,7 +56,7 @@ async def cb_help_az(message, cq: CallbackQuery,):
 #     chat_id = message.chat.id
 #     user_id = message.from_user["id"]
 #     name = message.from_user["first_name"]
-    if message.chat.type == "private":
+#     if message.chat.type == "private":
         btn = InlineKeyboardMarkup(
             [
                 [
@@ -95,7 +95,7 @@ async def cb_help_tr(message, cq: CallbackQuery):
 #     chat_id = message.chat.id
 #     user_id = message.from_user["id"]
 #     name = message.from_user["first_name"]
-    if message.chat.type == "private":
+#     if message.chat.type == "private":
         btn = InlineKeyboardMarkup(
             [
                 [
