@@ -37,6 +37,11 @@ async def start(client, message):
                     InlineKeyboardButton(
                         text="🎵 Play List", url="t.me/Songazz"
                     ),
+                ],
+                [
+                    InlineKeyboardButton(
+                        text="🎵 Play List", callback_data="test"
+                    ),
                 ]
             ],
         )
@@ -66,6 +71,15 @@ btns = InlineKeyboardMarkup(
                 ]
             ]
         )
+
+@app.on_callback_query(filters.regex("^(test)$"))
+async def cb_help(_, cq: CallbackQuery):
+    await cq.edit_message_text(
+        text= "Bu duyme testidir.",
+#         reply_markup=DEFAULT_HELP_MARKUP,
+        parse_mode="md",
+        disable_web_page_preview=True
+    )
 
 
 @app.on_message(filters.create(ignore_blacklisted_users) & filters.command("help"))
