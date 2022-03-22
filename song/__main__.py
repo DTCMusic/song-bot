@@ -52,7 +52,7 @@ async def start(client, message):
             
 
 @app.on_callback_query(filters.regex("^(startAZ)$"))
-async def cb_help_az(_, cq: CallbackQuery, message):
+async def cb_help_az(message, cq: CallbackQuery,):
     chat_id = message.chat.id
     user_id = message.from_user["id"]
     name = message.from_user["first_name"]
@@ -91,7 +91,7 @@ Mənə sadəcə mahnı adı göndərin
     add_chat_to_db(str(chat_id))
 
 @app.on_callback_query(filters.regex("^(startTR)$"))
-async def cb_help_tr(_, cq: CallbackQuery, message):
+async def cb_help_tr(message, cq: CallbackQuery):
     chat_id = message.chat.id
     user_id = message.from_user["id"]
     name = message.from_user["first_name"]
