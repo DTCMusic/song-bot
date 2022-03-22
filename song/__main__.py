@@ -50,14 +50,7 @@ async def start(client, message):
     await message.reply(START_MSG.format(name, user_id), reply_markup=btn , parse_mode="md")
     add_chat_to_db(str(chat_id))
             
-
-@app.on_callback_query(filters.regex("^(startAZ)$"))
-async def cb_help_az(message, cq: CallbackQuery,):
-#     chat_id = message.chat.id
-#     user_id = message.from_user["id"]
-#     name = message.from_user["first_name"]
-#     if message.chat.type == "private":
-        btn = InlineKeyboardMarkup(
+START_BTN_AZ = InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
@@ -79,24 +72,8 @@ async def cb_help_az(message, cq: CallbackQuery,):
                 ]
             ],
         )
-    else:
-        btn = None
-    await cq.edit_message_text("""
-Salam! [{}](tg://user?id={})
-Bot Azərbaycan dilində yaradılan ilk musiqi yükləmə botudur. Bot ilə istənilən mahnını rahatlıqla yükləyə bilərsiniz
 
-Mənə sadəcə mahnı adı göndərin
-`/song Mir Yusif - Ağ təyyarə`
-""".format(name, user_id), reply_markup=btn , parse_mode="md")
-    add_chat_to_db(str(chat_id))
-
-@app.on_callback_query(filters.regex("^(startTR)$"))
-async def cb_help_tr(message, cq: CallbackQuery):
-#     chat_id = message.chat.id
-#     user_id = message.from_user["id"]
-#     name = message.from_user["first_name"]
-#     if message.chat.type == "private":
-        btn = InlineKeyboardMarkup(
+START_BTN_TR = InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
@@ -113,23 +90,46 @@ async def cb_help_tr(message, cq: CallbackQuery):
                 ],
                 [
                     InlineKeyboardButton(
-                        text="🇦🇿 Dil Seçin", callback_data="langAZ"
+                        text="🇹🇷 Dil Seçin", callback_data="langTR"
                     ),
                 ]
             ],
         )
-    else:
-        btn = None
-    await cq.edit_message_text("""
-Selam! [{}](tg://user?id={})
-Bot, Azerbaycan dilinde oluşturulan ilk müzik indirme botudur. Bot ile istediğiniz şarkıyı kolayca indirebilirsiniz.
+
+
+@app.on_callback_query(filters.regex("^(startTR)$"))
+async def start_tr(_, cq: CallbackQuery):
+    await cq.edit_message_text(
+        text= START_AZ,
+        reply_markup=START_BTN_AZ,
+        parse_mode="md",
+        disable_web_page_preview=True
+    )
+    
+    
+@app.on_callback_query(filters.regex("^(startTR)$"))
+async def start_tr(_, cq: CallbackQuery):
+    await cq.edit_message_text(
+        text= START_TR,
+        reply_markup=START_BTN_TR,
+        parse_mode="md",
+        disable_web_page_preview=True
+    )
+
+START_AZ = """ 
+Salam, Bot Azərbaycan dilində yaradılan ilk musiqi yükləmə botudur. Bot ilə istənilən mahnını rahatlıqla yükləyə bilərsiniz
+
+Mənə sadəcə mahnı adı göndərin
+`/song Mir Yusif - Ağ təyyarə`
+"""
+
+START_TR = """
+Selam, Bot, Azerbaycan dilinde oluşturulan ilk müzik indirme botudur. Bot ile istediğiniz şarkıyı kolayca indirebilirsiniz.
 
 Bana şarkının adını göndermen yeterli
 `/song Murat Göğebakan - Vurgunum`
-""".format(name, user_id), reply_markup=btn , parse_mode="md")
-    add_chat_to_db(str(chat_id))
-
-
+"""
+    
 @app.on_callback_query(filters.regex("^(langAZ)$"))
 async def cb_help_az(_, cq: CallbackQuery):
     await cq.edit_message_text(
