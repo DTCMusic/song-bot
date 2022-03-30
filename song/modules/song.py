@@ -44,7 +44,7 @@ def song(bot, cmd): #client, message,
     try:
         results = YoutubeSearch(query, max_results=1).to_dict()
         link = f"https://youtube.com{results[0]['url_suffix']}"
-        title = results[0]["title"][:40]
+        title = results[0]["title"][:100]
         thumbnail = results[0]["thumbnails"][0]
         thumb_name = f"{title}.jpg"
         thumb = requests.get(thumbnail, allow_redirects=True)
@@ -67,7 +67,7 @@ def song(bot, cmd): #client, message,
         for i in range(len(dur_arr) - 1, -1, -1):
             dur += int(float(dur_arr[i])) * secmul
             secmul *= 60
-        m.edit(f"🎵 **Hazırda Tapılan mahnı:** `{title}`\n💸 **Reklam:**\n__Söhbət qrupu axtaranlar qatıla bilər__",
+        m.edit(f"🎵 **Hazırda Tapılan mahnı:** `{title}`\n\n💸 **Reklam:**\n__Söhbət qrupu axtaranlar qatıla bilər__",
             reply_markup=InlineKeyboardMarkup(
                      [
                          [
