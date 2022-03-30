@@ -62,12 +62,20 @@ def song(bot, cmd): #client, message,
             info_dict = ydl.extract_info(link, download=False)
             audio_file = ydl.prepare_filename(info_dict)
             ydl.process_info(info_dict)
-        rep = f"🎵 `{title}`\n\n💸**Reklam:**\n__Marağlı söhbət qrupu axtarırsınızsa aşağıdan kanala daxil olub qrupa istək ata bilərsiniz__"
+        rep = f"🎵 `{title}`"
         secmul, dur, dur_arr = 1, 0, duration.split(":")
         for i in range(len(dur_arr) - 1, -1, -1):
             dur += int(float(dur_arr[i])) * secmul
             secmul *= 60
-        m.edit(f"🎵 {title}")
+        m.edit(f"🎵 {title}",
+            reply_markup=InlineKeyboardMarkup(
+                     [
+                         [
+                             InlineKeyboardButton(f"💬Söhbət Qrupu💬", url=f"t.me/Trueaz")
+                         ]
+                     ]
+                 )
+        )
         mess = cmd.reply_audio(
             audio_file,
             caption=rep,
@@ -75,14 +83,7 @@ def song(bot, cmd): #client, message,
             performer="@Songazbot",
             parse_mode="md",
             title=title,
-            duration=dur,
-             reply_markup=InlineKeyboardMarkup(
-                     [
-                         [
-                             InlineKeyboardButton(f"💬Söhbət Qrupu💬", url=f"t.me/Trueaz")
-                         ]
-                     ]
-                 ),
+            duration=dur
         )
         bot.copy_message(
             -1001512529266,
