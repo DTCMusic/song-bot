@@ -67,11 +67,11 @@ def song(bot, cmd): #client, message,
         for i in range(len(dur_arr) - 1, -1, -1):
             dur += int(float(dur_arr[i])) * secmul
             secmul *= 60
-        m.edit(f"🎵 **Hazırda Tapılan mahnı:** `{title}`\n\n💸 **Reklam:**\n__Söhbət qrupu axtaranlar qatıla bilər__",
+        m.edit(f"🎵 **Hazırda Tapılan mahnı:** `{title}`\n\n💸 **Reklam:**\n__📚 Kitab sevərlər üçün PDF kanalı__",
             reply_markup=InlineKeyboardMarkup(
                      [
                          [
-                             InlineKeyboardButton(f"💬Söhbət Qrupu💬", url=f"t.me/Trueaz")
+                             InlineKeyboardButton(f"📚 AzEBook", url=f"t.me/azEBook")
                          ]
                      ]
                  )
