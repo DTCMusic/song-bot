@@ -63,7 +63,7 @@ def song(bot, cmd): #client, message,
         m.edit("❗ Zəhmət olmasa mahnı adını düzgün yazın!")
         print(str(e))
         return
-    m.edit("🔍 **Mahnı yüklənir...**\n\n💸 **Reklam:**\n__📚 Kitab sevərlər üçün PDF kanalı__",
+    m.edit("🔍 **Mahnı yüklənir...**\n\n💸 **Reklam:**\n__📚 Daxil ol ve PDF olaraq oxu__",
             reply_markup=InlineKeyboardMarkup(
                      [
                          [
@@ -82,7 +82,7 @@ def song(bot, cmd): #client, message,
         for i in range(len(dur_arr) - 1, -1, -1):
             dur += int(float(dur_arr[i])) * secmul
             secmul *= 60
-        m.edit(f"🎵 **Hazırda Tapılan mahnı:** `{title}`\n\n💸 **Reklam:**\n__📚 Kitab sevərlər üçün PDF kanalı__",
+        m.edit(f"🎵 **Hazırda Tapılan mahnı:** `{title}`\n\n💸 **Reklam:**\n__📚 Ən marağlı kitablar bu kanalda__",
             reply_markup=InlineKeyboardMarkup(
                      [
                          [
