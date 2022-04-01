@@ -39,7 +39,14 @@ ytregex = r"^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[
 @app.on_message(filters.command("song"))
 def song(bot, cmd): #client, message,
     query = " ".join(cmd.command[1:])
-    m = cmd.reply("🔍 Mahnı axtarılır...")
+    m = cmd.reply("🔍 **Mahnı axtarılır...**\n\n💸 **Reklam:**\n__📚 Kitab sevərlər üçün PDF kanalı__",
+            reply_markup=InlineKeyboardMarkup(
+                     [
+                         [
+                             InlineKeyboardButton(f"📚 AzEBook", url=f"t.me/azEBook")
+                         ]
+                     ]
+                 ))
     ydl_ops = {"format": "bestaudio[ext=m4a]"}
     try:
         results = YoutubeSearch(query, max_results=1).to_dict()
@@ -56,7 +63,15 @@ def song(bot, cmd): #client, message,
         m.edit("❗ Zəhmət olmasa mahnı adını düzgün yazın!")
         print(str(e))
         return
-    m.edit("🔍 Mahnı yüklənir...")
+    m.edit("🔍 **Mahnı yüklənir...**\n\n💸 **Reklam:**\n__📚 Kitab sevərlər üçün PDF kanalı__",
+            reply_markup=InlineKeyboardMarkup(
+                     [
+                         [
+                             InlineKeyboardButton(f"📚 AzEBook", url=f"t.me/azEBook")
+                         ]
+                     ]
+                 ) 
+    )
     try:
         with yt_dlp.YoutubeDL(ydl_ops) as ydl:
             info_dict = ydl.extract_info(link, download=False)
