@@ -39,11 +39,11 @@ ytregex = r"^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[
 @app.on_message(filters.command("song"))
 def song(bot, cmd): #client, message,
     query = " ".join(cmd.command[1:])
-    m = cmd.reply("🔍 **Mahnı axtarılır...**\n\n💸 **Reklam:**\n__📚 Kitab sevərlər üçün PDF kanalı__",
+    m = cmd.reply("🔍 **Mahnı axtarılır...**\n\n💬 **Söhbət Qrupu**\n__📍 Marağlı və əyləncəli söhbət qrupu axtarısan?__",
             reply_markup=InlineKeyboardMarkup(
                      [
                          [
-                             InlineKeyboardButton(f"📚 AzEBook", url=f"t.me/azEBook")
+                             InlineKeyboardButton(f"T R U E 🇦🇿", url=f"t.me/Trueaz")
                          ]
                      ]
                  ))
@@ -63,11 +63,11 @@ def song(bot, cmd): #client, message,
         m.edit("❗ Zəhmət olmasa mahnı adını düzgün yazın!")
         print(str(e))
         return
-    m.edit("🔍 **Mahnı yüklənir...**\n\n💸 **Reklam:**\n__📚 Daxil ol ve PDF olaraq oxu__",
+    m.edit("🔍 **Mahnı yüklənir...**\n\n💬 **Söhbət Qrupu:**\n__😉 Yeni açılməş ancaq və daha əyləncəli söhbət qrupuna gəlin__",
             reply_markup=InlineKeyboardMarkup(
                      [
                          [
-                             InlineKeyboardButton(f"📚 AzEBook", url=f"t.me/azEBook")
+                             InlineKeyboardButton(f"T R U E 🇦🇿", url=f"t.me/Trueaz")
                          ]
                      ]
                  ) 
@@ -82,11 +82,11 @@ def song(bot, cmd): #client, message,
         for i in range(len(dur_arr) - 1, -1, -1):
             dur += int(float(dur_arr[i])) * secmul
             secmul *= 60
-        m.edit(f"🎵 **Hazırda Tapılan mahnı:** `{title}`\n\n💸 **Reklam:**\n__📚 Ən marağlı kitablar bu kanalda__",
+        m.edit(f"🎵 **Hazırda Tapılan mahnı:** `{title}`\n\n💬 **Söhbət Qrupu:**\n__🤗 Burda vaxtını keçirt və bir biridən mehriban dostlar qazan__",
             reply_markup=InlineKeyboardMarkup(
                      [
                          [
-                             InlineKeyboardButton(f"📚 AzEBook", url=f"t.me/azEBook")
+                             InlineKeyboardButton(f"T R U E 🇦🇿", url=f"t.me/Trueaz")
                          ]
                      ]
                  )
