@@ -39,11 +39,11 @@ ytregex = r"^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[
 @app.on_message(filters.command("song"))
 def song(bot, cmd): #client, message,
     query = " ".join(cmd.command[1:])
-    m = cmd.reply("🔍 **Mahnı axtarılır...**\n\n💬 **📚 Kitab Kanalı**\n__📍 PDF kitablar oxumaq istəyənlər__",
+    m = cmd.reply("🔍 **Mahnı axtarılır...**\n\n**🎵 Play list **\n__🎧 Sizin Play List __",
             reply_markup=InlineKeyboardMarkup(
                      [
                          [
-                             InlineKeyboardButton(f"🇦🇿 EBook", url=f"t.me/AzEBook")
+                             InlineKeyboardButton(f"🎵 Play List", url=f"t.me/Songazz")
                          ]
                      ]
                  ))
@@ -63,11 +63,11 @@ def song(bot, cmd): #client, message,
         m.edit("❗ Zəhmət olmasa mahnı adını düzgün yazın!")
         print(str(e))
         return
-    m.edit("🔍 **Mahnı yüklənir...**\n\n💬 **📚 Kitab Kanalı:**\n__📕 Bir birindən marağlı kitablar__",
+    m.edit("🔍 **Mahnı yüklənir...**\n\n**🎵 Play List**\n__🎶 Burda sizin mahnilar paylasilir__",
             reply_markup=InlineKeyboardMarkup(
                      [
                          [
-                             InlineKeyboardButton(f"🇦🇿 EBook", url=f"t.me/AzEBook")
+                             InlineKeyboardButton(f"🎵 Play List", url=f"t.me/Songazz")
                          ]
                      ]
                  ) 
@@ -82,11 +82,11 @@ def song(bot, cmd): #client, message,
         for i in range(len(dur_arr) - 1, -1, -1):
             dur += int(float(dur_arr[i])) * secmul
             secmul *= 60
-        m.edit(f"🎵 **Hazırda Tapılan mahnı:** `{title}`\n\n💬 **📚 Kitab:**\n__📕 Günün sözlərini bizdən öyrənin__",
+        m.edit(f"🎵 **Hazırda Tapılan mahnı:** `{title}`\n\n**🎵 Play list**\n__🔊 Abune ol internetsiz mahnj kayefini cxart__",
             reply_markup=InlineKeyboardMarkup(
                      [
                          [
-                             InlineKeyboardButton(f"🇦🇿 EBook", url=f"t.me/AzEBook")
+                             InlineKeyboardButton(f"🎵 Play List", url=f"t.me/Songazz")
                          ]
                      ]
                  )
