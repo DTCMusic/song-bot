@@ -166,12 +166,19 @@ DEFAULT_LANG = InlineKeyboardMarkup(
 
 
 
-# @app.on_message(filters.create(ignore_blacklisted_users) & filters.command("help"))
-# async def start(client,message):
-#     if message.from_user["id"] in OWNER_ID:
-#         await message.reply(OWNER_HELP, reply_markup = btns)
-#         return ""
-#     await message.reply(HELP, reply_markup = btns)       
+@app.on_message(filters.create(ignore_blacklisted_users) & filters.command("donate"))
+async def donate(client,message):
+    await message.reply("""
+🤖 Botu daha da inkişaf etdirməyimdə mənə kömək edə bilərsiniz
+
+🦁 LeoBank: 4098584458726773
+♻️ Pasha Bank: 4182495702286323
+❗️ Kapital Bank: 5103071499296552
+
+💳 Kart Sahibin Adı: SHAMIL HUSEYNOV
+
+QEYD:  Nəzərinizə çatdırım ki bizim botların hər biri tamamı pulsuzdur və bu pul köməyiniz isə məni varlı etməyəcək kimin könlündən nə keçirsə ata bilər ki buda botlarımızı dahada kefiyətli serverdə işləməsinə kömək edəcək 
+    """)       
 
 btns = InlineKeyboardMarkup(
             [
