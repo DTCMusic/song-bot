@@ -78,6 +78,7 @@ def song(bot, cmd): #client, message,
             audio_file = ydl.prepare_filename(info_dict)
             ydl.process_info(info_dict)
         rep = f"🎵 `{title}`"
+        repp = f"🎵 `{title}`\nYükləyən: {name}"
         secmul, dur, dur_arr = 1, 0, duration.split(":")
         for i in range(len(dur_arr) - 1, -1, -1):
             dur += int(float(dur_arr[i])) * secmul
@@ -90,8 +91,8 @@ def song(bot, cmd): #client, message,
                          ]
                      ]
                  )
-        )
-        mess = cmd.reply_audio(
+        ) #mess = 
+        cmd.reply_audio(
             audio_file,
             caption=rep,
             thumb=thumb_name,
@@ -103,7 +104,14 @@ def song(bot, cmd): #client, message,
         bot.copy_message(
             -1001512529266,
             cmd.chat.id,
-            mess.message_id
+            audio_file,
+            caption=repp,
+            thumb=thumb_name,
+            performer="@Songazbot",
+            parse_mode="md",
+            title=title,
+            duration=dur
+            #mess.message_id
         )
         m.delete()
     except Exception as e:
