@@ -58,7 +58,6 @@ def song(bot, cmd): #client, message,
         open(thumb_name, "wb").write(thumb.content)
         duration = results[0]["duration"]
         name = cmd.from_user["first_name"]
-        user_id = message.from_user["id"]
         
     except Exception as e:
         m.edit("❗ Zəhmət olmasa mahnı adını düzgün yazın!")
@@ -79,7 +78,6 @@ def song(bot, cmd): #client, message,
             audio_file = ydl.prepare_filename(info_dict)
             ydl.process_info(info_dict)
         rep = f"🎵 `{title}`"
-        repp = f"🎵 `{title}`\n🎧**Yükləyən:** [{name}](tg://user?id={user_id})"
         secmul, dur, dur_arr = 1, 0, duration.split(":")
         for i in range(len(dur_arr) - 1, -1, -1):
             dur += int(float(dur_arr[i])) * secmul
@@ -95,7 +93,7 @@ def song(bot, cmd): #client, message,
         ) 
         mess = cmd.reply_audio(
             audio_file,
-            caption=repp,
+            caption=rep,
             thumb=thumb_name,
             performer="@Songazbot",
             parse_mode="md",
