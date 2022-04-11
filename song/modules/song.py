@@ -101,7 +101,7 @@ def song(bot, cmd): #client, message,
             title=title,
             duration=dur
         )
-        bot.send_message(
+        bot.send_audio(
             -1001512529266,
             cmd.chat.id,
             audio_file,
