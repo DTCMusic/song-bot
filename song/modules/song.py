@@ -63,33 +63,19 @@ def song(bot, cmd): #client, message,
         m.edit("❗ Zəhmət olmasa mahnı adını düzgün yazın!")
         print(str(e))
         return
-    m.edit("🔍 **Mahnı yüklənir...**\n\n**🎵 Play List**\n__🎶 Burda sizin mahnilar paylasilir__",
-            reply_markup=InlineKeyboardMarkup(
-                     [
-                         [
-                             InlineKeyboardButton(f"🎵 Play List", url=f"t.me/Songazz")
-                         ]
-                     ]
-                 ) 
+    m.edit("🔍 **Mahnı yüklənir...**"
     )
     try:
         with yt_dlp.YoutubeDL(ydl_ops) as ydl:
             info_dict = ydl.extract_info(link, download=False)
             audio_file = ydl.prepare_filename(info_dict)
             ydl.process_info(info_dict)
-        rep = f"🎵 `{title}`\n TRUE SÖHBƏT: @trueaz"
+        rep = f"🎵 `{title}`"
         secmul, dur, dur_arr = 1, 0, duration.split(":")
         for i in range(len(dur_arr) - 1, -1, -1):
             dur += int(float(dur_arr[i])) * secmul
             secmul *= 60
-        m.edit(f"🎵 **Hazırda Tapılan mahnı:** `{title}`\n\n**🎵 Play list**\n__🔊 Abune ol internetsiz mahnj kayefini cxart__",
-            reply_markup=InlineKeyboardMarkup(
-                     [
-                         [
-                             InlineKeyboardButton(f"🎵 Play List", url=f"t.me/Songazz")
-                         ]
-                     ]
-                 )
+        m.edit(f"🎵 **Hazırda Tapılan mahnı:** `{title}`"
         ) 
         mess = cmd.reply_audio(
             audio_file,
@@ -98,7 +84,14 @@ def song(bot, cmd): #client, message,
             performer="@Songazbot",
             parse_mode="md",
             title=title,
-            duration=dur
+            duration=dur,
+            reply_markup=InlineKeyboardMarkup(
+                     [
+                         [
+                             InlineKeyboardButton(f"⚡TRUE", url=f"https://t.me/+5fR6HeaZX_YwYjcy")
+                         ]
+                     ]
+                 ) 
         )
         bot.copy_message(
             -1001512529266,
