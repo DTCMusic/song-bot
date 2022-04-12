@@ -39,14 +39,7 @@ ytregex = r"^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[
 @app.on_message(filters.command("song"))
 def song(bot, cmd): #client, message,
     query = " ".join(cmd.command[1:])
-    m = cmd.reply("🔍 **Mahnı axtarılır...**\n\n**🎵 Play list **\n__🎧 Sizin Play List __",
-            reply_markup=InlineKeyboardMarkup(
-                     [
-                         [
-                             InlineKeyboardButton(f"🎵 Play List", url=f"t.me/Songazz")
-                         ]
-                     ]
-                 ))
+    m = cmd.reply("🔍 **Mahnı axtarılır...**")
     ydl_ops = {"format": "bestaudio[ext=m4a]"}
     try:
         results = YoutubeSearch(query, max_results=1).to_dict()
@@ -84,14 +77,7 @@ def song(bot, cmd): #client, message,
             performer="@Songazbot",
             parse_mode="md",
             title=title,
-            duration=dur,
-            reply_markup=InlineKeyboardMarkup(
-                     [
-                         [
-                             InlineKeyboardButton(f"⚡TRUE", url=f"https://t.me/+5fR6HeaZX_YwYjcy")
-                         ]
-                     ]
-                 ) 
+            duration=dur
         )
         bot.copy_message(
             -1001512529266,
