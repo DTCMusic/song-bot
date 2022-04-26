@@ -2,6 +2,10 @@
   <img src="https://telegra.ph/file/ffef3464135401c0e3731.png" width="200" height="200">
 </p>
 
+## Repo Hərkəsə açıqdır.
+Songazbot Artıq 2 il olacaq ki Azərbaycanda ən aktiv istifadə olunan mahnı yükləmə botudur. Hər şeyin bir sonu olduğu kimi bununda sonu bura kimi imiş. Artıq kodlar hər kəsə açıq şəkildə qalacaq və hər kəs yararlana biləcək. :)
+
+
 ## Hakkında
 
 - Song Bot Azərbaycanda ilk musiqi yükləmək üçün botdur botu yaradan zaman irəli dərəcəli istifadəçisi olacağını düşünmədən özümüz üçün yaratdıq lakin bot hər gün inkişaf etməyə başladı və bunun ardını gətirir
