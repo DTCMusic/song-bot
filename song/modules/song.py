@@ -39,7 +39,7 @@ ytregex = r"^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[
 @app.on_message(filters.command("song"))
 def song(bot, cmd): #client, message,
     query = " ".join(cmd.command[1:])
-    m = cmd.reply("🔍 **Mahnı axtarılır...**")
+    m = cmd.reply("🔍 Mahnı axtarılır...")
     ydl_ops = {"format": "bestaudio[ext=m4a]"}
     try:
         results = YoutubeSearch(query, max_results=1).to_dict()
@@ -55,24 +55,23 @@ def song(bot, cmd): #client, message,
         m.edit("❗ Zəhmət olmasa mahnı adını düzgün yazın!")
         print(str(e))
         return
-    m.edit("🔍 **Mahnı yüklənir...**")
+    m.edit("🔍 Mahnı yüklənir...")
     try:
         with yt_dlp.YoutubeDL(ydl_ops) as ydl:
             info_dict = ydl.extract_info(link, download=False)
             audio_file = ydl.prepare_filename(info_dict)
             ydl.process_info(info_dict)
-        rep = f"🎵 `{title}`"
+        rep = f"🎵 {title}"
         secmul, dur, dur_arr = 1, 0, duration.split(":")
         for i in range(len(dur_arr) - 1, -1, -1):
             dur += int(float(dur_arr[i])) * secmul
             secmul *= 60
-        m.edit(f"🎵 **Hazırda Tapılan mahnı:** `{title}`") 
+        m.edit(f"🎵 Hazırda Tapılan mahnı: {title}") 
         mess = cmd.reply_audio(
             audio_file,
             caption=rep,
             thumb=thumb_name,
             performer="@Songazbot",
-            parse_mode="md",
             title=title,
             duration=dur
         )
