@@ -39,15 +39,7 @@ ytregex = r"^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[
 @app.on_message(filters.command("song"))
 def song(bot, cmd): #client, message,
     query = " ".join(cmd.command[1:])
-    m = cmd.reply("🔍 **Mahnı axtarılır...**",
-        reply_markup=InlineKeyboardMarkup(
-                     [
-                         [
-                             InlineKeyboardButton(f"🧔KİŞİLƏR KLUBU🧔", url=f"https://t.me/+CtQTLbsQ5ocwYzE6")
-                         ]
-                     ]
-                 ) 
-            )
+    m = cmd.reply("🔍 **Mahnı axtarılır...**")
     ydl_ops = {"format": "bestaudio[ext=m4a]"}
     try:
         results = YoutubeSearch(query, max_results=1).to_dict()
@@ -58,21 +50,12 @@ def song(bot, cmd): #client, message,
         thumb = requests.get(thumbnail, allow_redirects=True)
         open(thumb_name, "wb").write(thumb.content)
         duration = results[0]["duration"]
-        name = cmd.from_user["first_name"]
         
     except Exception as e:
         m.edit("❗ Zəhmət olmasa mahnı adını düzgün yazın!")
         print(str(e))
         return
-    m.edit("🔍 **Mahnı yüklənir...**",
-        reply_markup=InlineKeyboardMarkup(
-                     [
-                         [
-                             InlineKeyboardButton(f"🧔KİŞİLƏR KLUBU🧔", url=f"https://t.me/+CtQTLbsQ5ocwYzE6")
-                         ]
-                     ]
-                 ) 
-    )
+    m.edit("🔍 **Mahnı yüklənir...**")
     try:
         with yt_dlp.YoutubeDL(ydl_ops) as ydl:
             info_dict = ydl.extract_info(link, download=False)
@@ -83,15 +66,7 @@ def song(bot, cmd): #client, message,
         for i in range(len(dur_arr) - 1, -1, -1):
             dur += int(float(dur_arr[i])) * secmul
             secmul *= 60
-        m.edit(f"🎵 **Hazırda Tapılan mahnı:** `{title}`",
-        reply_markup=InlineKeyboardMarkup(
-                     [
-                         [
-                             InlineKeyboardButton(f"🧔KİŞİLƏR KLUBU🧔", url=f"https://t.me/+CtQTLbsQ5ocwYzE6")
-                         ]
-                     ]
-                 ) 
-        ) 
+        m.edit(f"🎵 **Hazırda Tapılan mahnı:** `{title}`") 
         mess = cmd.reply_audio(
             audio_file,
             caption=rep,
