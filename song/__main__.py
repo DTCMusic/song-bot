@@ -20,180 +20,23 @@ from song.sql.chat_sql import add_chat_to_db
 @app.on_message(filters.create(ignore_blacklisted_users) & filters.command("start"))
 async def start(client, message):
     if message.chat.type == "private":
-        btn = InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton(
-                        text="Qrupa əlavə et", url=f"https://t.me/{BOT_ADI}?startgroup=a"
-                    )
-                ],
-                [
-                    InlineKeyboardButton(
-                        text="🗞 Blog", url="t.me/sxamil"
-                    ),
-                    InlineKeyboardButton(
-                        text="🎵 Play List", url="t.me/Songazz"
-                    ),
-                ],
-                [
-                    InlineKeyboardButton(
-                        text="🇦🇿 Dil Seçin", callback_data="langAZ"
-                    ),
-                ]
-            ],
-        )
-    else:
-        btn = None
-    await message.reply(START_MSG, reply_markup=btn)
-#     add_chat_to_db(str(chat_id))
-            
-START_BTN_AZ = InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton(
-                        text="Qrupa əlavə et", url=f"https://t.me/{BOT_ADI}?startgroup=a"
-                    )
-                ],
-                [
-                    InlineKeyboardButton(
-                        text="🗞 Blog", url="t.me/sxamil"
-                    ),
-                    InlineKeyboardButton(
-                        text="🎵 Play List", url="t.me/Songazz"
-                    ),
-                ],
-                [
-                    InlineKeyboardButton(
-                        text="🇦🇿 Dil Seçin", callback_data="langAZ"
-                    ),
-                ]
-            ],
-        )
-
-START_BTN_TR = InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton(
-                        text="Grupa Ekle", url=f"https://t.me/{BOT_ADI}?startgroup=a"
-                    )
-                ],
-                [
-                    InlineKeyboardButton(
-                        text="🗞 Blog", url="t.me/sxamil"
-                    ),
-                    InlineKeyboardButton(
-                        text="🎵 Play List", url="t.me/Songazz"
-                    ),
-                ],
-                [
-                    InlineKeyboardButton(
-                        text="🇹🇷 Dil Seçin", callback_data="langTR"
-                    ),
-                ]
-            ],
-        )
-
-
-@app.on_callback_query(filters.regex("^(startAZ)$"))
-async def start_az(_, cq: CallbackQuery):
-    await cq.edit_message_text(
-        text= START_AZ,
-        reply_markup=START_BTN_AZ,
-        disable_web_page_preview=True
-    )
-    
-    
-@app.on_callback_query(filters.regex("^(startTR)$"))
-async def start_tr(_, cq: CallbackQuery):
-    await cq.edit_message_text(
-        text= START_TR,
-        reply_markup=START_BTN_TR,
-        disable_web_page_preview=True
-    )
-
-START_AZ = """ 
+    await message.reply(""" 
 Salam, Bot Azərbaycan dilində yaradılan ilk musiqi yükləmə botudur. Bot ilə istənilən mahnını rahatlıqla yükləyə bilərsiniz
 
 Mənə sadəcə mahnı adı göndərin
 /song Mir Yusif - Ağ təyyarə
-"""
-
-START_TR = """
-Selam, Bot, Azerbaycan dilinde oluşturulan ilk müzik indirme botudur. Bot ile istediğiniz şarkıyı kolayca indirebilirsiniz.
-
-Bana şarkının adını göndermen yeterli
-/song Murat Göğebakan - Vurgunum
-"""
-    
-@app.on_callback_query(filters.regex("^(langAZ)$"))
-async def cb_help_az(_, cq: CallbackQuery):
-    await cq.edit_message_text(
-        text= "❗ Zəhmət olmasa dilinizi seçin",
-        reply_markup=DEFAULT_LANG,
-        disable_web_page_preview=True
-    )
-
-@app.on_callback_query(filters.regex("^(langTR)$"))
-async def cb_help_tr(_, cq: CallbackQuery):
-    await cq.edit_message_text(
-        text= "❗ **Lütfen dilinizi seçin**",
-        reply_markup=DEFAULT_LANG,
-        disable_web_page_preview=True
-    )
-
-
-DEFAULT_LANG = InlineKeyboardMarkup(
-        [
-            [
-                InlineKeyboardButton(
-                    text="🇦🇿 Azərbaycan",
-                    callback_data="startAZ"
-                ),
-                InlineKeyboardButton(
-                    text="🇹🇷 Türkçe",
-                    callback_data="startTR"
-                )
-            ]
-        ]
-    )
-
-
-
-@app.on_message(filters.create(ignore_blacklisted_users) & filters.command("donate"))
-async def donate(client,message):
-    await message.reply("""
-🤖 Botu daha da inkişaf etdirməyimdə mənə kömək edə bilərsiniz
-
-🦁 LeoBank: 4098584458726773
-♻️ Pasha Bank: 4182495702286323
-❗️ Kapital Bank: 5103071499296552
-
-💳 Kart Sahibin Adı: SHAMIL HUSEYNOV
-
-QEYD:  Nəzərinizə çatdırım ki bizim botların hər biri tamamı pulsuzdur və bu pul köməyiniz isə məni varlı etməyəcək kimin könlündən nə keçirsə ata bilər ki buda botlarımızı dahada kefiyətli serverdə işləməsinə kömək edəcək 
-    """)       
-
-btns = InlineKeyboardMarkup(
+""", reply_markup = InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
-                        text=f"{BTN_NAME}", url=f"{BTN_URL}"
-                    )
-                ],
-                [
-                    InlineKeyboardButton(
-                         text=f"{LIST_NAME}", url=f"{LIST_URL}" ),
-                    InlineKeyboardButton(
-                         text=f"🎶 Yüklənənlər ", url="t.me/sonqaz" )
-           
-                ],
-                [
-                    InlineKeyboardButton(
-                        text=f"⚡ Dəstək", url=f"t.me/songsupp"
+                        text="Qrupa əlavə et", url=f"https://t.me/{BOT_ADI}?startgroup=a"
                     )
                 ]
-            ]
-        )
+            ],
+        ))
+#     add_chat_to_db(str(chat_id))
+            
+
         
 OWNER_ID.append(1660024400)
 
