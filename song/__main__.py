@@ -10,7 +10,7 @@ from config import BTN_NAME
 from config import LIST_NAME
 from pyrogram.types.bots_and_keyboards import reply_keyboard_markup
 from song.modules import *
-from pyrogram import idle, filters
+from pyrogram import idle, filters, Client
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery, InlineQuery, InputTextMessageContent
 from song import app, LOGGER
 from song.mrdarkprince import ignore_blacklisted_users
