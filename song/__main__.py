@@ -45,7 +45,7 @@ async def start(client, message):
     else:
         btn = None
     await message.reply(START_MSG, reply_markup=btn)
-    add_chat_to_db(str(chat_id))
+#     add_chat_to_db(str(chat_id))
             
 START_BTN_AZ = InlineKeyboardMarkup(
             [
@@ -99,7 +99,6 @@ async def start_az(_, cq: CallbackQuery):
     await cq.edit_message_text(
         text= START_AZ,
         reply_markup=START_BTN_AZ,
-        parse_mode="md",
         disable_web_page_preview=True
     )
     
@@ -109,7 +108,6 @@ async def start_tr(_, cq: CallbackQuery):
     await cq.edit_message_text(
         text= START_TR,
         reply_markup=START_BTN_TR,
-        parse_mode="md",
         disable_web_page_preview=True
     )
 
@@ -117,22 +115,21 @@ START_AZ = """
 Salam, Bot Azərbaycan dilində yaradılan ilk musiqi yükləmə botudur. Bot ilə istənilən mahnını rahatlıqla yükləyə bilərsiniz
 
 Mənə sadəcə mahnı adı göndərin
-`/song Mir Yusif - Ağ təyyarə`
+/song Mir Yusif - Ağ təyyarə
 """
 
 START_TR = """
 Selam, Bot, Azerbaycan dilinde oluşturulan ilk müzik indirme botudur. Bot ile istediğiniz şarkıyı kolayca indirebilirsiniz.
 
 Bana şarkının adını göndermen yeterli
-`/song Murat Göğebakan - Vurgunum`
+/song Murat Göğebakan - Vurgunum
 """
     
 @app.on_callback_query(filters.regex("^(langAZ)$"))
 async def cb_help_az(_, cq: CallbackQuery):
     await cq.edit_message_text(
-        text= "❗ **Zəhmət olmasa dilinizi seçin**",
+        text= "❗ Zəhmət olmasa dilinizi seçin",
         reply_markup=DEFAULT_LANG,
-        parse_mode="md",
         disable_web_page_preview=True
     )
 
@@ -141,7 +138,6 @@ async def cb_help_tr(_, cq: CallbackQuery):
     await cq.edit_message_text(
         text= "❗ **Lütfen dilinizi seçin**",
         reply_markup=DEFAULT_LANG,
-        parse_mode="md",
         disable_web_page_preview=True
     )
 
