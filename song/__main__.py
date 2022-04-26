@@ -17,24 +17,10 @@ from song.mrdarkprince import ignore_blacklisted_users
 from song.sql.chat_sql import add_chat_to_db
 
 
-@app.on_message(filters.create(ignore_blacklisted_users) & filters.command("start"))
-async def start(client, message):
-    if message.chat.type == "private":
-    await message.reply(""" 
-Salam, Bot Azərbaycan dilində yaradılan ilk musiqi yükləmə botudur. Bot ilə istənilən mahnını rahatlıqla yükləyə bilərsiniz
-
-Mənə sadəcə mahnı adı göndərin
-/song Mir Yusif - Ağ təyyarə
-""", reply_markup = InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton(
-                        text="Qrupa əlavə et", url=f"https://t.me/{BOT_ADI}?startgroup=a"
-                    )
-                ]
-            ],
-        ))
-#     add_chat_to_db(str(chat_id))
+@app.on_message(filters.command("start") & filters.private)
+async def priv_start(c:Client, m:Message):
+    AD = f"{m.from_user.mention}"
+    await c.send_message(m.chat.id,text="Salam %s Mənimlə istədiyiniz musiqini yükləyə bilərsiniz sadəcə mənə mahnı adı göndrəin \n\nMəs: /song Mir Yusif - Ağ təyyarə." % (AD), reply_markup=startBTN)
             
 
         
