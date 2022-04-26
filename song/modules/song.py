@@ -67,7 +67,7 @@ def song(bot, cmd): #client, message,
             dur += int(float(dur_arr[i])) * secmul
             secmul *= 60
         m.edit(f"🎵 Hazırda Tapılan mahnı: {title}") 
-        mess = cmd.reply_audio(
+        await cmd.reply_audio(
             audio_file,
             caption=rep,
             thumb=thumb_name,
@@ -75,11 +75,11 @@ def song(bot, cmd): #client, message,
             title=title,
             duration=dur
         )
-        bot.copy_message(
-            -1001512529266,
-            cmd.chat.id,
-            mess.message_id
-        )
+#         bot.copy_message(
+#             -1001512529266,
+#             cmd.chat.id,
+#             mess.message_id
+#         )
         m.delete()
     except Exception as e:
         m.edit("😊 Bizi seçdiyiniz üçün təşəkkürlər\n Hər hansı Prablem olarsa @Samil - ə bildirin")
