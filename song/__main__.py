@@ -32,7 +32,7 @@ Mənimlə istədiyiniz musiqini yükləyə bilərsiniz sadəcə mənə mahnı ad
 Məs: /song Mir Yusif - Ağ təyyarə.
 """
 
-@Bot.on_message(filters.command("start"))
+@app.on_message(filters.command("start"))
 async def start(client, message):
     await update.reply_text(
        text=START_TEXT.format(message.from_user.mention),
