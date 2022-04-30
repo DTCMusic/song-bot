@@ -34,9 +34,9 @@ def yt_search(song):
 
 
 @app.on_message(filters.command("song"))
-def song(client, message): #client, message,
-    query = " ".join(message.command[1:])
-    m = message.reply("🔍 Mahnı axtarılır...")
+def song(bot, cmd): #client, message,
+    query = " ".join(cmd.command[1:])
+    m = cmd.reply("🔍 Mahnı axtarılır...")
     ydl_ops = {"format": "bestaudio[ext=m4a]"}
     try:
         results = YoutubeSearch(query, max_results=1).to_dict()
@@ -64,7 +64,7 @@ def song(client, message): #client, message,
             dur += int(float(dur_arr[i])) * secmul
             secmul *= 60
         m.edit(f"🎵 Mahnı Adı: {title}") 
-        mess = client.reply_audio(
+        mess = cmd.reply_audio(
             audio_file,
             caption=rep,
             thumb=thumb_name,
@@ -74,7 +74,7 @@ def song(client, message): #client, message,
         )
         client.copy_message(
             -1001512529266,
-            message.chat.id,
+            cmd.chat.id,
             mess.message_id
         )
         m.delete()
