@@ -35,7 +35,7 @@ Məs: /song Mir Yusif - Ağ təyyarə.
 
 @app.on_message(filters.command("start"))
 async def start(client, message):
-    await client.reply_text(
+    await message.reply_text(
        text=START_TEXT.format(message.from_user.mention),
        disable_web_page_preview=True,
        reply_markup=START_BUTTONS
