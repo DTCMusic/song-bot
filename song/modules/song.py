@@ -74,12 +74,7 @@ def song(bot, message): #client, message,
             performer="@Songazbot",
             parse_mode='md',
             title=title,
-            duration=dur,
-            reply_markup= InlineKeyboardMarkup(
-        [[
-        InlineKeyboardButton('T R U E ', url="https://t.me/songazbot?startgroup=a"), 
-        ]]
-    )
+            duration=dur
         )
         bot.copy_message(
             -1001512529266,
