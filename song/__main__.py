@@ -19,7 +19,7 @@ from song.sql.chat_sql import add_chat_to_db
 
 @app.on_message(filters.command("start") & filters.private)
 async def priv_start(client, message):
-    AD = f"{m.from_user.mention}"
+    AD = f"{message.from_user.mention}"
     await c.send_message(m.chat.id,text="Salam %s Mənimlə istədiyiniz musiqini yükləyə bilərsiniz sadəcə mənə mahnı adı göndrəin \n\nMəs: /song Mir Yusif - Ağ təyyarə." % (AD), reply_markup=startBTN)
             
 
