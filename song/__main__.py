@@ -26,9 +26,20 @@ START_BUTTONS = InlineKeyboardMarkup(
         ]]
     )
 
-@app.on_message(filters.command("start") & filters.private)
-async def priv_start(client, message):
-    await client.send_message(m.chat.id,text=f"Salam {} Mənimlə istədiyiniz musiqini yükləyə bilərsiniz sadəcə mənə mahnı adı göndrəin \n\nMəs: /song Mir Yusif - Ağ təyyarə.".format(message.from_user.mention), reply_markup=START_BUTTONS)
+START_TEXT = f""" 
+Salam {} 
+Mənimlə istədiyiniz musiqini yükləyə bilərsiniz sadəcə mənə mahnı adı göndrəin
+Məs: /song Mir Yusif - Ağ təyyarə.
+"""
+
+@Bot.on_message(filters.command("start"))
+async def start(client, message):
+    await update.reply_text(
+       text=START_TEXT.format(message.from_user.mention),
+       disable_web_page_preview=True,
+       reply_markup=START_BUTTONS
+    )
+
             
 
         
