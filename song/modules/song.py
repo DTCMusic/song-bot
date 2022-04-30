@@ -76,7 +76,7 @@ def song(bot, cmd): #client, message,
 #             -1001512529266,
 #             cmd.chat.id,
 #             mess.message_id
-        )
+#         )
         m.delete()
     except Exception as e:
         m.edit("😊 Bizi seçdiyiniz üçün təşəkkürlər\n Hər hansı Prablem olarsa @Samil - ə bildirin")
