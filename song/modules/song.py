@@ -16,7 +16,6 @@ import requests
 import logging
 logger = logging.getLogger(__name__)
 import os, re, time, math, yt_dlp, json, string, random, traceback, wget, asyncio, datetime, aiofiles, aiofiles.os, requests, youtube_dl, lyricsgenius, wget
-from config import Config
 from random import choice 
 from pyrogram import Client, filters
 from youtube_search import YoutubeSearch
