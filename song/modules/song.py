@@ -9,6 +9,7 @@ from song.utils import ignore_blacklisted_users, get_arg
 from song import app, LOGGER
 from song.sql.chat_sql import add_chat_to_db
 
+import requests
 from youtube_search import YoutubeSearch
 from youtubesearchpython import VideosSearch
 from yt_dlp import YoutubeDL
