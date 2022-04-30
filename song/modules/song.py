@@ -36,7 +36,7 @@ def yt_search(song):
 @app.on_message(filters.command("song"))
 def song(bot, message): #client, message,
     query = " ".join(message.command[1:])
-    m = message.reply("🔍 **Mahnı axtarılır...**")
+    m = message.reply("🔍 Mahnı axtarılır...")
     ydl_ops = {"format": "bestaudio[ext=m4a]"}
     try:
         results = YoutubeSearch(query, max_results=1).to_dict()
@@ -49,27 +49,26 @@ def song(bot, message): #client, message,
         duration = results[0]["duration"]
         
     except Exception as e:
-        m.edit("❗ **Zəhmət olmasa mahnı adını düzgün yazın!**\n\n__Bu xətanı aldınızsa botda prablem olub olmadığına əmin olmaq üçün başqa mahnı adı yazıb yükləyərək yoxlayın. Bəzi hallarda youtubedə olan mahnıları telegram yükləyə bilmir__")
+        m.edit("❗ Zəhmət olmasa mahnı adını düzgün yazın!\n\nBu xətanı aldınızsa botda prablem olub olmadığına əmin olmaq üçün başqa mahnı adı yazıb yükləyərək yoxlayın. Bəzi hallarda youtubedə olan mahnıları telegram yükləyə bilmir")
         print(str(e))
         return
-    m.edit("🔍 **Mahnı yüklənir...**")
+    m.edit("🔍 Mahnı yüklənir...")
     try:
         with yt_dlp.YoutubeDL(ydl_ops) as ydl:
             info_dict = ydl.extract_info(link, download=False)
             audio_file = ydl.prepare_filename(info_dict)
             ydl.process_info(info_dict)
-        rep = f"🎵 `{title}`"
+        rep = f"🎵 {title}"
         secmul, dur, dur_arr = 1, 0, duration.split(":")
         for i in range(len(dur_arr) - 1, -1, -1):
             dur += int(float(dur_arr[i])) * secmul
             secmul *= 60
-        m.edit(f"🎵 **Mahnı Adı:** `{title}`") 
+        m.edit(f"🎵 Mahnı Adı: {title}") 
         mess = message.reply_audio(
             audio_file,
             caption=rep,
             thumb=thumb_name,
             performer="@Songazbot",
-            parse_mode='md',
             title=title,
             duration=dur
         )
