@@ -36,48 +36,63 @@ def yt_search(song):
         return url
 
 
-@app.on_message(filters.create(ignore_blacklisted_users) & filters.command("song"))
-async def song(client, message):
-    chat_id = message.chat.id
-    user_id = message.from_user["id"]
-
-   
-    add_chat_to_db(str(chat_id))
-    args = get_arg(message) + " " + "song"
-    if args.startswith(" "):
-        await message.reply("Mahnı adı yazın...")
-        return ""
-    status = await message.reply("🔍 Axtarılır...")
-    video_link = yt_search(args)
-    if not video_link:
-        await status.edit(f"📥 `{yt.title}`")
-        return ""
-    yt = YouTube(video_link)
-    audio = yt.streams.filter(only_audio=False).first()
+@app.on_message(filters.command("song"))
+def song(bot, message): #client, message,
+    query = " ".join(message.command[1:])
+    m = message.reply("🔍 **Mahnı axtarılır...**")
+    ydl_ops = {"format": "bestaudio[ext=m4a]"}
     try:
-        download = audio.download(filename=f"{str(yt.title)}")
-    except Exception as ex:
-        await status.edit("❌ Mahnı tapılmadı")
-        LOGGER.error(ex)
-        return ""
-    rename = os.rename(download, f"{str(yt.title)}.mp3")
-    await app.send_chat_action(message.chat.id, "upload_audio")
-    await app.send_audio(
-        chat_id=message.chat.id,
-        caption=f"🎵 `{yt.title}`",
-        parse_mode="md",
-        audio=f"{str(yt.title)}.mp3",
-        duration=int(yt.length),
-        title=str(yt.title),
-        performer="@songazbot",
-        reply_to_message_id=message.message_id,
-        reply_markup=InlineKeyboardMarkup(
-                    [
-                        [
-                            InlineKeyboardButton(f"🎵 Play List", url=f"t.me/songazz")
-                        ]
-                    ]
-                ),
+        results = YoutubeSearch(query, max_results=1).to_dict()
+        link = f"https://youtube.com{results[0]['url_suffix']}"
+        title = results[0]["title"][:100]
+        thumbnail = results[0]["thumbnails"][0]
+        thumb_name = f"{title}.jpg"
+        thumb = requests.get(thumbnail, allow_redirects=True)
+        open(thumb_name, "wb").write(thumb.content)
+        duration = results[0]["duration"]
+        
+    except Exception as e:
+        m.edit("❗ **Zəhmət olmasa mahnı adını düzgün yazın!**\n\n__Bu xətanı aldınızsa botda prablem olub olmadığına əmin olmaq üçün başqa mahnı adı yazıb yükləyərək yoxlayın. Bəzi hallarda youtubedə olan mahnıları telegram yükləyə bilmir__")
+        print(str(e))
+        return
+    m.edit("🔍 **Mahnı yüklənir...**")
+    try:
+        with yt_dlp.YoutubeDL(ydl_ops) as ydl:
+            info_dict = ydl.extract_info(link, download=False)
+            audio_file = ydl.prepare_filename(info_dict)
+            ydl.process_info(info_dict)
+        rep = f"🎵 `{title}`"
+        secmul, dur, dur_arr = 1, 0, duration.split(":")
+        for i in range(len(dur_arr) - 1, -1, -1):
+            dur += int(float(dur_arr[i])) * secmul
+            secmul *= 60
+        m.edit(f"🎵 **Mahnı Adı:** `{title}`") 
+        mess = message.reply_audio(
+            audio_file,
+            caption=rep,
+            thumb=thumb_name,
+            performer="@Songazbot",
+            parse_mode='md',
+            title=title,
+            duration=dur,
+            reply_markup= InlineKeyboardMarkup(
+        [[
+        InlineKeyboardButton('T R U E ', url="https://t.me/songazbot?startgroup=a"), 
+        ]]
+    )
         )
-    await status.delete()
-    os.remove(f"{str(yt.title)}.mp3")
+        bot.copy_message(
+            -1001512529266,
+            message.chat.id,
+            mess.message_id
+        )
+        m.delete()
+    except Exception as e:
+        m.edit("😊 Bizi seçdiyiniz üçün təşəkkürlər\n Hər hansı Prablem olarsa @Samil - ə bildirin")
+        print(e)
+
+    try:
+        os.remove(audio_file)
+        os.remove(thumb_name)
+    except Exception as e:
+        print(e)
