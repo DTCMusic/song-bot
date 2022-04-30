@@ -22,3 +22,17 @@ pytube
 youtube-dl==2021.6.6
 motor
 dnspython
+Pyrogram==1.2.9
+TgCrypto==1.2.2
+youtube_dl
+youtube_search_python
+youtube_search
+requests
+ffmpeg-python
+motor
+aiofiles
+dnspython
+pymongo
+lyricsgenius
+wget
+yt_dlp
