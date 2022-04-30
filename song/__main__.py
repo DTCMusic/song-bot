@@ -5,6 +5,7 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQ
 from song import app, LOGGER
 from song.mrdarkprince import ignore_blacklisted_users
 from song.sql.chat_sql import add_chat_to_db
+from config import OWNER_ID
 
 import aiohttp
 import requests
