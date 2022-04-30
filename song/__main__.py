@@ -26,7 +26,7 @@ START_BUTTONS = InlineKeyboardMarkup(
         ]]
     )
 
-START_TEXT = f""" 
+START_TEXT = """ 
 Salam {} 
 Mənimlə istədiyiniz musiqini yükləyə bilərsiniz sadəcə mənə mahnı adı göndrəin
 Məs: /song Mir Yusif - Ağ təyyarə.
