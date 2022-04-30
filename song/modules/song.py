@@ -72,10 +72,10 @@ def song(bot, cmd): #client, message,
             title=title,
             duration=dur
         )
-        bot.copy_message(
-            -1001512529266,
-            cmd.chat.id,
-            mess.message_id
+#         bot.copy_message(
+#             -1001512529266,
+#             cmd.chat.id,
+#             mess.message_id
         )
         m.delete()
     except Exception as e:
