@@ -64,7 +64,7 @@ def song(bot, message): #client, message,
             dur += int(float(dur_arr[i])) * secmul
             secmul *= 60
         m.edit(f"🎵 Mahnı Adı: {title}") 
-        mess = message.reply_audio(
+        mess = bot.reply_audio(
             audio_file,
             caption=rep,
             thumb=thumb_name,
