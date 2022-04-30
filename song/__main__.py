@@ -16,11 +16,15 @@ from song import app, LOGGER
 from song.mrdarkprince import ignore_blacklisted_users
 from song.sql.chat_sql import add_chat_to_db
 
+START_BUTTONS = InlineKeyboardMarkup(
+        [[
+        InlineKeyboardButton('Qrupa əlavə et', url="https://t.me/songazbot?startgroup=a"), 
+        ]]
+    )
 
 @app.on_message(filters.command("start") & filters.private)
 async def priv_start(client, message):
-    AD = f"{message.from_user.mention}"
-    await c.send_message(m.chat.id,text="Salam %s Mənimlə istədiyiniz musiqini yükləyə bilərsiniz sadəcə mənə mahnı adı göndrəin \n\nMəs: /song Mir Yusif - Ağ təyyarə." % (AD), reply_markup=startBTN)
+    await client.send_message(m.chat.id,text=f"Salam {} Mənimlə istədiyiniz musiqini yükləyə bilərsiniz sadəcə mənə mahnı adı göndrəin \n\nMəs: /song Mir Yusif - Ağ təyyarə.".format(message.from_user.mention), reply_markup=START_BUTTONS)
             
 
         
