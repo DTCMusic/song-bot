@@ -22,8 +22,8 @@ from youtube_search import YoutubeSearch
 from youtubesearchpython import VideosSearch
 from yt_dlp import YoutubeDL
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message, InlineQuery, InlineQueryResultArticle, InputTextMessageContent
-from pyrogram.errors import FloodWait, InputUserDeactivated, UserIsBlocked, PeerIdInvalid, MessageNotModified
-from pyrogram.errors.exceptions.bad_request_400 import PeerIdInvalid
+# from pyrogram.errors import FloodWait, InputUserDeactivated, UserIsBlocked, PeerIdInvalid, MessageNotModified
+# from pyrogram.errors.exceptions.bad_request_400 import PeerIdInvalid
 
 def yt_search(song):
     videosSearch = VideosSearch(song, limit=1)
