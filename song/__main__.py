@@ -21,12 +21,14 @@ Məs: /song Mir Yusif - Ağ təyyarə.
 
 @app.on_message(filters.command("start"))
 async def start(client, message):
+    chat_id = message.chat.id
+    user_id = message.from_user["id"]
     await message.reply_text(
        text=START_TEXT.format(message.from_user.mention),
        disable_web_page_preview=True,
        reply_markup=START_BUTTONS
     )
-
+    add_chat_to_db(str(chat_id))
             
 
         
