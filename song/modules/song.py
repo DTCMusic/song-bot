@@ -36,7 +36,7 @@ def yt_search(song):
 @app.on_message(filters.command("song"))
 def song(bot, cmd): #client, message,
     chat_id = message.chat.id # Burdan
-    user_id = message.from_user["id"]
+#     user_id = message.from_user["id"]
     add_chat_to_db(str(chat_id)) # Bura kimi
     query = " ".join(cmd.command[1:])
     m = cmd.reply("🔍 Mahnı axtarılır...")
