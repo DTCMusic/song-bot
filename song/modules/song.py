@@ -2,7 +2,7 @@ from pyrogram import Client, filters
 import asyncio
 import os
 from pytube import YouTube
-from pyrogram.types import InlineKeyboardMarkup
+from pyrogram.types import InlineKeyboardMarkup, Message
 from pyrogram.types import InlineKeyboardButton
 from youtubesearchpython import VideosSearch
 from song.utils import ignore_blacklisted_users, get_arg
@@ -75,11 +75,11 @@ def song(bot, cmd): #client, message,
             title=title,
             duration=dur
         )
-#         bot.copy_message(
-#             -1001512529266,
-#             cmd.chat.id,
-#             mess.message_id
-#         )
+         bot.copy_message(
+             -1001512529266,
+             cmd.chat.id,
+             mess.message_id
+         )
         m.delete()
     except Exception as e:
         m.edit("😊 Bizi seçdiyiniz üçün təşəkkürlər\n Hər hansı Prablem olarsa @Samil - ə bildirin")
