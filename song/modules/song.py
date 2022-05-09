@@ -67,7 +67,7 @@ def song (client: Client, message: Message):
             dur += int(float(dur_arr[i])) * secmul
             secmul *= 60
         m.edit(f"🎵 Mahnı Adı: {title}") 
-        mess = message.reply_audio(
+        message.reply_audio(
             audio_file,
             caption=rep,
             thumb=thumb_name,
@@ -75,8 +75,14 @@ def song (client: Client, message: Message):
             title=title,
             duration=dur
         )
-        client.send_audio(-1001512529266 , audio=mess)
-            
+        message.send_audio(1001512529266,
+            audio_file,
+            caption=rep,
+            thumb=thumb_name,
+            performer="@Songazbot",
+            title=title,
+            duration=dur
+        )
         m.delete()
     except Exception as e:
         m.edit("😊 Bizi seçdiyiniz üçün təşəkkürlər\n Hər hansı Prablem olarsa @Samil - ə bildirin")
