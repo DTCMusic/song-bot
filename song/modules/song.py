@@ -34,7 +34,7 @@ def yt_search(song):
 
 
 @app.on_message(filters.command("song"))
-def song (client: Client, message: Message)#(bot, cmd): #client, message,
+def song (client: Client, message: Message)
     chat_id = message.chat.id # Burdan
 #     user_id = message.from_user["id"]
     add_chat_to_db(str(chat_id)) # Bura kimi
