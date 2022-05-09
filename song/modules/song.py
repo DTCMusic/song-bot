@@ -75,13 +75,10 @@ def song (client: Client, message: Message):
             title=title,
             duration=dur
         )
-        client.sendMedia(1001512529266,
-            audio_file,
-            caption=rep,
-            thumb=thumb_name,
-            performer="@Songazbot",
-            title=title,
-            duration=dur
+        bot.copy_message(
+            1001512529266,
+            message=chat.id,
+            mess=message_id,
         )
         m.delete()
     except Exception as e:
