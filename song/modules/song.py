@@ -75,7 +75,7 @@ def song(bot, cmd): #client, message,
             title=title,
             duration=dur
         )
-         bot.copy_message(
+        await cmd.copy_message(
              -1001512529266,
              cmd.chat.id,
              mess.message_id
