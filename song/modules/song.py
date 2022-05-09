@@ -75,7 +75,7 @@ def song (client: Client, message: Message):
             title=title,
             duration=dur
         )
-        bot.copy_message(
+        client.copy_message(
             1001512529266,
             message=chat.id,
             message_id=mess.message_id,
