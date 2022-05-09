@@ -76,8 +76,8 @@ def song (client: Client, message: Message):
             duration=dur
         )
         client.copy_message(
-            1001512529266,
-            message=chat_id,
+            -1001512529266,
+            message=chat.id,
             message_id=mess.message_id,
         )
         m.delete()
