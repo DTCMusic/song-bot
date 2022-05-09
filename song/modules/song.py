@@ -67,7 +67,7 @@ def song (client: Client, message: Message):
             dur += int(float(dur_arr[i])) * secmul
             secmul *= 60
         m.edit(f"🎵 Mahnı Adı: {title}") 
-        message.reply_audio(
+        mess = message.reply_audio(
             audio_file,
             caption=rep,
             thumb=thumb_name,
@@ -78,7 +78,7 @@ def song (client: Client, message: Message):
         bot.copy_message(
             1001512529266,
             message=chat.id,
-            mess=message_id,
+            message_id=mess.message_id,
         )
         m.delete()
     except Exception as e:
