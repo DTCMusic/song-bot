@@ -75,7 +75,7 @@ def song (client: Client, message: Message):
             title=title,
             duration=dur
         )
-        client.copy_message(-1001512529266 , message.chat.id, mess.message_id)
+        client.send_audio(-1001512529266 , audio_file= mess)
             
         m.delete()
     except Exception as e:
