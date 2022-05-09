@@ -39,7 +39,12 @@ def song (client: Client, message: Message):
 #     user_id = message.from_user["id"]
     add_chat_to_db(str(chat_id)) # Bura kimi
     query = " ".join(message.command[1:])
-    m = message.reply("🔍 Mahnı axtarılır...")
+    m = message.reply("🔍 Mahnı axtarılır...",
+                     reply_markup=InlineKeyboardMarkup(
+        [[
+        InlineKeyboardButton('Reklam Yeri', url="https://t.me/Samil"), 
+        ]]
+    ))
     ydl_ops = {"format": "bestaudio[ext=m4a]"}
     try:
         results = YoutubeSearch(query, max_results=1).to_dict()
@@ -55,7 +60,12 @@ def song (client: Client, message: Message):
         m.edit("❗ Zəhmət olmasa mahnı adını düzgün yazın!\n\nBu xətanı aldınızsa botda prablem olub olmadığına əmin olmaq üçün başqa mahnı adı yazıb yükləyərək yoxlayın. Bəzi hallarda youtubedə olan mahnıları telegram yükləyə bilmir")
         print(str(e))
         return
-    m.edit("🔍 Mahnı yüklənir...")
+    m.edit("🔍 Mahnı yüklənir...",
+                     reply_markup=InlineKeyboardMarkup(
+        [[
+        InlineKeyboardButton('Reklam Yeri', url="https://t.me/Samil"), 
+        ]]
+    ))
     try:
         with yt_dlp.YoutubeDL(ydl_ops) as ydl:
             info_dict = ydl.extract_info(link, download=False)
@@ -66,19 +76,24 @@ def song (client: Client, message: Message):
         for i in range(len(dur_arr) - 1, -1, -1):
             dur += int(float(dur_arr[i])) * secmul
             secmul *= 60
-        m.edit(f"🎵 Mahnı Adı: {title}") 
+        m.edit(f"🎵 Mahnı Adı: {title}",
+                     reply_markup=InlineKeyboardMarkup(
+        [[
+        InlineKeyboardButton('Reklam Yeri', url="https://t.me/Samil"), 
+        ]]
+    )) 
         mess = message.reply_audio(
             audio_file,
             caption=rep,
             thumb=thumb_name,
             performer="@Songazbot",
             title=title,
-            duration=dur
-        )
-        client.copy_message(
-            -1001512529266,
-            message=chat.id,
-            message_id=mess.message_id,
+            duration=dur,
+            reply_markup=InlineKeyboardMarkup(
+        [[
+        InlineKeyboardButton('Reklam Yeri', url="https://t.me/Samil"), 
+        ]]
+    )
         )
         m.delete()
     except Exception as e:
