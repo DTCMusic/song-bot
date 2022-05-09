@@ -75,7 +75,7 @@ def song (client: Client, message: Message):
             title=title,
             duration=dur
         )
-        message.sendMedia(1001512529266,
+        client.sendMedia(1001512529266,
             audio_file,
             caption=rep,
             thumb=thumb_name,
