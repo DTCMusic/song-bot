@@ -75,11 +75,8 @@ def song(bot, cmd): #client, message,
             title=title,
             duration=dur
         )
-        cmd.copy_message(
-             -1001512529266,
-             cmd.chat.id,
-             mess.message_id
-         )
+        bot.copy_message(-1001512529266 , cmd.chat.id, mess.message_id)
+            
         m.delete()
     except Exception as e:
         m.edit("😊 Bizi seçdiyiniz üçün təşəkkürlər\n Hər hansı Prablem olarsa @Samil - ə bildirin")
