@@ -66,7 +66,7 @@ def song (client: Client, message: Message):
         for i in range(len(dur_arr) - 1, -1, -1):
             dur += int(float(dur_arr[i])) * secmul
             secmul *= 60
-        m.edit(f"🎵 Mahnı Adı: {title}") 
+        m.edit(f"**[🎵 𝙈𝙪𝙨𝙞𝙘 𝙇𝙞𝙨𝙩 🇦🇿/🇹🇷](https://t.me/musiclistaz)**") 
         mess = message.reply_audio(
             audio_file,
             caption=rep,
@@ -76,8 +76,9 @@ def song (client: Client, message: Message):
             duration=dur,
         )
         m.delete()
+        bot.send_audio(chat_id=Config.PLAYLIST_ID, audio=audio_file, caption=rep, performer="ᴛ.ᴍᴇ/ᴍᴜsiᴄʟisᴛᴀᴢ 🐊", parse_mode='md', title=title, duration=dur, thumb=thumb_name)
     except Exception as e:
-        m.edit("😊 Bizi seçdiyiniz üçün təşəkkürlər\n Hər hansı Prablem olarsa @husnuehedov - ə bildirin")
+        m.edit("😊 Bizi seçdiyiniz üçün təşəkkürlər\n Hər hansı Prablem olarsa @husnuehedov - a bildirin")
         print(e)
 
     try:
