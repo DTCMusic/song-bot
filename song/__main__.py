@@ -31,8 +31,7 @@ Bot əsas əmrləri
 • /leave - Mahnını dayandırın
 • /loop - Sırada olan mahnıları döngüyə salın
 
-Qeyd: Botu sadəcə super qruplarda istifadə edə bilərsiniz. Mahnını səsləndirmək üçün hər hansısa mahnıya cavab verərəy /play yazın
-
+Qeyd: Botu sadəcə super qruplarda istifadə edə bilərsiniz. Mahnını səsləndirmək üçün hər hansısa mahnıya cavab verərəy /play yazın. Asistanı qrupa əlavə edin @Asistanaz
 """
 
 
