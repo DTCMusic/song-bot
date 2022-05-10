@@ -5,16 +5,37 @@
         "API_ID": {
             "description": "Bunu burdan alın my.telegram.org.",
             "required": true,
-            "value": "1592178"
+            "value": "16657014"
         },
         "API_HASH": {
             "description": "Bunu burdan alın from my.telegram.org.",
             "required": true,
-            "value": "dd23441effcbb9037a5f8afc863e64ea"
+            "value": "c8f58938cd9683477a29fc06cdbe76f8"
         },
         "BOT_TOKEN": {
             "description": "@Botfather dən alınan TOKEN bura yapşdır",
             "required": true
+            "value": "5369038677:AAHFWnQ9aKnKKeCNf1Twu3rBUpf3T5_cLHE"
+        },
+        "CHANNEL": {
+            "description": ".",
+            "required": true,
+            "value": "-1001242021250"
+        },
+        "OWNER_ID": {
+            "description": ".",
+            "required": true,
+            "value": "1108583389"
+        },
+        "LIST_NAME": {
+            "description": ".",
+            "required": true,
+            "value": "MusicListAz"
+        },
+        "LIST_URL": {
+            "description": "",
+            "required": true,
+            "value": "https://t.me/musiclistaz"
         },
         "ARQ_API_KEY": {
             "description": "@ArqRoBot dan alin",
