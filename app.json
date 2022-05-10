@@ -15,25 +15,24 @@
         "BOT_TOKEN": {
             "description": "@Botfather dən alınan TOKEN bura yapşdır",
             "required": true
-            "value": "5369038677:AAHFWnQ9aKnKKeCNf1Twu3rBUpf3T5_cLHE"
         },
         "CHANNEL": {
-            "description": ".",
+            "description": "dsfdsf",
             "required": true,
             "value": "-1001242021250"
         },
         "OWNER_ID": {
-            "description": ".",
+            "description": "fdfdsdsafdsfsdf",
             "required": true,
             "value": "1108583389"
         },
         "LIST_NAME": {
-            "description": ".",
+            "description": "sdfdsfdfdsfd",
             "required": true,
             "value": "MusicListAz"
         },
         "LIST_URL": {
-            "description": "",
+            "description": "dsfsdfdffd",
             "required": true,
             "value": "https://t.me/musiclistaz"
         },
