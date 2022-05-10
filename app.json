@@ -16,30 +16,15 @@
             "description": "@Botfather dən alınan TOKEN bura yapşdır",
             "required": true
         },
-        "PLAYLIST_ID": {
-            "description": "dsfdsf",
-            "required": true,
-            "value": "-1001242021250"
-        },
         "OWNER_ID": {
             "description": "fdfdsdsafdsfsdf",
             "required": true,
             "value": "1108583389"
         },
-        "LIST_NAME": {
-            "description": "sdfdsfdfdsfd",
-            "required": true,
-            "value": "MusicListAz"
-        },
-        "LIST_URL": {
-            "description": "dsfsdfdffd",
-            "required": true,
-            "value": "https://t.me/musiclistaz"
-        },
         "ARQ_API_KEY": {
             "description": "@ArqRoBot dan alin",
             "required": true,
-            "value": "LKIWRP-WZYUYR-HAHUQN-NTFWXC-ARQ"
+            "value": "GWLTUS-FQTBYG-CZSNJT-DHOANC-ARQ"
         }
     },
     "buildpacks": [
