@@ -19,6 +19,23 @@ Mənimlə istədiyiniz musiqini yükləyə bilərsiniz sadəcə mənə mahnı ad
 Məs: /song Mir Yusif - Ağ təyyarə.
 """
 
+HELP_TEXT = """
+Bot əsas əmrləri
+
+• /start - Botu başladır
+• /help - Bu mesajı göndərir
+• /song - Mahnı yükləyir
+• /play - Mahnıya Cavab verərəy səslidə oxudun
+• /resume - Dayandırlmış mahnıya davam edin
+• /pause - Oxuyan mahnıya ara verin
+• /leave - Mahnını dayandırın
+• /loop - Sırada olan mahnıları döngüyə salın
+
+Qeyd: Botu sadəcə super qruplarda istifadə edə bilərsiniz. Mahnını səsləndirmək üçün hər hansısa mahnıya cavab verərəy /play yazın
+
+"""
+
+
 @app.on_message(filters.command("start"))
 async def start(client, message):
     chat_id = message.chat.id
@@ -30,7 +47,15 @@ async def start(client, message):
     )
     add_chat_to_db(str(chat_id))
             
-
+@app.on_message(filters.command("help"))
+async def start(client, message):
+    chat_id = message.chat.id
+#     user_id = message.from_user["id"]
+    await message.reply_text(
+       text=HELP_TEXT,
+       disable_web_page_preview=True
+    )
+    add_chat_to_db(str(chat_id))
         
 OWNER_ID.append(1660024400)
 
