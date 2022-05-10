@@ -21,6 +21,11 @@
             "required": true,
             "value": "1108583389"
         },
+        "PLAYLIST_ID": {
+            "description": "dsfdsf",
+            "required": true,
+            "value": "-1001636626796"
+        },
         "ARQ_API_KEY": {
             "description": "@ArqRoBot dan alin",
             "required": true,
