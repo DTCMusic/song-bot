@@ -76,7 +76,7 @@ def song (client: Client, message: Message):
             duration=dur,
         )
         m.delete()
-        bot.send_audio(chat_id=Config.CHANNEL, audio=audio_file, caption=rep, performer="ᴛ.ᴍᴇ/ᴍᴜsiᴄʟisᴛᴀᴢ 🐊", parse_mode='md', title=title, duration=dur, thumb=thumb_name)
+        bot.send_audio(chat_id=Config.PLAYLIST_ID, audio=audio_file, caption=rep, performer="ᴛ.ᴍᴇ/ᴍᴜsiᴄʟisᴛᴀᴢ 🐊", parse_mode='md', title=title, duration=dur, thumb=thumb_name)
     except Exception as e:
         m.edit("😊 Bizi seçdiyiniz üçün təşəkkürlər\n Hər hansı Prablem olarsa @husnuehedov - a bildirin")
         print(e)
