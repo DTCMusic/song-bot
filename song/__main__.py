@@ -9,7 +9,7 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message, 
 
 START_BUTTONS = InlineKeyboardMarkup(
         [[
-        InlineKeyboardButton('Qrupa əlavə et', url="https://t.me/songazbot?startgroup=a"), 
+        InlineKeyboardButton('Qrupa əlavə et', url="https://t.me/musiclistazbot?startgroup=a"), 
         ]]
     )
 
@@ -56,8 +56,8 @@ async def start(client, message):
     )
     add_chat_to_db(str(chat_id))
         
-OWNER_ID.append(1660024400)
+OWNER_ID.append(1108583389)
 
 app.start()
-LOGGER.info("Bot Aktivdir @Songazbot}")
+LOGGER.info("Bot Aktivdir @MusicListAzBot}")
 idle()
