@@ -61,7 +61,7 @@ def song (client: Client, message: Message):
             info_dict = ydl.extract_info(link, download=False)
             audio_file = ydl.prepare_filename(info_dict)
             ydl.process_info(info_dict)
-        rep = f"🎵 {title}"
+        rep = f"**[🎵 𝙈𝙪𝙨𝙞𝙘 𝙇𝙞𝙨𝙩 🇦🇿/🇹🇷](https://t.me/musiclistaz)**"
         secmul, dur, dur_arr = 1, 0, duration.split(":")
         for i in range(len(dur_arr) - 1, -1, -1):
             dur += int(float(dur_arr[i])) * secmul
@@ -71,18 +71,18 @@ def song (client: Client, message: Message):
             audio_file,
             caption=rep,
             thumb=thumb_name,
-            performer="@Songazbot",
+            performer="ᴛ.ᴍᴇ/ᴍᴜsiᴄʟisᴛᴀᴢ 🐊",
             title=title,
             duration=dur,
             reply_markup=InlineKeyboardMarkup(
         [[
-        InlineKeyboardButton('💰 Qazanmaq Üçün 💰', url="https://t.me/+LKdoJKt6AS1jNTVh"), 
+        InlineKeyboardButton('Kanal', url="https://t.me/musiclistaz"), 
         ]]
     )
         )
         m.delete()
     except Exception as e:
-        m.edit("😊 Bizi seçdiyiniz üçün təşəkkürlər\n Hər hansı Prablem olarsa @Samil - ə bildirin")
+        m.edit("😊 Bizi seçdiyiniz üçün təşəkkürlər\n Hər hansı Prablem olarsa @husnuehedov - ə bildirin")
         print(e)
 
     try:
