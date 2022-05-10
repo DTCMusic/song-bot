@@ -71,7 +71,7 @@ def song (client: Client, message: Message):
             audio_file,
             caption=rep,
             thumb=thumb_name,
-            performer="ᴛ.ᴍᴇ/ᴍᴜsiᴄʟisᴛᴀᴢ 🐊,
+            performer="ᴛ.ᴍᴇ/ᴍᴜsiᴄʟisᴛᴀᴢ 🐊",
             title=title,
             duration=dur,
         m.delete()
