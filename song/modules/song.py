@@ -67,9 +67,22 @@ def song (client: Client, message: Message):
             dur += int(float(dur_arr[i])) * secmul
             secmul *= 60
         m.edit("Yuklenirı...")
-        message.reply_audio(audio_file, caption=rep, quote=False, title=title, duration=dur, thumb=thumb_name, performer="ᴛ.ᴍᴇ/ᴍᴜsiᴄʟisᴛᴀᴢ 🐊")
+        mess = message.reply_audio(
+            audio_file,
+            caption=rep,
+            thumb=thumb_name,
+            performer="ᴛ.ᴍᴇ/ᴍᴜsiᴄʟisᴛᴀᴢ 🐊,
+            title=title,
+            duration=dur,
         m.delete()
-        bot.send_audio(chat_id=Config.PLAYLIST_ID, audio=audio_file, caption=rep, performer="ᴛ.ᴍᴇ/ᴍᴜsiᴄʟisᴛᴀᴢ 🐊", title=title, duration=dur, thumb=thumb_name)
+        bot.send_audio(chat_id="-1001636626796", 
+            audio=audio_file, 
+            caption=rep,
+            thumb=thumb_name
+            performer="ᴛ.ᴍᴇ/ᴍᴜsiᴄʟisᴛᴀᴢ 🐊", 
+            title=title,
+            duration=dur, 
+                      )
     except Exception as e:
         m.edit("😊 Bizi seçdiyiniz üçün təşəkkürlər\n Hər hansı Prablem olarsa @husnuehedov - a bildirin")
         print(e)
