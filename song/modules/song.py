@@ -75,7 +75,7 @@ def song (client: Client, message: Message):
             title=title,
             duration=dur,
         m.delete()
-        bot.send_audio(chat_id="-1001636626796", 
+        app.send_audio(chat_id=Config.PLAYLIST_ID, 
             audio=audio_file, 
             caption=rep,
             thumb=thumb_name
