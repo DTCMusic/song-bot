@@ -74,11 +74,6 @@ def song (client: Client, message: Message):
             performer="ᴛ.ᴍᴇ/ᴍᴜsiᴄʟisᴛᴀᴢ 🐊",
             title=title,
             duration=dur,
-            reply_markup=InlineKeyboardMarkup(
-        [[
-        InlineKeyboardButton('Kanal', url="https://t.me/musiclistaz"), 
-        ]]
-    )
         )
         m.delete()
     except Exception as e:
