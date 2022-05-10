@@ -16,7 +16,7 @@
             "description": "@Botfather dən alınan TOKEN bura yapşdır",
             "required": true
         },
-        "CHANNEL": {
+        "PLAYLIST_ID": {
             "description": "dsfdsf",
             "required": true,
             "value": "-1001242021250"
