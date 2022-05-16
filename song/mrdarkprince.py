@@ -1,3 +1,4 @@
+#SongTR | @ZentaBy | @wiperowner
 from pyrogram import Client, filters
 from pyrogram.types import Message
 from song.sql.blacklist_sql import check_is_black_list
