@@ -39,7 +39,7 @@ def song (client: Client, message: Message):
 #     user_id = message.from_user["id"]
     add_chat_to_db(str(chat_id)) # Bura kimi
     query = " ".join(message.command[1:])
-    m = message.reply("🔍 Mahnı axtarılır...")
+    m = message.reply("🔍 Müziği Buluyorum**...")
     ydl_ops = {"format": "bestaudio[ext=m4a]"}
     try:
         results = YoutubeSearch(query, max_results=1).to_dict()
@@ -52,16 +52,16 @@ def song (client: Client, message: Message):
         duration = results[0]["duration"]
         
     except Exception as e:
-        m.edit("❗ Zəhmət olmasa mahnı adını düzgün yazın!\n\nBu xətanı aldınızsa botda prablem olub olmadığına əmin olmaq üçün başqa mahnı adı yazıb yükləyərək yoxlayın. Bəzi hallarda youtubedə olan mahnıları telegram yükləyə bilmir")
+        m.edit("❗** Lütfen şarkının adını doğru yazın!**")
         print(str(e))
         return
-    m.edit("🔍 Mahnı yüklənir...")
+    m.edit("🔍 Müziği Buldum indiriyorum...")
     try:
         with yt_dlp.YoutubeDL(ydl_ops) as ydl:
             info_dict = ydl.extract_info(link, download=False)
             audio_file = ydl.prepare_filename(info_dict)
             ydl.process_info(info_dict)
-        rep = f"**[🎵 𝙈𝙪𝙨𝙞𝙘 𝙇𝙞𝙨𝙩 🇦🇿/🇹🇷](https://t.me/musiclistaz)**"
+        rep = f"**[🎵 Song TR 🇹🇷](https://t.me/SongTurkeyPlayListi)**"
         secmul, dur, dur_arr = 1, 0, duration.split(":")
         for i in range(len(dur_arr) - 1, -1, -1):
             dur += int(float(dur_arr[i])) * secmul
@@ -71,15 +71,15 @@ def song (client: Client, message: Message):
             audio_file,
             caption=rep,
             thumb=thumb_name,
-            performer="ᴛ.ᴍᴇ/ᴍᴜsiᴄʟisᴛᴀᴢ 🐊",
+            performer="t.me/SongTurkeyPlayListi 🇹🇷",
             title=title,
             duration=dur,
         m.delete()
-        app.send_audio(chat_id=Config.PLAYLIST_ID, audio=audio_file, caption=rep, performer="ᴛ.ᴍᴇ/ᴍᴜsiᴄʟisᴛᴀᴢ 🐊", parse_mode='md', title=title, duration=dur, thumb=thumb_name)
+        app.send_audio(chat_id=Config.PLAYLIST_ID, audio=audio_file, caption=rep, performer="t.me/SongTurkeyPlayListi 🇹🇷", parse_mode='md', title=title, duration=dur, thumb=thumb_name)
 
                       )
     except Exception as e:
-        m.edit("😊 Bizi seçdiyiniz üçün təşəkkürlər\n Hər hansı Prablem olarsa @husnuehedov - a bildirin")
+        m.edit("😊 Bizi Seçtiğiniz için Teşekkürler 🇹🇷")
         print(e)
 
     try:
