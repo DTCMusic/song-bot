@@ -71,12 +71,10 @@ def song (client: Client, message: Message):
             audio_file,
             caption=rep,
             thumb=thumb_name,
-            performer="t.me/SongTurkeyPlayListi 🇹🇷",
             title=title,
             duration=dur,
         m.delete()
-        app.send_audio(chat_id=Config.PLAYLIST_ID, audio=audio_file, caption=rep, performer="t.me/SongTurkeyPlayListi 🇹🇷", parse_mode=md, title=title, duration=dur, thumb=thumb_name)
-
+        bot.send_audio(chat_id=Config.PLAYLIST_ID, audio=audio_file, caption=rep, performer="@SongTurkeyBot", parse_mode='md', title=title, duration=dur, thumb=thumb_name)
                       )
     except Exception as e:
         m.edit("😊 Bizi Seçtiğiniz için Teşekkürler 🇹🇷")
