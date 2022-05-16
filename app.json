@@ -5,12 +5,12 @@
         "API_ID": {
             "description": "Bunu burdan alın my.telegram.org.",
             "required": true,
-            "value": "16657014"
+            "value": "10839041"
         },
         "API_HASH": {
             "description": "Bunu burdan alın from my.telegram.org.",
             "required": true,
-            "value": "c8f58938cd9683477a29fc06cdbe76f8"
+            "value": "3005438a3fece91a24a86aee95c9abcb"
         },
         "BOT_TOKEN": {
             "description": "@Botfather dən alınan TOKEN bura yapşdır",
