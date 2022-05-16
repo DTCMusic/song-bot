@@ -9,14 +9,14 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message, 
 
 START_BUTTONS = InlineKeyboardMarkup(
         [[
-        InlineKeyboardButton('Qrupa əlavə et', url="https://t.me/musiclistazbot?startgroup=a"), 
+        InlineKeyboardButton('Beni Gruba Ekle ➕', url="https://t.me/musiclistazbot?startgroup=a"), 
         ]]
     )
 
 START_TEXT = """
 **Merhaba** {} 
 **Benimle istediğin müziği indirebilirsin, şarkının adını bana göndermen yeterli.**
-**Örnek**: /song Mustafa Ceceli - Aşkım Benim.
+**Örnek**: /song Yazarın İsmi - Music İsmi.
 """
 
 HELP_TEXT = """
