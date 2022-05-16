@@ -19,17 +19,17 @@
         "OWNER_ID": {
             "description": "fdfdsdsafdsfsdf",
             "required": true,
-            "value": "1108583389"
+            "value": "5105453716"
         },
         "PLAYLIST_ID": {
             "description": "dsfdsf",
             "required": true,
-            "value": "-1001636626796"
+            "value": "-1001754557944"
         },
         "ARQ_API_KEY": {
             "description": "@ArqRoBot dan alin",
             "required": true,
-            "value": "GWLTUS-FQTBYG-CZSNJT-DHOANC-ARQ"
+            "value": "TPUVAD-OFYCXF-UTPULF-MJHAZE-ARQ"
         }
     },
     "buildpacks": [
