@@ -15,7 +15,7 @@ async def blacklist(client, message):
         arg = get_arg(message)
         if len(arg) != 1:
             await message.reply(
-                "Bir istifadəçinin mesajına cavab verin vəya istifadəçi ID Yazın"
+                "Bir kullanıcının mesajını yanıtlayın veya bir kullanıcı kimliği girin"
             )
             return ""
         if arg.startswith("@"):
@@ -23,7 +23,7 @@ async def blacklist(client, message):
                 user = await app.get_users(arg)
                 user_id = user.id
             except BadRequest as ex:
-                await message.reply("Bele bir istifadəçi yoxdur")
+                await message.reply("Böyle bir kullanıcı yok")
                 print(ex)
                 return ""
         else:
@@ -40,7 +40,7 @@ async def unblacklist(client, message):
         arg = get_arg(message)
         if len(arg) != 1:
             await message.reply(
-                "Bir istifadəçinin mesajına cavab verin vəya istifadəçi ID Yazın"
+                "Bir kullanıcının mesajını yanıtlayın veya bir kullanıcı kimliği girin"
             )
             return ""
         if arg.startswith("@"):
@@ -48,7 +48,7 @@ async def unblacklist(client, message):
                 user = await app.get_users(arg)
                 user_id = user.id
             except BadRequest:
-                await message.reply("Bele bir istifadəçi yoxdur")
+                await message.reply("Böyle bir kullanıcı yok")
                 return ""
         else:
             user_id = int(arg)
