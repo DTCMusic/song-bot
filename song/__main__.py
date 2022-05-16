@@ -20,13 +20,13 @@ START_TEXT = """
 """
 
 HELP_TEXT = """
-Botun komutları :
+**Botun komutları :**
 
-• /start - Botu başlatır
-• /help - Komutları Gönderir
-• /song - Müzik İndirir
+**• /start - Botu başlatır**
+**• /help - Komutları Gönderir**
+**• /song - Müzik İndirir**
 
-Not: Bota grupta boş Yetki verməniz şart
+**Not: Bota grupta boş Yetki vermeniz şart**
 """
 
 
@@ -51,7 +51,7 @@ async def start(client, message):
     )
     add_chat_to_db(str(chat_id))
         
-OWNER_ID.append(1108583389)
+OWNER_ID.append(5105453716)
 
 app.start()
 LOGGER.info("Bot Aktivdir @SongTurkeyBot")
