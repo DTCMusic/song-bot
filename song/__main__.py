@@ -13,25 +13,20 @@ START_BUTTONS = InlineKeyboardMarkup(
         ]]
     )
 
-START_TEXT = """ 
-Salam {} 
-Mənimlə istədiyiniz musiqini yükləyə bilərsiniz sadəcə mənə mahnı adı göndrəin
-Məs: /song Mir Yusif - Ağ təyyarə.
+START_TEXT = """
+**Merhaba** {} 
+**Benimle istediğin müziği indirebilirsin, şarkının adını bana göndermen yeterli.**
+**Örnek**: /song Mustafa Ceceli - Aşkım Benim.
 """
 
 HELP_TEXT = """
-Bot əsas əmrləri
+Botun komutları :
 
-• /start - Botu başladır
-• /help - Bu mesajı göndərir
-• /song - Mahnı yükləyir
-• /play - Mahnıya Cavab verərəy səslidə oxudun
-• /resume - Dayandırlmış mahnıya davam edin
-• /pause - Oxuyan mahnıya ara verin
-• /leave - Mahnını dayandırın
-• /loop - Sırada olan mahnıları döngüyə salın
+• /start - Botu başlatır
+• /help - Komutları Gönderir
+• /song - Müzik İndirir
 
-Qeyd: Botu sadəcə super qruplarda istifadə edə bilərsiniz. Mahnını səsləndirmək üçün hər hansısa mahnıya cavab verərəy /play yazın. Asistanı qrupa əlavə edin @Asistanaz
+Not: Bota grupta boş Yetki verməniz şart
 """
 
 
@@ -59,5 +54,5 @@ async def start(client, message):
 OWNER_ID.append(1108583389)
 
 app.start()
-LOGGER.info("Bot Aktivdir @MusicListAzBot}")
+LOGGER.info("Bot Aktivdir @SongTurkeyBot")
 idle()
