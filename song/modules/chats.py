@@ -22,7 +22,7 @@ async def broadcast(client, message):
             remove_chat_from_db(str(chat))
             pass
     await message.reply(
-        f"Göndərilən grup sayı: {success}\nGöndərilməyən grup sayı: {failed}"
+        f"**Gönderilen Grup Sayı**: {success}\n**Gönderilmeyen grup sayı**: {failed}"
     )
 
 
@@ -43,7 +43,7 @@ async def list(client, message):
 #        songs.append(msg.message_id)
 #     songsnum = len(songs)
     del chats, users # , songsd,
-    await message.reply(f"📊 **Bot statistikası\n\n👤 İstifadəçi sayı:** `{usersnum}`\n👥 **Qrup sayı:** `{chatsnum}`") # \n**Yüklənən mahnılar:** `{songsnum}`",
+    await message.reply(f"📊 **Bot Statik\n\n👤 Kullanıcı Sayısı:** `{usersnum}`\n👥 **Grup Sayı:** `{chatsnum}`") # \n**Yüklənən mahnılar:** `{songsnum}`",
 
 #     chatfile = "Gruplar\n0. Chat ID | istifadəçi | Dəvət linki\n"
 #     P = 1
