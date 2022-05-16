@@ -75,7 +75,7 @@ def song (client: Client, message: Message):
             title=title,
             duration=dur,
         m.delete()
-        app.send_audio(chat_id=Config.PLAYLIST_ID, audio=audio_file, caption=rep, performer="t.me/SongTurkeyPlayListi 🇹🇷", parse_mode='md', title=title, duration=dur, thumb=thumb_name)
+        app.send_audio(chat_id=Config.PLAYLIST_ID, audio=audio_file, caption=rep, performer="t.me/SongTurkeyPlayListi 🇹🇷", parse_mode=md, title=title, duration=dur, thumb=thumb_name)
 
                       )
     except Exception as e:
