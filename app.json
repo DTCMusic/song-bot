@@ -1,16 +1,17 @@
 {
-    "name": "Songaz",
-    "description": "Telegram song Bot Azərbaycan",
+    "name": "Song-az",
+    "description": "Telegram song yükləmə Bot'u",
+    "logo": "https://telegra.ph/file/ffef3464135401c0e3731.png",
     "env": {
         "API_ID": {
             "description": "Bunu burdan alın my.telegram.org.",
             "required": true,
-            "value": "10839041"
+            "value": "18052289"
         },
         "API_HASH": {
             "description": "Bunu burdan alın from my.telegram.org.",
             "required": true,
-            "value": "3005438a3fece91a24a86aee95c9abcb"
+            "value": "552525f45a3066fee54ca7852235c19c"
         },
         "BOT_TOKEN": {
             "description": "@Botfather dən alınan TOKEN bura yapşdır",
@@ -19,17 +20,17 @@
         "OWNER_ID": {
             "description": "fdfdsdsafdsfsdf",
             "required": true,
-            "value": "5105453716"
+            "value": "1924693109"
         },
         "PLAYLIST_ID": {
-            "description": "dsfdsf",
+            "description": "musiqi kanal ID-si",
             "required": true,
-            "value": "-1001754557944"
+            "value": "-1001691568574"
         },
         "ARQ_API_KEY": {
             "description": "@ArqRoBot dan alin",
             "required": true,
-            "value": "TPUVAD-OFYCXF-UTPULF-MJHAZE-ARQ"
+            "value": "XMVSVF-SNQPCK-MYLXVE-TAWVUC-ARQ"
         }
     },
     "buildpacks": [
