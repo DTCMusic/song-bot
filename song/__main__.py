@@ -9,24 +9,24 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message, 
 
 START_BUTTONS = InlineKeyboardMarkup(
         [[
-        InlineKeyboardButton('Beni Gruba Ekle ➕', url="https://t.me/musiclistazbot?startgroup=a"), 
+        InlineKeyboardButton('🍁 Qrupa Əlavə Et 🍁', url="https://t.me/LedySongBot?startgroup=a"), 
         ]]
     )
 
 START_TEXT = """
-**Merhaba** {} 
-**Benimle istediğin müziği indirebilirsin, şarkının adını bana göndermen yeterli.**
-**Örnek**: /song Yazarın İsmi - Music İsmi.
+**Salam** {} 
+**Mənimlə istədiyin mahnını yükləyə bilərsən, /song {Manhı adı} göndər 7 saniyə gözlə**
+**Nümunə**: `/song Qara gözlər`
 """
 
 HELP_TEXT = """
-**Botun komutları :**
+**Bot Əmrləri :**
 
-**• /start - Botu başlatır**
-**• /help - Komutları Gönderir**
-**• /song - Müzik İndirir**
+**• /start - Botu başladar**
+**• /help - Əmrləri göstərər**
+**• /song - Manhı yükləyər**
 
-**Not: Bota grupta boş Yetki vermeniz şart**
+**Diqqət: Bota qrupda admin yetkisi verməyiniz mütləqdir!**
 """
 
 
@@ -51,8 +51,8 @@ async def start(client, message):
     )
     add_chat_to_db(str(chat_id))
         
-OWNER_ID.append(5105453716)
+OWNER_ID.append(1924693109)
 
 app.start()
-LOGGER.info("Bot Aktivdir @SongTurkeyBot")
+LOGGER.info("🍁 Bot Aktivdir Narahat olma 🍁")
 idle()
