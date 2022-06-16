@@ -9,7 +9,7 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message, 
 
 START_BUTTONS = InlineKeyboardMarkup(
         [[
-        InlineKeyboardButton('🍁 Qrupa Əlavə Et 🍁', url="https://t.me/LedySongBot?startgroup=a"), 
+        InlineKeyboardButton('🍁 Qrupa Əlavə Et 🍁', url="https://t.me/karabakhSongBot?startgroup=a"), 
         ]]
     )
 
